@@ -1,0 +1,754 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Help Battery — Baterias para Automóvel e Moto | Braga</title>
+<meta name="description" content="Venda, teste gratuito e instalação rápida de baterias para automóvel e motociclo. Entrega em Braga e em todo o país. Ligue agora." />
+<link rel="icon" type="image/png" href="brand_assets/Ativo%201@2x.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;1,500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          navy: {
+            950: '#03101f',
+            900: '#061d33',
+            800: '#0a2c4d',
+            700: '#0d3a66',
+            600: '#0f477f',
+          },
+          brand: {
+            700: '#014182',
+            600: '#0a5aa3',
+            500: '#1877c8',
+          },
+          volt: {
+            300: '#fff35c',
+            400: '#fcec13',
+            500: '#e0ce00',
+          },
+          cream: {
+            50: '#f7f4ec',
+            100: '#efeadb',
+          },
+          ink: {
+            950: '#05131f',
+          },
+          steel: {
+            400: '#8296a8',
+            500: '#67809a',
+            600: '#4c5f71',
+          },
+        },
+        fontFamily: {
+          display: ['"Unbounded"', 'sans-serif'],
+          body: ['"Plus Jakarta Sans"', 'sans-serif'],
+        },
+      },
+    },
+  };
+</script>
+<style>
+  :root { color-scheme: light; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Plus Jakarta Sans', sans-serif; background: #f7f4ec; color: #05131f; }
+  h1, h2, h3, .font-display { font-family: 'Unbounded', sans-serif; }
+
+  ::selection { background: #fcec13; color: #05131f; }
+
+  /* Noise / grain texture */
+  .grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.05; mix-blend-mode: overlay; }
+
+  /* Spring-style easing for interactive elements */
+  .spring { transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }
+
+  a, button { -webkit-tap-highlight-color: transparent; }
+
+  .focus-ring:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px #05131f, 0 0 0 6px #fcec13;
+  }
+  .focus-ring-dark:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px #f7f4ec, 0 0 0 6px #fcec13;
+  }
+
+  /* Layered shadow system tinted with brand navy */
+  .shadow-elevated {
+    box-shadow:
+      0 1px 2px rgba(3, 16, 31, 0.08),
+      0 8px 24px -8px rgba(1, 65, 130, 0.25),
+      0 24px 48px -24px rgba(1, 65, 130, 0.35);
+  }
+  .shadow-floating {
+    box-shadow:
+      0 2px 4px rgba(3, 16, 31, 0.1),
+      0 16px 32px -12px rgba(1, 65, 130, 0.35),
+      0 32px 64px -24px rgba(3, 16, 31, 0.45);
+  }
+  .shadow-glow-volt {
+    box-shadow: 0 0 0 1px rgba(252, 236, 1, 0.3), 0 8px 30px -6px rgba(252, 236, 1, 0.45);
+  }
+
+  /* Diagonal section dividers, bolt-inspired */
+  .clip-bolt-down { clip-path: polygon(0 0, 100% 0, 100% 92%, 58% 100%, 0 88%); }
+  .clip-bolt-up { clip-path: polygon(0 12%, 42% 0, 100% 8%, 100% 100%, 0 100%); }
+
+  /* Reveal on scroll */
+  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .reveal-scale { opacity: 0; transform: scale(0.94); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal-scale.is-visible { opacity: 1; transform: scale(1); }
+
+  @keyframes pulse-ring {
+    0% { transform: scale(0.9); opacity: 0.6; }
+    80%, 100% { transform: scale(1.6); opacity: 0; }
+  }
+  .pulse-ring::before, .pulse-ring::after {
+    content: ''; position: absolute; inset: 0; border-radius: 9999px;
+    border: 1.5px solid rgba(252, 236, 1, 0.55);
+    animation: pulse-ring 2.4s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  }
+  .pulse-ring::after { animation-delay: 1.2s; }
+
+  @keyframes float-y {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+  .float-y { animation: float-y 6s ease-in-out infinite; }
+  .float-y-slow { animation: float-y 8s ease-in-out infinite; animation-delay: 1s; }
+
+  @keyframes bolt-flicker {
+    0%, 100% { opacity: 1; }
+    92% { opacity: 1; }
+    94% { opacity: 0.4; }
+    96% { opacity: 1; }
+  }
+  .bolt-flicker { animation: bolt-flicker 4.5s ease-in-out infinite; }
+
+  @keyframes marquee-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .marquee-track { animation: marquee-scroll 32s linear infinite; }
+  .marquee-wrap:hover .marquee-track { animation-play-state: paused; }
+
+  .header-blur { backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); }
+
+  .bg-radial-mesh {
+    background:
+      radial-gradient(60% 50% at 15% 10%, rgba(24, 119, 200, 0.55), transparent 60%),
+      radial-gradient(45% 40% at 90% 20%, rgba(252, 236, 1, 0.12), transparent 65%),
+      radial-gradient(70% 60% at 50% 100%, rgba(10, 44, 77, 0.9), transparent 70%),
+      #03101f;
+  }
+
+  .card-surface {
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .divider-line { background: linear-gradient(90deg, transparent, rgba(1,65,130,0.25), transparent); }
+
+  @media (min-width: 640px) {
+    .sticky-cta-bar { display: none !important; }
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- Noise filter definition (used globally via .grain class) -->
+<svg width="0" height="0" style="position:absolute">
+  <filter id="noiseFilter">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="saturate" values="0"></feColorMatrix>
+  </filter>
+</svg>
+
+<!-- ============ HEADER ============ -->
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div id="header-inner" class="flex items-center justify-between h-20 transition-all duration-300">
+      <a href="#top" class="focus-ring-dark rounded-md flex items-center gap-2">
+        <img src="brand_assets/Ativo%202@2x.png" alt="Help Battery" class="h-8 sm:h-9 w-auto" />
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-9 font-medium text-[15px]" id="desktop-nav">
+        <a href="#servicos" class="nav-link relative py-1 transition-colors">Serviços</a>
+        <a href="#marcas" class="nav-link relative py-1 transition-colors">Marcas</a>
+        <a href="#como-funciona" class="nav-link relative py-1 transition-colors">Como Funciona</a>
+        <a href="#faq" class="nav-link relative py-1 transition-colors">Perguntas Frequentes</a>
+        <a href="#contacto" class="nav-link relative py-1 transition-colors">Contacto</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="tel:+351913212544" class="focus-ring group hidden sm:inline-flex items-center gap-2 bg-volt-400 text-ink-950 font-semibold text-sm px-5 py-2.5 rounded-full spring transition-all duration-300 hover:bg-volt-300 hover:-translate-y-0.5 hover:shadow-glow-volt active:translate-y-0 active:scale-95">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/></svg>
+          913 212 544
+        </a>
+        <button id="menu-toggle" class="lg:hidden focus-ring w-11 h-11 grid place-items-center rounded-full" aria-label="Abrir menu" aria-expanded="false">
+          <svg id="icon-burger" class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg id="icon-close" class="w-6 h-6 hidden" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile menu overlay -->
+  <div id="mobile-menu" class="lg:hidden fixed inset-0 top-0 bg-navy-950 translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
+    <div class="h-full flex flex-col justify-center px-8 gap-8 font-display text-3xl text-cream-50">
+      <a href="#servicos" class="mobile-link">Serviços</a>
+      <a href="#marcas" class="mobile-link">Marcas</a>
+      <a href="#como-funciona" class="mobile-link">Como Funciona</a>
+      <a href="#faq" class="mobile-link">Perguntas Frequentes</a>
+      <a href="#contacto" class="mobile-link">Contacto</a>
+      <a href="tel:+351913212544" class="mt-4 inline-flex w-fit items-center gap-3 bg-volt-400 text-ink-950 font-body font-semibold text-lg px-6 py-3.5 rounded-full">
+        Ligar Agora
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="relative bg-radial-mesh text-cream-50 pt-36 pb-28 sm:pt-44 sm:pb-36 overflow-hidden clip-bolt-down">
+  <div class="grain" style="filter:url(#noiseFilter)"></div>
+
+  <!-- decorative voltage lines -->
+  <svg class="absolute inset-0 w-full h-full opacity-[0.15]" preserveAspectRatio="none" viewBox="0 0 100 100">
+    <line x1="0" y1="20" x2="100" y2="14" stroke="#1877c8" stroke-width="0.15"/>
+    <line x1="0" y1="55" x2="100" y2="62" stroke="#1877c8" stroke-width="0.15"/>
+    <line x1="0" y1="85" x2="100" y2="78" stroke="#fcec13" stroke-width="0.1"/>
+  </svg>
+
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-8 grid lg:grid-cols-[1.05fr_0.95fr] gap-16 items-center">
+    <div>
+      <div class="reveal inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 text-xs sm:text-sm font-medium tracking-wide text-volt-400 mb-7">
+        <span class="w-1.5 h-1.5 rounded-full bg-volt-400 bolt-flicker"></span>
+        Especialistas em Baterias Automóvel &amp; Moto
+      </div>
+
+      <h1 class="reveal font-display font-800 leading-[1.05] tracking-[-0.03em] text-[2.5rem] sm:text-6xl lg:text-[4rem] font-extrabold" style="transition-delay:80ms">
+        Bateria fraca?<br class="hidden sm:block" />
+        Resolvemos <span class="text-volt-400">ainda hoje.</span>
+      </h1>
+
+      <p class="reveal mt-7 text-base sm:text-lg text-cream-50/75 leading-[1.7] max-w-lg" style="transition-delay:160ms">
+        Vendemos, testamos e instalamos baterias para automóveis e motociclos das principais marcas — com entrega rápida em Braga e em todo o país.
+      </p>
+
+      <div class="reveal mt-10 flex flex-col sm:flex-row gap-4" style="transition-delay:240ms">
+        <a href="tel:+351913212544" class="focus-ring group relative inline-flex items-center justify-center gap-2.5 bg-volt-400 text-ink-950 font-semibold text-base px-8 py-4 rounded-full spring transition-all duration-300 hover:bg-volt-300 hover:-translate-y-1 hover:shadow-glow-volt active:translate-y-0 active:scale-95">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/></svg>
+          Ligar Agora
+        </a>
+        <a href="https://api.whatsapp.com/send/?phone=%2B351913212544&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="focus-ring-dark inline-flex items-center justify-center gap-2.5 border border-white/20 text-cream-50 font-semibold text-base px-8 py-4 rounded-full spring transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 active:translate-y-0 active:scale-95">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10.1 9 9.6 7.8 9.4 7.3c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.1-1.4-.1-.1-.3-.2-.5-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3C4 14.9 3.6 13.5 3.6 12c0-4.6 3.8-8.4 8.4-8.4s8.4 3.8 8.4 8.4-3.8 8.2-8.4 8.2z"/></svg>
+          Falar por WhatsApp
+        </a>
+      </div>
+
+      <p class="reveal mt-6 text-xs sm:text-sm text-cream-50/50 flex items-center gap-2 pr-16 sm:pr-0" style="transition-delay:320ms">
+        <svg class="w-4 h-4 text-volt-400 flex-shrink-0" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Resposta rápida · Sem compromisso · Cobertura em todo o país
+      </p>
+    </div>
+
+    <!-- Hero visual: bolt device panel -->
+    <div class="reveal-scale relative flex justify-center lg:justify-end" style="transition-delay:200ms">
+      <div class="relative w-full max-w-sm">
+        <div class="absolute -inset-10 bg-brand-500/30 blur-3xl rounded-full"></div>
+
+        <div class="relative float-y bg-gradient-to-br from-navy-800 to-navy-950 border border-white/10 rounded-[2rem] p-10 shadow-floating">
+          <div class="relative mx-auto w-36 h-36 grid place-items-center">
+            <div class="pulse-ring absolute inset-0"></div>
+            <div class="relative w-28 h-28 rounded-full bg-brand-700 grid place-items-center shadow-glow-volt">
+              <img src="brand_assets/Ativo%201@2x.png" alt="" class="w-16 h-16 object-contain bolt-flicker" />
+            </div>
+          </div>
+
+          <div class="mt-8 grid grid-cols-2 gap-3">
+            <div class="card-surface rounded-2xl px-4 py-3.5">
+              <p class="text-[11px] uppercase tracking-wider text-cream-50/50">Voltagem</p>
+              <p class="font-display font-bold text-lg text-cream-50">12V · 24V</p>
+            </div>
+            <div class="card-surface rounded-2xl px-4 py-3.5">
+              <p class="text-[11px] uppercase tracking-wider text-cream-50/50">Entrega</p>
+              <p class="font-display font-bold text-lg text-cream-50">Expresso</p>
+            </div>
+            <div class="card-surface rounded-2xl px-4 py-3.5">
+              <p class="text-[11px] uppercase tracking-wider text-cream-50/50">Teste</p>
+              <p class="font-display font-bold text-lg text-volt-400">Gratuito</p>
+            </div>
+            <div class="card-surface rounded-2xl px-4 py-3.5">
+              <p class="text-[11px] uppercase tracking-wider text-cream-50/50">Garantia</p>
+              <p class="font-display font-bold text-lg text-cream-50">Incluída</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="float-y-slow absolute -left-10 -bottom-6 hidden sm:flex items-center gap-2 bg-navy-900 border border-white/10 backdrop-blur rounded-2xl px-4 py-3 shadow-elevated">
+          <svg class="w-5 h-5 text-volt-400" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          <span class="text-sm font-semibold text-cream-50">Instalação no local</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENEFIT STRIP ============ -->
+<section class="relative -mt-14 sm:-mt-16 z-10 px-5 sm:px-8">
+  <div class="reveal mx-auto max-w-6xl bg-cream-50 rounded-[1.75rem] shadow-elevated border border-navy-700/5 grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-navy-700/8">
+    <div class="flex flex-col items-center text-center gap-2 px-4 py-7">
+      <svg class="w-6 h-6 text-brand-700" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <p class="text-sm font-semibold leading-snug">Teste gratuito</p>
+    </div>
+    <div class="flex flex-col items-center text-center gap-2 px-4 py-7">
+      <svg class="w-6 h-6 text-brand-700" viewBox="0 0 24 24" fill="none"><path d="M13 16V4H3v12h2m8 0h6l-2-6h-4m0 6v0m0-6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7.5" cy="18.5" r="1.6" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="18.5" r="1.6" stroke="currentColor" stroke-width="1.8"/></svg>
+      <p class="text-sm font-semibold leading-snug">Entrega rápida</p>
+    </div>
+    <div class="flex flex-col items-center text-center gap-2 px-4 py-7">
+      <svg class="w-6 h-6 text-brand-700" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+      <p class="text-sm font-semibold leading-snug">Garantia incluída</p>
+    </div>
+    <div class="flex flex-col items-center text-center gap-2 px-4 py-7">
+      <svg class="w-6 h-6 text-brand-700" viewBox="0 0 24 24" fill="none"><path d="M14 6l-4 4H4v4h6l4 4V6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M17.5 9a4 4 0 010 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <p class="text-sm font-semibold leading-snug">Instalação no local</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROBLEMA / PROMESSA ============ -->
+<section class="relative py-24 sm:py-32 px-5 sm:px-8">
+  <div class="mx-auto max-w-4xl text-center">
+    <p class="reveal text-brand-700 font-semibold text-sm tracking-widest uppercase mb-4">O problema é sempre na pior hora</p>
+    <h2 class="reveal font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1]" style="transition-delay:80ms">
+      Ninguém escolhe o dia<br class="hidden sm:block" /> em que a bateria morre.
+    </h2>
+    <p class="reveal mt-7 text-steel-600 text-base sm:text-lg leading-[1.7] max-w-2xl mx-auto" style="transition-delay:160ms">
+      Costuma acontecer antes de uma viagem, a caminho do trabalho ou numa manhã fria de inverno. Uma bateria em fim de vida não avisa: o motor arranca cada vez com mais esforço, as luzes ficam mais fracas — até que, um dia, simplesmente não arranca.
+    </p>
+    <p class="reveal mt-5 font-semibold text-lg sm:text-xl text-ink-950 max-w-2xl mx-auto" style="transition-delay:220ms">
+      Na Help Battery resolvemos rápido: testamos, aconselhamos a bateria certa e tratamos da instalação — sem teres de te preocupar com mais nada.
+    </p>
+  </div>
+</section>
+
+<!-- ============ SERVIÇOS ============ -->
+<section id="servicos" class="relative py-24 sm:py-32 px-5 sm:px-8 bg-navy-950 text-cream-50 overflow-hidden">
+  <div class="grain" style="filter:url(#noiseFilter)"></div>
+  <div class="absolute top-0 right-0 w-[40rem] h-[40rem] bg-brand-600/20 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/3"></div>
+
+  <div class="relative mx-auto max-w-7xl">
+    <div class="max-w-2xl mb-16">
+      <p class="reveal text-volt-400 font-semibold text-sm tracking-widest uppercase mb-4">Serviços</p>
+      <h2 class="reveal font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1]" style="transition-delay:80ms">
+        Tudo o que precisas, numa só chamada
+      </h2>
+      <p class="reveal mt-6 text-cream-50/70 text-base sm:text-lg leading-[1.7]" style="transition-delay:160ms">
+        Da escolha à instalação, tratamos de tudo para que voltes à estrada o mais depressa possível.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Card 1 -->
+      <div class="reveal card-surface rounded-3xl p-8 spring transition-all duration-500 hover:-translate-y-1.5 hover:border-volt-400/30">
+        <div class="w-12 h-12 rounded-xl bg-brand-700 grid place-items-center mb-6">
+          <svg class="w-6 h-6 text-volt-400" viewBox="0 0 24 24" fill="none"><path d="M5 11V7a2 2 0 012-2h10a2 2 0 012 2v4M5 11h14M5 11v6a2 2 0 002 2h10a2 2 0 002-2v-6M9 5v1M15 5v1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-lg mb-3">Baterias para Automóvel</h3>
+        <p class="text-cream-50/65 text-sm leading-[1.7]">Baterias para todas as marcas e modelos, com a capacidade e amperagem certas para o teu motor.</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="reveal card-surface rounded-3xl p-8 spring transition-all duration-500 hover:-translate-y-1.5 hover:border-volt-400/30" style="transition-delay:60ms">
+        <div class="w-12 h-12 rounded-xl bg-brand-700 grid place-items-center mb-6">
+          <svg class="w-6 h-6 text-volt-400" viewBox="0 0 24 24" fill="none"><path d="M5 17l2.5-7h5L14 17M5 17H3m2 0h9m0 0h2.5l1.5-4M9 6h3.5L14 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="17" r="2" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="13" r="2" stroke="currentColor" stroke-width="1.8"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-lg mb-3">Baterias para Motociclos</h3>
+        <p class="text-cream-50/65 text-sm leading-[1.7]">Soluções específicas para motas e scooters, das cilindradas mais pequenas às maiores.</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="reveal card-surface rounded-3xl p-8 spring transition-all duration-500 hover:-translate-y-1.5 hover:border-volt-400/30" style="transition-delay:120ms">
+        <div class="w-12 h-12 rounded-xl bg-brand-700 grid place-items-center mb-6">
+          <svg class="w-6 h-6 text-volt-400" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-lg mb-3">Teste Gratuito da Bateria</h3>
+        <p class="text-cream-50/65 text-sm leading-[1.7]">Verificamos o estado real da bateria antes de qualquer substituição — sem custos, sem compromisso.</p>
+      </div>
+      <!-- Card 4 -->
+      <div class="reveal card-surface rounded-3xl p-8 spring transition-all duration-500 hover:-translate-y-1.5 hover:border-volt-400/30">
+        <div class="w-12 h-12 rounded-xl bg-brand-700 grid place-items-center mb-6">
+          <svg class="w-6 h-6 text-volt-400" viewBox="0 0 24 24" fill="none"><path d="M14 6l-4 4H4v4h6l4 4V6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M17.5 9a4 4 0 010 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-lg mb-3">Instalação no Local</h3>
+        <p class="text-cream-50/65 text-sm leading-[1.7]">A nossa equipa instala a bateria onde estiveres, sem teres de desmontar nada sozinho.</p>
+      </div>
+      <!-- Card 5 -->
+      <div class="reveal card-surface rounded-3xl p-8 spring transition-all duration-500 hover:-translate-y-1.5 hover:border-volt-400/30" style="transition-delay:60ms">
+        <div class="w-12 h-12 rounded-xl bg-brand-700 grid place-items-center mb-6">
+          <svg class="w-6 h-6 text-volt-400" viewBox="0 0 24 24" fill="none"><path d="M13 16V4H3v12h2m8 0h6l-2-6h-4m0 6v0m0-6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7.5" cy="18.5" r="1.6" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="18.5" r="1.6" stroke="currentColor" stroke-width="1.8"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-lg mb-3">Entrega Rápida</h3>
+        <p class="text-cream-50/65 text-sm leading-[1.7]">Encomenda hoje e recebe em poucas horas na região de Braga, ou rapidamente em todo o país.</p>
+      </div>
+      <!-- Card 6 -->
+      <div class="reveal card-surface rounded-3xl p-8 spring transition-all duration-500 hover:-translate-y-1.5 hover:border-volt-400/30" style="transition-delay:120ms">
+        <div class="w-12 h-12 rounded-xl bg-brand-700 grid place-items-center mb-6">
+          <svg class="w-6 h-6 text-volt-400" viewBox="0 0 24 24" fill="none"><path d="M3 21V9l9-6 9 6v12M3 21h18M3 21h6v-6h6v6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        </div>
+        <h3 class="font-display font-bold text-lg mb-3">Apoio a Empresas e Frotas</h3>
+        <p class="text-cream-50/65 text-sm leading-[1.7]">Condições especiais para frotas, oficinas e empresas de transporte com necessidade contínua de baterias.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MARCAS ============ -->
+<section id="marcas" class="relative py-24 sm:py-32 px-5 sm:px-8">
+  <div class="mx-auto max-w-7xl text-center mb-14">
+    <p class="reveal text-brand-700 font-semibold text-sm tracking-widest uppercase mb-4">Catálogo de Marcas</p>
+    <h2 class="reveal font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1]" style="transition-delay:80ms">
+      Compatível com as principais montadoras
+    </h2>
+    <p class="reveal mt-6 text-steel-600 text-base sm:text-lg leading-[1.7] max-w-2xl mx-auto" style="transition-delay:160ms">
+      Fornecemos baterias adequadas às especificações destas e de muitas outras marcas, para automóvel e motociclo.
+    </p>
+  </div>
+
+  <div class="reveal-scale mx-auto max-w-6xl grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-5">
+    <div class="brand-badge">Toyota</div>
+    <div class="brand-badge">Fiat</div>
+    <div class="brand-badge">Audi</div>
+    <div class="brand-badge">Chevrolet</div>
+    <div class="brand-badge">Hyundai</div>
+    <div class="brand-badge">Volkswagen</div>
+    <div class="brand-badge">BMW</div>
+    <div class="brand-badge">Mercedes-Benz</div>
+    <div class="brand-badge">Peugeot</div>
+    <div class="brand-badge">Renault</div>
+    <div class="brand-badge">Ford</div>
+    <div class="brand-badge">Honda</div>
+    <div class="brand-badge">Nissan</div>
+    <div class="brand-badge">Opel</div>
+    <div class="brand-badge">Yamaha</div>
+    <div class="brand-badge">Kawasaki</div>
+  </div>
+
+  <p class="reveal mx-auto max-w-6xl mt-6 text-center text-sm text-steel-500 font-medium">+ muitas outras marcas disponíveis. Não encontraste a tua? Contacta-nos.</p>
+</section>
+
+<!-- ============ COMO FUNCIONA ============ -->
+<section id="como-funciona" class="relative py-24 sm:py-32 px-5 sm:px-8 bg-brand-700 text-cream-50 overflow-hidden">
+  <div class="grain" style="filter:url(#noiseFilter)"></div>
+  <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-volt-400/10 blur-[100px] rounded-full"></div>
+
+  <div class="relative mx-auto max-w-6xl">
+    <div class="max-w-xl mb-16">
+      <p class="reveal text-volt-400 font-semibold text-sm tracking-widest uppercase mb-4">Como Funciona</p>
+      <h2 class="reveal font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1]" style="transition-delay:80ms">
+        Três passos até voltares à estrada
+      </h2>
+    </div>
+
+    <div class="grid sm:grid-cols-3 gap-8 sm:gap-6">
+      <div class="reveal relative">
+        <span class="font-display font-black text-6xl text-white/15 block mb-4">01</span>
+        <h3 class="font-display font-bold text-xl mb-3">Contacta-nos</h3>
+        <p class="text-cream-50/75 text-sm leading-[1.7]">Liga, envia uma mensagem por WhatsApp ou preenche o formulário de contacto.</p>
+      </div>
+      <div class="reveal relative" style="transition-delay:100ms">
+        <span class="font-display font-black text-6xl text-white/15 block mb-4">02</span>
+        <h3 class="font-display font-bold text-xl mb-3">Diagnosticamos</h3>
+        <p class="text-cream-50/75 text-sm leading-[1.7]">Confirmamos a bateria certa para o teu veículo, com teste gratuito sempre que necessário.</p>
+      </div>
+      <div class="reveal relative" style="transition-delay:200ms">
+        <span class="font-display font-black text-6xl text-white/15 block mb-4">03</span>
+        <h3 class="font-display font-bold text-xl mb-3">Entregamos e instalamos</h3>
+        <p class="text-cream-50/75 text-sm leading-[1.7]">Recebes a bateria pronta a usar, instalada onde for mais conveniente para ti.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="relative py-24 sm:py-32 px-5 sm:px-8">
+  <div class="mx-auto max-w-3xl">
+    <div class="text-center mb-14">
+      <p class="reveal text-brand-700 font-semibold text-sm tracking-widest uppercase mb-4">Perguntas Frequentes</p>
+      <h2 class="reveal font-display font-extrabold text-3xl sm:text-4xl tracking-[-0.03em]" style="transition-delay:80ms">Ainda tens dúvidas?</h2>
+    </div>
+
+    <div class="space-y-3">
+      <details class="reveal faq-item group">
+        <summary>Qual é a garantia das baterias?<span class="faq-icon">+</span></summary>
+        <div class="faq-body">Todas as baterias vendidas pela Help Battery têm garantia do fabricante, que varia consoante a marca e o modelo. Informamos sempre o prazo exato antes da compra.</div>
+      </details>
+      <details class="reveal faq-item group">
+        <summary>Quanto tempo demora a entrega?<span class="faq-icon">+</span></summary>
+        <div class="faq-body">Na região de Braga, a entrega é feita normalmente no próprio dia. Para o resto do país, o prazo habitual é de 24 a 48 horas.</div>
+      </details>
+      <details class="reveal faq-item group">
+        <summary>Instalam a bateria ou só a entregam?<span class="faq-icon">+</span></summary>
+        <div class="faq-body">Instalamos sempre que possível, no local que for mais conveniente. Se preferires instalar por conta própria, entregamos também sem custo adicional.</div>
+      </details>
+      <details class="reveal faq-item group">
+        <summary>Trabalham com baterias para motociclos?<span class="faq-icon">+</span></summary>
+        <div class="faq-body">Sim. Além de baterias para automóveis, temos uma gama completa para motas e scooters de todas as cilindradas.</div>
+      </details>
+      <details class="reveal faq-item group">
+        <summary>Não sei que bateria o meu carro precisa. E agora?<span class="faq-icon">+</span></summary>
+        <div class="faq-body">Sem problema — diz-nos a marca, modelo e ano do veículo (ou a matrícula) e indicamos a bateria certa.</div>
+      </details>
+      <details class="reveal faq-item group">
+        <summary>Como posso pagar?<span class="faq-icon">+</span></summary>
+        <div class="faq-body">Aceitamos as formas de pagamento habituais. Para mais detalhes, fala connosco por telefone ou WhatsApp.</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO ============ -->
+<section id="contacto" class="relative py-24 sm:py-32 px-5 sm:px-8 bg-navy-950 text-cream-50 overflow-hidden">
+  <div class="grain" style="filter:url(#noiseFilter)"></div>
+
+  <div class="relative mx-auto max-w-7xl grid lg:grid-cols-2 gap-14 items-stretch">
+    <div>
+      <p class="reveal text-volt-400 font-semibold text-sm tracking-widest uppercase mb-4">Contacto</p>
+      <h2 class="reveal font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1]" style="transition-delay:80ms">
+        Fala connosco agora
+      </h2>
+      <p class="reveal mt-6 text-cream-50/70 text-base sm:text-lg leading-[1.7] max-w-md" style="transition-delay:160ms">
+        Estamos prontos para resolver o problema da tua bateria o mais rápido possível.
+      </p>
+
+      <div class="mt-10 space-y-4">
+        <a href="tel:+351913212544" class="focus-ring-dark reveal contact-card">
+          <div class="contact-icon"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/></svg></div>
+          <div><p class="text-xs uppercase tracking-wider text-cream-50/50">Telefone</p><p class="font-semibold text-lg">+351 913 212 544</p></div>
+        </a>
+        <a href="https://api.whatsapp.com/send/?phone=%2B351913212544&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="focus-ring-dark reveal contact-card" style="transition-delay:60ms">
+          <div class="contact-icon"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10.1 9 9.6 7.8 9.4 7.3c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.1-1.4-.1-.1-.3-.2-.5-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3C4 14.9 3.6 13.5 3.6 12c0-4.6 3.8-8.4 8.4-8.4s8.4 3.8 8.4 8.4-3.8 8.2-8.4 8.2z"/></svg></div>
+          <div><p class="text-xs uppercase tracking-wider text-cream-50/50">WhatsApp</p><p class="font-semibold text-lg">Enviar mensagem</p></div>
+        </a>
+        <a href="mailto:suporte@helpbattery.pt" class="focus-ring-dark reveal contact-card" style="transition-delay:120ms">
+          <div class="contact-icon"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M3 6h18v12H3V6z" stroke="currentColor" stroke-width="1.8"/><path d="M3 6l9 7 9-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div><p class="text-xs uppercase tracking-wider text-cream-50/50">Email</p><p class="font-semibold text-lg break-all">suporte@helpbattery.pt</p></div>
+        </a>
+        <div class="reveal contact-card !cursor-default" style="transition-delay:180ms">
+          <div class="contact-icon"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0119 9.5C19 14.9 12 21 12 21z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.4" stroke="currentColor" stroke-width="1.8"/></svg></div>
+          <div><p class="text-xs uppercase tracking-wider text-cream-50/50">Morada</p><p class="font-semibold text-base sm:text-lg leading-snug">Rua António Fernandes Ferreira Gomes, n.º 178, Ferreiros, 4705-157, Braga</p></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal-scale min-h-[22rem] lg:min-h-0 rounded-[1.75rem] overflow-hidden border border-white/10 shadow-floating">
+      <iframe
+        title="Localização Help Battery"
+        src="https://www.google.com/maps?q=Rua+Ant%C3%B3nio+Fernandes+Ferreira+Gomes%2C+178%2C+Ferreiros%2C+4705-157+Braga%2C+Portugal&output=embed"
+        class="w-full h-full min-h-[22rem]"
+        style="border:0; filter: grayscale(0.15) contrast(1.05);"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA FINAL ============ -->
+<section class="relative py-24 sm:py-28 px-5 sm:px-8 bg-cream-50 overflow-hidden">
+  <div class="reveal-scale mx-auto max-w-5xl relative rounded-[2rem] bg-gradient-to-br from-brand-700 via-brand-600 to-navy-900 px-8 sm:px-16 py-16 sm:py-20 text-center overflow-hidden shadow-floating">
+    <div class="grain" style="filter:url(#noiseFilter)"></div>
+    <div class="absolute -top-16 -right-16 w-64 h-64 bg-volt-400/15 blur-3xl rounded-full"></div>
+    <h2 class="relative font-display font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] text-cream-50 leading-[1.1]">
+      Não fiques parado<br class="hidden sm:block" /> por causa de uma bateria.
+    </h2>
+    <p class="relative mt-6 text-cream-50/75 text-base sm:text-lg max-w-xl mx-auto">Liga agora e resolvemos ainda hoje — em Braga ou em qualquer ponto do país.</p>
+    <div class="relative mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+      <a href="tel:+351913212544" class="focus-ring group inline-flex items-center justify-center gap-2.5 bg-volt-400 text-ink-950 font-semibold text-base px-9 py-4 rounded-full spring transition-all duration-300 hover:bg-volt-300 hover:-translate-y-1 hover:shadow-glow-volt active:translate-y-0 active:scale-95">
+        Ligar Agora · 913 212 544
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="relative bg-navy-950 text-cream-50 pt-20 pb-10 px-5 sm:px-8 overflow-hidden">
+  <div class="grain" style="filter:url(#noiseFilter)"></div>
+  <div class="relative mx-auto max-w-7xl grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 pb-14">
+    <div class="lg:col-span-1">
+      <img src="brand_assets/Ativo%202@2x.png" alt="Help Battery" class="h-8 w-auto mb-5" />
+      <p class="text-sm text-cream-50/60 leading-[1.7] max-w-xs">Baterias para automóvel e moto, entregues e instaladas rapidamente em Braga e em todo o país.</p>
+    </div>
+    <div>
+      <p class="font-display font-semibold text-sm uppercase tracking-wider text-volt-400 mb-5">Navegação</p>
+      <ul class="space-y-3 text-sm text-cream-50/70">
+        <li><a href="#servicos" class="footer-link">Serviços</a></li>
+        <li><a href="#marcas" class="footer-link">Marcas</a></li>
+        <li><a href="#como-funciona" class="footer-link">Como Funciona</a></li>
+        <li><a href="#faq" class="footer-link">Perguntas Frequentes</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-display font-semibold text-sm uppercase tracking-wider text-volt-400 mb-5">Contacto</p>
+      <ul class="space-y-3 text-sm text-cream-50/70">
+        <li><a href="tel:+351913212544" class="footer-link">+351 913 212 544</a></li>
+        <li><a href="mailto:suporte@helpbattery.pt" class="footer-link break-all">suporte@helpbattery.pt</a></li>
+        <li><a href="https://api.whatsapp.com/send/?phone=%2B351913212544&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="footer-link">WhatsApp</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-display font-semibold text-sm uppercase tracking-wider text-volt-400 mb-5">Morada</p>
+      <p class="text-sm text-cream-50/70 leading-[1.7]">Rua António Fernandes Ferreira Gomes, n.º 178<br/>Ferreiros, 4705-157, Braga</p>
+    </div>
+  </div>
+  <div class="relative mx-auto max-w-7xl pt-8 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between items-center text-xs text-cream-50/40">
+    <p>&copy; 2026 Help Battery. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- ============ FLOATING WHATSAPP BUTTON ============ -->
+<a href="https://api.whatsapp.com/send/?phone=%2B351913212544&text&type=phone_number&app_absent=0" target="_blank" rel="noopener"
+   class="focus-ring fixed bottom-24 sm:bottom-7 right-5 sm:right-7 z-40 w-14 h-14 rounded-full bg-[#25D366] grid place-items-center shadow-floating spring transition-all duration-300 hover:scale-110 active:scale-95"
+   aria-label="Falar por WhatsApp">
+  <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10.1 9 9.6 7.8 9.4 7.3c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.1-1.4-.1-.1-.3-.2-.5-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3C4 14.9 3.6 13.5 3.6 12c0-4.6 3.8-8.4 8.4-8.4s8.4 3.8 8.4 8.4-3.8 8.2-8.4 8.2z"/></svg>
+</a>
+
+<!-- ============ MOBILE STICKY CTA BAR ============ -->
+<div class="sticky-cta-bar fixed bottom-0 inset-x-0 z-40 bg-navy-950/95 header-blur border-t border-white/10 px-4 py-3 flex gap-3">
+  <a href="tel:+351913212544" class="focus-ring flex-1 inline-flex items-center justify-center gap-2 bg-volt-400 text-ink-950 font-semibold text-sm py-3 rounded-full">
+    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/></svg>
+    Ligar Agora
+  </a>
+  <a href="https://api.whatsapp.com/send/?phone=%2B351913212544&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="focus-ring-dark flex-1 inline-flex items-center justify-center gap-2 border border-white/20 text-cream-50 font-semibold text-sm py-3 rounded-full">
+    WhatsApp
+  </a>
+</div>
+
+<style>
+  .nav-link { color: rgba(5,19,31,0.75); }
+  .nav-link::after { content: ''; position: absolute; left: 0; bottom: -2px; width: 0; height: 2px; background: #014182; transition: width 0.35s cubic-bezier(0.16,1,0.3,1); }
+  .nav-link:hover { color: #05131f; }
+  .nav-link:hover::after { width: 100%; }
+  #site-header.scrolled #header-inner { height: 4.25rem; }
+  #site-header.scrolled { background: rgba(247,244,236,0.85); }
+  #site-header:not(.scrolled) .nav-link { color: rgba(247,244,236,0.85); }
+  #site-header:not(.scrolled) .nav-link:hover { color: #fff; }
+  #site-header:not(.scrolled) .nav-link::after { background: #fcec13; }
+  #site-header:not(.scrolled) #menu-toggle { color: #f7f4ec; }
+  #site-header.scrolled #menu-toggle { color: #05131f; }
+  #site-header.scrolled { backdrop-filter: blur(14px) saturate(140%); -webkit-backdrop-filter: blur(14px) saturate(140%); box-shadow: 0 1px 0 rgba(1,65,130,0.08), 0 12px 32px -16px rgba(1,65,130,0.2); }
+
+  .mobile-link { opacity: 0; transform: translateX(24px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  #mobile-menu.open .mobile-link { opacity: 1; transform: translateX(0); }
+  #mobile-menu.open .mobile-link:nth-child(1) { transition-delay: 0.05s; }
+  #mobile-menu.open .mobile-link:nth-child(2) { transition-delay: 0.1s; }
+  #mobile-menu.open .mobile-link:nth-child(3) { transition-delay: 0.15s; }
+  #mobile-menu.open .mobile-link:nth-child(4) { transition-delay: 0.2s; }
+  #mobile-menu.open .mobile-link:nth-child(5) { transition-delay: 0.25s; }
+  #mobile-menu.open .mobile-link:nth-child(6) { transition-delay: 0.3s; }
+  #mobile-menu.open { transform: translateX(0); }
+
+  .brand-badge {
+    display: flex; align-items: center; justify-content: center;
+    background: #ffffff; border: 1px solid rgba(1,65,130,0.1);
+    border-radius: 1.25rem; padding: 1.5rem 1rem; min-height: 5.5rem;
+    font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 0.95rem;
+    color: #0a2c4d; text-align: center;
+    box-shadow: 0 1px 2px rgba(3,16,31,0.04), 0 8px 20px -12px rgba(1,65,130,0.15);
+    transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease, color 0.4s ease, background 0.4s ease;
+  }
+  .brand-badge:hover {
+    transform: translateY(-4px);
+    background: #014182; color: #fcec13;
+    box-shadow: 0 12px 28px -12px rgba(1,65,130,0.45);
+  }
+
+  .contact-card {
+    display: flex; align-items: center; gap: 1rem;
+    background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 1.25rem; padding: 1.1rem 1.4rem;
+    transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), border-color 0.4s ease, background 0.4s ease;
+  }
+  .contact-card:hover { transform: translateX(6px); border-color: rgba(252,236,1,0.3); background: linear-gradient(180deg, rgba(255,255,255,0.09), rgba(255,255,255,0.03)); }
+  .contact-icon {
+    flex-shrink: 0; width: 2.75rem; height: 2.75rem; border-radius: 0.9rem;
+    background: #014182; color: #fcec13;
+    display: grid; place-items: center;
+  }
+
+  .faq-item {
+    background: #fff; border: 1px solid rgba(1,65,130,0.08);
+    border-radius: 1.25rem; padding: 1.4rem 1.6rem;
+    box-shadow: 0 1px 2px rgba(3,16,31,0.04);
+  }
+  .faq-item summary {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: 'Unbounded', sans-serif; font-weight: 600; font-size: 0.98rem;
+    color: #05131f;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-icon {
+    flex-shrink: 0; margin-left: 1rem; width: 1.75rem; height: 1.75rem; border-radius: 9999px;
+    background: #f7f4ec; color: #014182; display: grid; place-items: center;
+    font-size: 1.1rem; font-weight: 500;
+    transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), background 0.4s ease, color 0.4s ease;
+  }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); background: #014182; color: #fcec13; }
+  .faq-body {
+    color: #4c5f71; font-size: 0.95rem; line-height: 1.7;
+    padding-top: 1rem; margin-top: 0.25rem; border-top: 1px solid rgba(1,65,130,0.08);
+  }
+
+  .footer-link { transition: color 0.3s ease, padding-left 0.3s ease; display: inline-block; }
+  .footer-link:hover { color: #fcec13; padding-left: 4px; }
+</style>
+
+<script>
+  // Header scroll state
+  const header = document.getElementById('site-header');
+  const onScroll = () => {
+    if (window.scrollY > 40) header.classList.add('scrolled');
+    else header.classList.remove('scrolled');
+  };
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const iconBurger = document.getElementById('icon-burger');
+  const iconClose = document.getElementById('icon-close');
+  let menuOpen = false;
+  menuToggle.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu.classList.toggle('translate-x-full', !menuOpen);
+    mobileMenu.classList.toggle('open', menuOpen);
+    iconBurger.classList.toggle('hidden', menuOpen);
+    iconClose.classList.toggle('hidden', !menuOpen);
+    menuToggle.setAttribute('aria-expanded', String(menuOpen));
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+  });
+  document.querySelectorAll('.mobile-link').forEach((link) => {
+    link.addEventListener('click', () => menuToggle.click());
+  });
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal, .reveal-scale');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  revealEls.forEach((el) => io.observe(el));
+</script>
+</body>
+</html>
