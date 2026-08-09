@@ -32,38 +32,62 @@
   // O espanhol entra aqui como sobreposição: basta preencher I18N.es com
   // as mesmas chaves data-i18n e o botão ES ativa-se sozinho.
   // ---------------------------------------------------------------
-  const I18N = {
-    es: {
-      // 'nav.sobre': 'Sobre nosotros',
-      // 'hero.sub': '...',
-    },
-  };
+  const I18N = window.HB_I18N || {};
+  const LOCALES = { pt: 'pt-PT', br: 'pt-BR', es: 'es-ES' };
+  const GUARDA = 'hb-lang';
 
+  const temDicionario = (lang) =>
+    lang === 'pt' || Object.keys(I18N[lang] || {}).length > 0;
+
+  // Captura o pt-PT tal como está no HTML, antes de qualquer troca.
+  // O <title> também entra aqui: definir o seu innerHTML muda o separador
+  // do browser, por isso não precisa de tratamento especial.
   const PT = {};
   document.querySelectorAll('[data-i18n]').forEach((el) => {
     PT[el.dataset.i18n] = el.innerHTML;
   });
+  document.querySelectorAll('[data-i18n-content]').forEach((el) => {
+    PT[el.dataset.i18nContent] = el.getAttribute('content');
+  });
 
   const applyLang = (lang) => {
     const dict = lang === 'pt' ? PT : Object.assign({}, PT, I18N[lang] || {});
+
     document.querySelectorAll('[data-i18n]').forEach((el) => {
       const value = dict[el.dataset.i18n];
       if (value != null) el.innerHTML = value;
     });
-    document.documentElement.lang = lang === 'pt' ? 'pt-PT' : 'es-ES';
+    // meta description e afins, que guardam o texto no atributo content
+    document.querySelectorAll('[data-i18n-content]').forEach((el) => {
+      const value = dict[el.dataset.i18nContent];
+      if (value != null) el.setAttribute('content', value);
+    });
+
+    document.documentElement.lang = LOCALES[lang] || 'pt-PT';
     document.querySelectorAll('.lang-btn').forEach((btn) => {
       const active = btn.dataset.lang === lang;
       btn.classList.toggle('is-active', active);
       btn.setAttribute('aria-pressed', String(active));
     });
+
+    // Sem isto, passar da home para /franquia/ repunha o português.
+    try { localStorage.setItem(GUARDA, lang); } catch (e) { /* navegação privada */ }
   };
 
   document.querySelectorAll('.lang-btn').forEach((btn) => {
     const lang = btn.dataset.lang;
-    // Só habilita um idioma que tenha efetivamente tradução carregada.
-    if (lang !== 'pt' && Object.keys(I18N[lang] || {}).length > 0) btn.disabled = false;
+    // Um idioma só fica clicável se tiver tradução carregada.
+    btn.disabled = !temDicionario(lang);
+    if (!btn.disabled) btn.removeAttribute('title');
     btn.addEventListener('click', () => { if (!btn.disabled) applyLang(lang); });
   });
+
+  // Repõe a escolha da visita anterior.
+  let idiomaGuardado = null;
+  try { idiomaGuardado = localStorage.getItem(GUARDA); } catch (e) { /* navegação privada */ }
+  if (idiomaGuardado && idiomaGuardado !== 'pt' && temDicionario(idiomaGuardado)) {
+    applyLang(idiomaGuardado);
+  }
 
   // ---------------------------------------------------------------
   // Franquia: abre o formulário com o modelo escolhido
@@ -195,10 +219,10 @@
     carrossel.appendChild(palco);
     grelha.insertAdjacentElement('afterend', carrossel);
 
-    const dica = document.createElement('p');
-    dica.className = 'brand-carousel-dica';
-    dica.textContent = 'Arraste para rodar';
-    carrossel.insertAdjacentElement('afterend', dica);
+    // A dica "Arraste para rodar" vive no HTML da home, para participar
+    // no i18n como qualquer outro texto. Aqui só se move para a posição certa.
+    const dica = document.querySelector('.brand-carousel-dica');
+    if (dica) carrossel.insertAdjacentElement('afterend', dica);
 
     grelha.classList.add('is-visible');
     document.body.classList.add('carousel-ativo');

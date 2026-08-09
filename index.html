@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Help Battery — Assistência Automóvel e Soluções de Mobilidade | Braga, Porto, Coimbra e Lisboa</title>
-<meta name="description" content="Diagnóstico, substituição e assistência técnica de baterias no local, para automóvel e motociclo. Mais de 10 anos de experiência, com unidades em Braga, Porto, Coimbra e Lisboa." />
+<title data-i18n="meta.home.title">Help Battery — Assistência Automóvel e Soluções de Mobilidade | Braga, Porto, Coimbra e Lisboa</title>
+<meta name="description" data-i18n-content="meta.home.desc" content="Diagnóstico, substituição e assistência técnica de baterias no local, para automóvel e motociclo. Mais de 10 anos de experiência, com unidades em Braga, Porto, Coimbra e Lisboa." />
 <link rel="icon" type="image/png" href="/new-logo/favicon-64.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -45,8 +45,9 @@
       <div class="flex items-center gap-3">
         <!-- Seletor de idioma: PT ativo, ES fica ativo assim que as traduções entrarem em I18N.es -->
         <div class="lang-switch hidden sm:flex" role="group" aria-label="Idioma">
-          <button type="button" class="lang-btn is-active focus-ring" data-lang="pt" aria-pressed="true">PT</button>
-          <button type="button" class="lang-btn focus-ring" data-lang="es" aria-pressed="false" disabled title="Espanhol em breve">ES</button>
+          <button type="button" class="lang-btn is-active focus-ring" data-lang="pt" aria-pressed="true" title="Português de Portugal">PT</button>
+          <button type="button" class="lang-btn focus-ring" data-lang="br" aria-pressed="false" title="Português do Brasil">BR</button>
+          <button type="button" class="lang-btn focus-ring" data-lang="es" aria-pressed="false" title="Español">ES</button>
         </div>
         <a href="tel:+351913212544" class="focus-ring group hidden sm:inline-flex items-center gap-2 bg-volt-400 text-ink-950 font-semibold text-sm px-5 py-2.5 rounded-full spring transition-all duration-300 hover:bg-volt-300 hover:-translate-y-0.5 hover:shadow-glow-volt active:translate-y-0 active:scale-95">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/></svg>
@@ -96,7 +97,7 @@
         <span data-i18n="hero.eyebrow">Assistência automóvel e soluções de mobilidade</span>
       </div>
 
-      <h1 class="reveal font-display leading-[1.05] tracking-[-0.03em] text-[2.5rem] sm:text-6xl lg:text-[4rem]" style="transition-delay:80ms">
+      <h1 class="reveal font-display leading-[1.05] tracking-[-0.03em] text-[2.5rem] sm:text-6xl lg:text-[4rem]" style="transition-delay:80ms" data-i18n="hero.h1">
         Bateria fraca?<br class="hidden sm:block" />
         Resolvemos<br class="hidden sm:block" />
         <span class="text-volt-400">ainda hoje.</span>
@@ -109,11 +110,11 @@
       <div class="reveal mt-10 flex flex-col sm:flex-row gap-4" style="transition-delay:240ms">
         <a href="tel:+351913212544" class="focus-ring group relative inline-flex items-center justify-center gap-2.5 bg-volt-400 text-ink-950 font-semibold text-base px-8 py-4 rounded-full spring transition-all duration-300 hover:bg-volt-300 hover:-translate-y-1 hover:shadow-glow-volt active:translate-y-0 active:scale-95">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/></svg>
-          Ligar Agora
+          <span data-i18n="cta.ligar">Ligar Agora</span>
         </a>
         <a href="https://api.whatsapp.com/send/?phone=%2B351913212544&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="focus-ring-dark inline-flex items-center justify-center gap-2.5 border border-white/20 text-cream-50 font-semibold text-base px-8 py-4 rounded-full spring transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 active:translate-y-0 active:scale-95">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10.1 9 9.6 7.8 9.4 7.3c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.1-1.4-.1-.1-.3-.2-.5-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3C4 14.9 3.6 13.5 3.6 12c0-4.6 3.8-8.4 8.4-8.4s8.4 3.8 8.4 8.4-3.8 8.2-8.4 8.2z"/></svg>
-          Falar por WhatsApp
+          <span data-i18n="hero.whatsapp">Falar por WhatsApp</span>
         </a>
       </div>
 
@@ -136,27 +137,27 @@
 
           <div class="mt-6 grid grid-cols-2 gap-3">
             <div class="card-surface rounded-2xl px-4 py-3.5">
-              <p class="text-[11px] uppercase tracking-wider text-cream-50/50">Voltagem</p>
+              <p class="text-[11px] uppercase tracking-wider text-cream-50/50" data-i18n="hero.spec1t">Voltagem</p>
               <p class="font-bold text-lg text-cream-50">12V · 24V</p>
             </div>
             <div class="card-surface rounded-2xl px-4 py-3.5">
-              <p class="text-[11px] uppercase tracking-wider text-cream-50/50">Entrega</p>
-              <p class="font-bold text-lg text-cream-50">Expresso</p>
+              <p class="text-[11px] uppercase tracking-wider text-cream-50/50" data-i18n="hero.spec2t">Entrega</p>
+              <p class="font-bold text-lg text-cream-50" data-i18n="hero.spec2d">Expresso</p>
             </div>
             <div class="card-surface rounded-2xl px-4 py-3.5">
-              <p class="text-[11px] uppercase tracking-wider text-cream-50/50">Teste</p>
-              <p class="font-bold text-lg text-volt-400">Gratuito</p>
+              <p class="text-[11px] uppercase tracking-wider text-cream-50/50" data-i18n="hero.spec3t">Teste</p>
+              <p class="font-bold text-lg text-volt-400" data-i18n="hero.spec3d">Gratuito</p>
             </div>
             <div class="card-surface rounded-2xl px-4 py-3.5">
-              <p class="text-[11px] uppercase tracking-wider text-cream-50/50">Garantia</p>
-              <p class="font-bold text-lg text-cream-50">Incluída</p>
+              <p class="text-[11px] uppercase tracking-wider text-cream-50/50" data-i18n="hero.spec4t">Garantia</p>
+              <p class="font-bold text-lg text-cream-50" data-i18n="hero.spec4d">Incluída</p>
             </div>
           </div>
         </div>
 
         <div class="float-y-slow absolute -left-10 -bottom-6 hidden sm:flex items-center gap-2 bg-navy-900 border border-white/10 backdrop-blur rounded-2xl px-4 py-3 shadow-elevated">
           <svg class="w-5 h-5 text-volt-400" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
-          <span class="text-sm font-semibold text-cream-50">Instalação no local</span>
+          <span class="text-sm font-semibold text-cream-50" data-i18n="hero.selo">Instalação no local</span>
         </div>
       </div>
     </div>
@@ -168,19 +169,19 @@
   <div class="reveal mx-auto max-w-6xl bg-cream-50 rounded-[1.75rem] shadow-elevated border border-navy-700/5 grid grid-cols-2 sm:grid-cols-4 divide-x divide-y sm:divide-y-0 divide-navy-700/8">
     <div class="flex flex-col items-center text-center gap-2 px-4 py-7">
       <svg class="w-6 h-6 text-brand-700" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <p class="text-sm font-semibold leading-snug">Teste gratuito</p>
+      <p class="text-sm font-semibold leading-snug" data-i18n="hero.chip1">Teste gratuito</p>
     </div>
     <div class="flex flex-col items-center text-center gap-2 px-4 py-7">
       <svg class="w-6 h-6 text-brand-700" viewBox="0 0 24 24" fill="none"><path d="M13 16V4H3v12h2m8 0h6l-2-6h-4m0 6v0m0-6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7.5" cy="18.5" r="1.6" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="18.5" r="1.6" stroke="currentColor" stroke-width="1.8"/></svg>
-      <p class="text-sm font-semibold leading-snug">Entrega rápida</p>
+      <p class="text-sm font-semibold leading-snug" data-i18n="hero.chip2">Entrega rápida</p>
     </div>
     <div class="flex flex-col items-center text-center gap-2 px-4 py-7">
       <svg class="w-6 h-6 text-brand-700" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
-      <p class="text-sm font-semibold leading-snug">Garantia incluída</p>
+      <p class="text-sm font-semibold leading-snug" data-i18n="hero.chip3">Garantia incluída</p>
     </div>
     <div class="flex flex-col items-center text-center gap-2 px-4 py-7">
       <svg class="w-6 h-6 text-brand-700" viewBox="0 0 24 24" fill="none"><path d="M14 6l-4 4H4v4h6l4 4V6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M17.5 9a4 4 0 010 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-      <p class="text-sm font-semibold leading-snug">Instalação no local</p>
+      <p class="text-sm font-semibold leading-snug" data-i18n="hero.chip4">Instalação no local</p>
     </div>
   </div>
 </section>
@@ -188,14 +189,14 @@
 <!-- ============ PROBLEMA / PROMESSA ============ -->
 <section class="relative py-24 sm:py-32 px-5 sm:px-8">
   <div class="mx-auto max-w-4xl text-center">
-    <p class="reveal text-brand-700 font-semibold text-sm tracking-widest uppercase mb-4">O problema é sempre na pior hora</p>
-    <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1]" style="transition-delay:80ms">
+    <p class="reveal text-brand-700 font-semibold text-sm tracking-widest uppercase mb-4" data-i18n="problema.eyebrow">O problema é sempre na pior hora</p>
+    <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1]" style="transition-delay:80ms" data-i18n="problema.titulo">
       Ninguém escolhe o dia<br class="hidden sm:block" /> em que a bateria morre.
     </h2>
-    <p class="reveal mt-7 text-steel-600 text-base sm:text-lg leading-[1.7] max-w-2xl mx-auto" style="transition-delay:160ms">
+    <p class="reveal mt-7 text-steel-600 text-base sm:text-lg leading-[1.7] max-w-2xl mx-auto" style="transition-delay:160ms" data-i18n="problema.p1">
       Costuma acontecer antes de uma viagem, a caminho do trabalho ou numa manhã fria de inverno. Uma bateria em fim de vida não avisa: o motor arranca cada vez com mais esforço, as luzes ficam mais fracas — até que, um dia, simplesmente não arranca.
     </p>
-    <p class="reveal mt-5 font-semibold text-lg sm:text-xl text-ink-950 max-w-2xl mx-auto" style="transition-delay:220ms">
+    <p class="reveal mt-5 font-semibold text-lg sm:text-xl text-ink-950 max-w-2xl mx-auto" style="transition-delay:220ms" data-i18n="problema.p2">
       Na Help Battery resolvemos rápido: testamos, aconselhamos a bateria certa e tratamos da instalação — sem teres de te preocupar com mais nada.
     </p>
   </div>
@@ -274,11 +275,11 @@
 
   <div class="relative mx-auto max-w-7xl">
     <div class="max-w-2xl mb-16">
-      <p class="reveal text-volt-400 font-semibold text-sm tracking-widest uppercase mb-4">Serviços</p>
-      <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1]" style="transition-delay:80ms">
+      <p class="reveal text-volt-400 font-semibold text-sm tracking-widest uppercase mb-4" data-i18n="servicos.eyebrow">Serviços</p>
+      <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1]" style="transition-delay:80ms" data-i18n="servicos.titulo">
         Tudo o que precisas, numa só chamada
       </h2>
-      <p class="reveal mt-6 text-cream-50/70 text-base sm:text-lg leading-[1.7]" style="transition-delay:160ms">
+      <p class="reveal mt-6 text-cream-50/70 text-base sm:text-lg leading-[1.7]" style="transition-delay:160ms" data-i18n="servicos.lead">
         Da escolha à instalação, tratamos de tudo para que voltes à estrada o mais depressa possível.
       </p>
     </div>
@@ -289,48 +290,48 @@
         <div class="w-12 h-12 rounded-xl bg-brand-700 grid place-items-center mb-6">
           <svg class="w-6 h-6 text-volt-400" viewBox="0 0 24 24" fill="none"><path d="M5 11V7a2 2 0 012-2h10a2 2 0 012 2v4M5 11h14M5 11v6a2 2 0 002 2h10a2 2 0 002-2v-6M9 5v1M15 5v1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         </div>
-        <h3 class="font-bold text-lg mb-3">Baterias para Automóvel</h3>
-        <p class="text-cream-50/65 text-sm leading-[1.7]">Baterias para todas as marcas e modelos, com a capacidade e amperagem certas para o teu motor.</p>
+        <h3 class="font-bold text-lg mb-3" data-i18n="servicos.s1t">Baterias para Automóvel</h3>
+        <p class="text-cream-50/65 text-sm leading-[1.7]" data-i18n="servicos.s1d">Baterias para todas as marcas e modelos, com a capacidade e amperagem certas para o teu motor.</p>
       </div>
       <!-- Card 2 -->
       <div class="reveal card-surface rounded-3xl p-8 spring transition-all duration-500 hover:-translate-y-1.5 hover:border-volt-400/30" style="transition-delay:60ms">
         <div class="w-12 h-12 rounded-xl bg-brand-700 grid place-items-center mb-6">
           <svg class="w-6 h-6 text-volt-400" viewBox="0 0 24 24" fill="none"><path d="M5 17l2.5-7h5L14 17M5 17H3m2 0h9m0 0h2.5l1.5-4M9 6h3.5L14 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="17" r="2" stroke="currentColor" stroke-width="1.8"/><circle cx="18" cy="13" r="2" stroke="currentColor" stroke-width="1.8"/></svg>
         </div>
-        <h3 class="font-bold text-lg mb-3">Baterias para Motociclos</h3>
-        <p class="text-cream-50/65 text-sm leading-[1.7]">Soluções específicas para motas e scooters, das cilindradas mais pequenas às maiores.</p>
+        <h3 class="font-bold text-lg mb-3" data-i18n="servicos.s2t">Baterias para Motociclos</h3>
+        <p class="text-cream-50/65 text-sm leading-[1.7]" data-i18n="servicos.s2d">Soluções específicas para motas e scooters, das cilindradas mais pequenas às maiores.</p>
       </div>
       <!-- Card 3 -->
       <div class="reveal card-surface rounded-3xl p-8 spring transition-all duration-500 hover:-translate-y-1.5 hover:border-volt-400/30" style="transition-delay:120ms">
         <div class="w-12 h-12 rounded-xl bg-brand-700 grid place-items-center mb-6">
           <svg class="w-6 h-6 text-volt-400" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m5 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </div>
-        <h3 class="font-bold text-lg mb-3">Teste Gratuito da Bateria</h3>
-        <p class="text-cream-50/65 text-sm leading-[1.7]">Verificamos o estado real da bateria antes de qualquer substituição — sem custos, sem compromisso.</p>
+        <h3 class="font-bold text-lg mb-3" data-i18n="servicos.s3t">Teste Gratuito da Bateria</h3>
+        <p class="text-cream-50/65 text-sm leading-[1.7]" data-i18n="servicos.s3d">Verificamos o estado real da bateria antes de qualquer substituição — sem custos, sem compromisso.</p>
       </div>
       <!-- Card 4 -->
       <div class="reveal card-surface rounded-3xl p-8 spring transition-all duration-500 hover:-translate-y-1.5 hover:border-volt-400/30">
         <div class="w-12 h-12 rounded-xl bg-brand-700 grid place-items-center mb-6">
           <svg class="w-6 h-6 text-volt-400" viewBox="0 0 24 24" fill="none"><path d="M14 6l-4 4H4v4h6l4 4V6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M17.5 9a4 4 0 010 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         </div>
-        <h3 class="font-bold text-lg mb-3">Instalação no Local</h3>
-        <p class="text-cream-50/65 text-sm leading-[1.7]">A nossa equipa instala a bateria onde estiveres, sem teres de desmontar nada sozinho.</p>
+        <h3 class="font-bold text-lg mb-3" data-i18n="servicos.s4t">Instalação no Local</h3>
+        <p class="text-cream-50/65 text-sm leading-[1.7]" data-i18n="servicos.s4d">A nossa equipa instala a bateria onde estiveres, sem teres de desmontar nada sozinho.</p>
       </div>
       <!-- Card 5 -->
       <div class="reveal card-surface rounded-3xl p-8 spring transition-all duration-500 hover:-translate-y-1.5 hover:border-volt-400/30" style="transition-delay:60ms">
         <div class="w-12 h-12 rounded-xl bg-brand-700 grid place-items-center mb-6">
           <svg class="w-6 h-6 text-volt-400" viewBox="0 0 24 24" fill="none"><path d="M13 16V4H3v12h2m8 0h6l-2-6h-4m0 6v0m0-6v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7.5" cy="18.5" r="1.6" stroke="currentColor" stroke-width="1.8"/><circle cx="17.5" cy="18.5" r="1.6" stroke="currentColor" stroke-width="1.8"/></svg>
         </div>
-        <h3 class="font-bold text-lg mb-3">Entrega Rápida</h3>
-        <p class="text-cream-50/65 text-sm leading-[1.7]">Encomenda hoje e recebe em poucas horas na região de Braga, ou rapidamente em todo o país.</p>
+        <h3 class="font-bold text-lg mb-3" data-i18n="servicos.s5t">Entrega Rápida</h3>
+        <p class="text-cream-50/65 text-sm leading-[1.7]" data-i18n="servicos.s5d">Encomenda hoje e recebe em poucas horas na região de Braga, ou rapidamente em todo o país.</p>
       </div>
       <!-- Card 6 -->
       <div class="reveal card-surface rounded-3xl p-8 spring transition-all duration-500 hover:-translate-y-1.5 hover:border-volt-400/30" style="transition-delay:120ms">
         <div class="w-12 h-12 rounded-xl bg-brand-700 grid place-items-center mb-6">
           <svg class="w-6 h-6 text-volt-400" viewBox="0 0 24 24" fill="none"><path d="M3 21V9l9-6 9 6v12M3 21h18M3 21h6v-6h6v6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
         </div>
-        <h3 class="font-bold text-lg mb-3">Apoio a Empresas e Frotas</h3>
-        <p class="text-cream-50/65 text-sm leading-[1.7]">Condições especiais para frotas, oficinas e empresas de transporte com necessidade contínua de baterias.</p>
+        <h3 class="font-bold text-lg mb-3" data-i18n="servicos.s6t">Apoio a Empresas e Frotas</h3>
+        <p class="text-cream-50/65 text-sm leading-[1.7]" data-i18n="servicos.s6d">Condições especiais para frotas, oficinas e empresas de transporte com necessidade contínua de baterias.</p>
       </div>
     </div>
   </div>
@@ -339,11 +340,11 @@
 <!-- ============ MARCAS ============ -->
 <section id="marcas" class="relative py-24 sm:py-32 px-5 sm:px-8">
   <div class="mx-auto max-w-7xl text-center mb-14">
-    <p class="reveal text-brand-700 font-semibold text-sm tracking-widest uppercase mb-4">Catálogo de Marcas</p>
-    <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1]" style="transition-delay:80ms">
+    <p class="reveal text-brand-700 font-semibold text-sm tracking-widest uppercase mb-4" data-i18n="marcas.eyebrow">Catálogo de Marcas</p>
+    <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1]" style="transition-delay:80ms" data-i18n="marcas.titulo">
       Compatível com as principais montadoras
     </h2>
-    <p class="reveal mt-6 text-steel-600 text-base sm:text-lg leading-[1.7] max-w-2xl mx-auto" style="transition-delay:160ms">
+    <p class="reveal mt-6 text-steel-600 text-base sm:text-lg leading-[1.7] max-w-2xl mx-auto" style="transition-delay:160ms" data-i18n="marcas.lead">
       Fornecemos baterias adequadas às especificações destas e de muitas outras marcas, para automóvel e motociclo.
     </p>
   </div>
@@ -369,7 +370,8 @@
     <div class="brand-badge"><img src="/logos_mont/kawasaki.webp" alt="Kawasaki" width="356" height="200" loading="lazy" decoding="async" /></div>
   </div>
 
-  <p class="reveal mx-auto max-w-6xl mt-6 text-center text-sm text-steel-500 font-medium">+ muitas outras marcas disponíveis. Não encontraste a tua? Contacta-nos.</p>
+  <p class="brand-carousel-dica" data-i18n="marcas.dica">Arraste para rodar</p>
+  <p class="reveal mx-auto max-w-6xl mt-6 text-center text-sm text-steel-500 font-medium" data-i18n="marcas.nota">+ muitas outras marcas disponíveis. Não encontraste a tua? Contacta-nos.</p>
 </section>
 
 <!-- ============ COMO FUNCIONA ============ -->
@@ -379,7 +381,7 @@
 
   <div class="relative mx-auto max-w-6xl">
     <div class="max-w-xl mb-16">
-      <p class="reveal text-volt-400 font-semibold text-sm tracking-widest uppercase mb-4">Como Funciona</p>
+      <p class="reveal text-volt-400 font-semibold text-sm tracking-widest uppercase mb-4" data-i18n="como.eyebrow">Como Funciona</p>
       <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1]" style="transition-delay:80ms" data-i18n="como.titulo">
         Quatro passos até voltares à estrada
       </h2>
@@ -414,8 +416,8 @@
 <section id="depoimentos" class="relative py-24 sm:py-32 px-5 sm:px-8">
   <div class="mx-auto max-w-7xl">
     <div class="max-w-2xl mx-auto mb-14 text-center">
-      <p class="reveal text-brand-700 font-semibold text-sm tracking-widest uppercase mb-4">Depoimentos</p>
-      <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1]" style="transition-delay:80ms">
+      <p class="reveal text-brand-700 font-semibold text-sm tracking-widest uppercase mb-4" data-i18n="dep.eyebrow">Depoimentos</p>
+      <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1]" style="transition-delay:80ms" data-i18n="dep.titulo">
         A confiança de quem já resolveu com a gente
       </h2>
       <div class="reveal mt-7 inline-flex items-center gap-2.5 bg-white border border-navy-700/8 rounded-full pl-5 pr-6 py-2.5 shadow-elevated" style="transition-delay:160ms">
@@ -427,7 +429,7 @@
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.7 7.1-.6z"/></svg>
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l2.9 6.6 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7-5.4-4.7 7.1-.6z"/></svg>
         </span>
-        <span class="text-sm text-steel-600 font-medium">· 107 avaliações no Google</span>
+        <span class="text-sm text-steel-600 font-medium" data-i18n="dep.avaliacoes">· 107 avaliações no Google</span>
       </div>
     </div>
 
@@ -496,50 +498,50 @@
 <section id="faq" class="relative py-24 sm:py-32 px-5 sm:px-8">
   <div class="mx-auto max-w-3xl">
     <div class="text-center mb-14">
-      <p class="reveal text-brand-700 font-semibold text-sm tracking-widest uppercase mb-4">Perguntas Frequentes</p>
-      <h2 class="reveal font-display text-3xl sm:text-4xl tracking-[-0.03em]" style="transition-delay:80ms">Ainda tens dúvidas?</h2>
+      <p class="reveal text-brand-700 font-semibold text-sm tracking-widest uppercase mb-4" data-i18n="faq.eyebrow">Perguntas Frequentes</p>
+      <h2 class="reveal font-display text-3xl sm:text-4xl tracking-[-0.03em]" style="transition-delay:80ms" data-i18n="faq.titulo">Ainda tens dúvidas?</h2>
     </div>
 
     <div class="space-y-3">
       <details class="reveal faq-item group">
-        <summary>Qual é a garantia das baterias?<span class="faq-icon">+</span></summary>
-        <div class="faq-body">Todas as baterias vendidas pela Help Battery têm garantia do fabricante, que varia consoante a marca e o modelo. Informamos sempre o prazo exato antes da compra.</div>
+        <summary><span data-i18n="faq.q1">Qual é a garantia das baterias?</span><span class="faq-icon">+</span></summary>
+        <div class="faq-body" data-i18n="faq.a1">Todas as baterias vendidas pela Help Battery têm garantia do fabricante, que varia consoante a marca e o modelo. Informamos sempre o prazo exato antes da compra.</div>
       </details>
       <details class="reveal faq-item group">
-        <summary>Quanto tempo demora a entrega?<span class="faq-icon">+</span></summary>
-        <div class="faq-body">Na região de Braga, a entrega é feita normalmente no próprio dia. Para o resto do país, o prazo habitual é de 24 a 48 horas.</div>
+        <summary><span data-i18n="faq.q2">Quanto tempo demora a entrega?</span><span class="faq-icon">+</span></summary>
+        <div class="faq-body" data-i18n="faq.a2">Na região de Braga, a entrega é feita normalmente no próprio dia. Para o resto do país, o prazo habitual é de 24 a 48 horas.</div>
       </details>
       <details class="reveal faq-item group">
-        <summary>Instalam a bateria ou só a entregam?<span class="faq-icon">+</span></summary>
-        <div class="faq-body">Instalamos sempre que possível, no local que for mais conveniente. Se preferires instalar por conta própria, entregamos também sem custo adicional.</div>
+        <summary><span data-i18n="faq.q3">Instalam a bateria ou só a entregam?</span><span class="faq-icon">+</span></summary>
+        <div class="faq-body" data-i18n="faq.a3">Instalamos sempre que possível, no local que for mais conveniente. Se preferires instalar por conta própria, entregamos também sem custo adicional.</div>
       </details>
       <details class="reveal faq-item group">
-        <summary>Trabalham com baterias para motociclos?<span class="faq-icon">+</span></summary>
-        <div class="faq-body">Sim. Além de baterias para automóveis, temos uma gama completa para motas e scooters de todas as cilindradas.</div>
+        <summary><span data-i18n="faq.q4">Trabalham com baterias para motociclos?</span><span class="faq-icon">+</span></summary>
+        <div class="faq-body" data-i18n="faq.a4">Sim. Além de baterias para automóveis, temos uma gama completa para motas e scooters de todas as cilindradas.</div>
       </details>
       <details class="reveal faq-item group">
-        <summary>Não sei que bateria o meu carro precisa. E agora?<span class="faq-icon">+</span></summary>
-        <div class="faq-body">Sem problema — diz-nos a marca, modelo e ano do veículo (ou a matrícula) e indicamos a bateria certa.</div>
+        <summary><span data-i18n="faq.q5">Não sei que bateria o meu carro precisa. E agora?</span><span class="faq-icon">+</span></summary>
+        <div class="faq-body" data-i18n="faq.a5">Sem problema — diz-nos a marca, modelo e ano do veículo (ou a matrícula) e indicamos a bateria certa.</div>
       </details>
       <details class="reveal faq-item group">
-        <summary>Como posso pagar?<span class="faq-icon">+</span></summary>
-        <div class="faq-body">Aceitamos as formas de pagamento habituais. Para mais detalhes, fala connosco por telefone ou WhatsApp.</div>
+        <summary><span data-i18n="faq.q6">Como posso pagar?</span><span class="faq-icon">+</span></summary>
+        <div class="faq-body" data-i18n="faq.a6">Aceitamos as formas de pagamento habituais. Para mais detalhes, fala connosco por telefone ou WhatsApp.</div>
       </details>
       <details class="reveal faq-item group">
-        <summary>Como é feito o diagnóstico?<span class="faq-icon">+</span></summary>
-        <div class="faq-body">Usamos testadores digitais que medem a carga real, a capacidade de arranque e o estado do sistema de carga. É assim que sabemos se o problema é mesmo a bateria — e dizemos-te quando não é, mesmo que isso signifique não haver venda.</div>
+        <summary><span data-i18n="faq.q7">Como é feito o diagnóstico?</span><span class="faq-icon">+</span></summary>
+        <div class="faq-body" data-i18n="faq.a7">Usamos testadores digitais que medem a carga real, a capacidade de arranque e o estado do sistema de carga. É assim que sabemos se o problema é mesmo a bateria — e dizemos-te quando não é, mesmo que isso signifique não haver venda.</div>
       </details>
       <details class="reveal faq-item group">
-        <summary>Quanto tempo demora o atendimento?<span class="faq-icon">+</span></summary>
-        <div class="faq-body">Depende da distância até à unidade mais próxima e do trânsito. Quando ligas, confirmamos de imediato uma estimativa realista para a tua morada — e avisamos se houver algum atraso.</div>
+        <summary><span data-i18n="faq.q8">Quanto tempo demora o atendimento?</span><span class="faq-icon">+</span></summary>
+        <div class="faq-body" data-i18n="faq.a8">Depende da distância até à unidade mais próxima e do trânsito. Quando ligas, confirmamos de imediato uma estimativa realista para a tua morada — e avisamos se houver algum atraso.</div>
       </details>
       <details class="reveal faq-item group">
-        <summary>Qual é a área de cobertura?<span class="faq-icon">+</span></summary>
-        <div class="faq-body">Temos assistência no local a partir das unidades de Braga, Porto, Coimbra e Lisboa, cobrindo as respetivas áreas envolventes. Fora dessas zonas fazemos entrega da bateria — indica-nos o código postal e confirmamos.</div>
+        <summary><span data-i18n="faq.q9">Qual é a área de cobertura?</span><span class="faq-icon">+</span></summary>
+        <div class="faq-body" data-i18n="faq.a9">Temos assistência no local a partir das unidades de Braga, Porto, Coimbra e Lisboa, cobrindo as respetivas áreas envolventes. Fora dessas zonas fazemos entrega da bateria — indica-nos o código postal e confirmamos.</div>
       </details>
       <details class="reveal faq-item group">
-        <summary>Atendem empresas e frotas?<span class="faq-icon">+</span></summary>
-        <div class="faq-body">Sim. Temos condições próprias para frotas, oficinas e empresas de transporte, com atendimento prioritário e faturação a crédito mediante acordo. Fala connosco para avaliarmos o teu caso.</div>
+        <summary><span data-i18n="faq.q10">Atendem empresas e frotas?</span><span class="faq-icon">+</span></summary>
+        <div class="faq-body" data-i18n="faq.a10">Sim. Temos condições próprias para frotas, oficinas e empresas de transporte, com atendimento prioritário e faturação a crédito mediante acordo. Fala connosco para avaliarmos o teu caso.</div>
       </details>
     </div>
   </div>
@@ -664,11 +666,11 @@
 
   <div class="relative mx-auto max-w-7xl grid lg:grid-cols-2 gap-14 items-stretch">
     <div>
-      <p class="reveal text-volt-400 font-semibold text-sm tracking-widest uppercase mb-4">Contacto</p>
-      <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1]" style="transition-delay:80ms">
+      <p class="reveal text-volt-400 font-semibold text-sm tracking-widest uppercase mb-4" data-i18n="contacto.eyebrow">Contacto</p>
+      <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1]" style="transition-delay:80ms" data-i18n="contacto.titulo">
         Fala connosco agora
       </h2>
-      <p class="reveal mt-6 text-cream-50/70 text-base sm:text-lg leading-[1.7] max-w-md" style="transition-delay:160ms">
+      <p class="reveal mt-6 text-cream-50/70 text-base sm:text-lg leading-[1.7] max-w-md" style="transition-delay:160ms" data-i18n="contacto.lead">
         Estamos prontos para resolver o problema da tua bateria o mais rápido possível.
       </p>
 
@@ -683,11 +685,11 @@
         </a>
         <a href="https://api.whatsapp.com/send/?phone=%2B351913212544&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="focus-ring-dark reveal contact-card" style="transition-delay:120ms">
           <div class="contact-icon"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10.1 9 9.6 7.8 9.4 7.3c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.1-1.4-.1-.1-.3-.2-.5-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3C4 14.9 3.6 13.5 3.6 12c0-4.6 3.8-8.4 8.4-8.4s8.4 3.8 8.4 8.4-3.8 8.2-8.4 8.2z"/></svg></div>
-          <div><p class="text-xs uppercase tracking-wider text-cream-50/50">WhatsApp</p><p class="font-semibold text-lg">Enviar mensagem</p></div>
+          <div><p class="text-xs uppercase tracking-wider text-cream-50/50" data-i18n="contacto.whatsapp">WhatsApp</p><p class="font-semibold text-lg" data-i18n="contacto.whatsapp.valor">Enviar mensagem</p></div>
         </a>
         <a href="mailto:suporte@helpbattery.pt" class="focus-ring-dark reveal contact-card" style="transition-delay:180ms">
           <div class="contact-icon"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M3 6h18v12H3V6z" stroke="currentColor" stroke-width="1.8"/><path d="M3 6l9 7 9-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-          <div><p class="text-xs uppercase tracking-wider text-cream-50/50">Email</p><p class="font-semibold text-lg break-all">suporte@helpbattery.pt</p></div>
+          <div><p class="text-xs uppercase tracking-wider text-cream-50/50" data-i18n="contacto.email">Email</p><p class="font-semibold text-lg break-all">suporte@helpbattery.pt</p></div>
         </a>
         <div class="reveal contact-card !cursor-default" style="transition-delay:240ms">
           <div class="contact-icon"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-6.1-7-11.5A7 7 0 0119 9.5C19 14.9 12 21 12 21z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="9.5" r="2.4" stroke="currentColor" stroke-width="1.8"/></svg></div>
@@ -750,12 +752,12 @@
   <div class="reveal-scale mx-auto max-w-5xl relative rounded-[2rem] bg-gradient-to-br from-brand-700 via-brand-600 to-navy-900 px-8 sm:px-16 py-16 sm:py-20 text-center overflow-hidden shadow-floating">
     <div class="grain" style="filter:url(#noiseFilter)"></div>
     <div class="absolute -top-16 -right-16 w-64 h-64 bg-volt-400/15 blur-3xl rounded-full"></div>
-    <h2 class="relative font-display text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] text-cream-50 leading-[1.1]">
+    <h2 class="relative font-display text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] text-cream-50 leading-[1.1]" data-i18n="cta.titulo">
       Não fiques parado<br class="hidden sm:block" /> por causa de uma bateria.
     </h2>
-    <p class="relative mt-6 text-cream-50/75 text-base sm:text-lg max-w-xl mx-auto">Liga agora e resolvemos ainda hoje — em Braga ou em qualquer ponto do país.</p>
+    <p class="relative mt-6 text-cream-50/75 text-base sm:text-lg max-w-xl mx-auto" data-i18n="cta.lead">Liga agora e resolvemos ainda hoje — em Braga ou em qualquer ponto do país.</p>
     <div class="relative mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="tel:+351913212544" class="focus-ring group inline-flex items-center justify-center gap-2.5 bg-volt-400 text-ink-950 font-semibold text-base px-9 py-4 rounded-full spring transition-all duration-300 hover:bg-volt-300 hover:-translate-y-1 hover:shadow-glow-volt active:translate-y-0 active:scale-95">
+      <a href="tel:+351913212544" class="focus-ring group inline-flex items-center justify-center gap-2.5 bg-volt-400 text-ink-950 font-semibold text-base px-9 py-4 rounded-full spring transition-all duration-300 hover:bg-volt-300 hover:-translate-y-1 hover:shadow-glow-volt active:translate-y-0 active:scale-95" data-i18n="cta.botao">
         Ligar Agora · 913 212 544
       </a>
     </div>
@@ -792,8 +794,8 @@
     <div>
       <p class="font-bold text-sm uppercase tracking-wider text-volt-400 mb-5" data-i18n="footer.contacto">Contacto</p>
       <ul class="space-y-3 text-sm text-cream-50/70">
-        <li><a href="tel:+351913212544" class="footer-link">+351 913 212 544 <span class="text-cream-50/40">· telemóvel</span></a></li>
-        <li><a href="tel:+351253284398" class="footer-link">+351 253 284 398 <span class="text-cream-50/40">· fixo</span></a></li>
+        <li><a href="tel:+351913212544" class="footer-link">+351 913 212 544 <span class="text-cream-50/40" data-i18n="rodape.telemovel">· telemóvel</span></a></li>
+        <li><a href="tel:+351253284398" class="footer-link">+351 253 284 398 <span class="text-cream-50/40" data-i18n="rodape.fixo">· fixo</span></a></li>
         <li><a href="mailto:suporte@helpbattery.pt" class="footer-link break-all">suporte@helpbattery.pt</a></li>
         <li><a href="https://api.whatsapp.com/send/?phone=%2B351913212544&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="footer-link">WhatsApp</a></li>
       </ul>
@@ -811,7 +813,7 @@
     </div>
   </div>
   <div class="relative mx-auto max-w-7xl pt-8 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between items-center text-xs text-cream-50/40">
-    <p>&copy; 2026 Help Battery. Todos os direitos reservados.</p>
+    <p data-i18n="footer.copyright">&copy; 2026 Help Battery. Todos os direitos reservados.</p>
   </div>
 </footer>
 
@@ -826,13 +828,14 @@
 <div class="sticky-cta-bar fixed bottom-0 inset-x-0 z-40 bg-navy-950/95 header-blur border-t border-white/10 px-4 py-3 flex gap-3">
   <a href="tel:+351913212544" class="focus-ring flex-1 inline-flex items-center justify-center gap-2 bg-volt-400 text-ink-950 font-semibold text-sm py-3 rounded-full">
     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/></svg>
-    Ligar Agora
+    <span data-i18n="cta.ligar">Ligar Agora</span>
   </a>
   <a href="https://api.whatsapp.com/send/?phone=%2B351913212544&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="focus-ring-dark flex-1 inline-flex items-center justify-center gap-2 border border-white/20 text-cream-50 font-semibold text-sm py-3 rounded-full">
     WhatsApp
   </a>
 </div>
 
+<script src="/assets/i18n.js"></script>
 <script src="/assets/app.js"></script>
 </body>
 </html>

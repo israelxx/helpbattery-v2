@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Carreiras Help Battery — Trabalha Connosco em Braga, Porto, Coimbra e Lisboa</title>
-<meta name="description" content="Candidaturas espontâneas e oportunidades na Help Battery: técnico de assistência, atendimento ao cliente, comercial, logística e administrativo. Envia o teu currículo em dois minutos." />
+<title data-i18n="meta.carreiras.title">Carreiras Help Battery — Trabalha Connosco em Braga, Porto, Coimbra e Lisboa</title>
+<meta name="description" data-i18n-content="meta.carreiras.desc" content="Candidaturas espontâneas e oportunidades na Help Battery: técnico de assistência, atendimento ao cliente, comercial, logística e administrativo. Envia o teu currículo em dois minutos." />
 <link rel="icon" type="image/png" href="/new-logo/favicon-64.png" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -45,8 +45,9 @@
       <div class="flex items-center gap-3">
         <!-- Seletor de idioma: PT ativo, ES fica ativo assim que as traduções entrarem em I18N.es -->
         <div class="lang-switch hidden sm:flex" role="group" aria-label="Idioma">
-          <button type="button" class="lang-btn is-active focus-ring" data-lang="pt" aria-pressed="true">PT</button>
-          <button type="button" class="lang-btn focus-ring" data-lang="es" aria-pressed="false" disabled title="Espanhol em breve">ES</button>
+          <button type="button" class="lang-btn is-active focus-ring" data-lang="pt" aria-pressed="true" title="Português de Portugal">PT</button>
+          <button type="button" class="lang-btn focus-ring" data-lang="br" aria-pressed="false" title="Português do Brasil">BR</button>
+          <button type="button" class="lang-btn focus-ring" data-lang="es" aria-pressed="false" title="Español">ES</button>
         </div>
         <a href="tel:+351913212544" class="focus-ring group hidden sm:inline-flex items-center gap-2 bg-volt-400 text-ink-950 font-semibold text-sm px-5 py-2.5 rounded-full spring transition-all duration-300 hover:bg-volt-300 hover:-translate-y-0.5 hover:shadow-glow-volt active:translate-y-0 active:scale-95">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/></svg>
@@ -86,9 +87,9 @@
   <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
     <!-- Migalhas: reforça a hierarquia da nova estrutura de páginas -->
     <nav class="reveal flex items-center gap-2 text-sm text-cream-50/50 mb-8" aria-label="Migalhas">
-      <a href="/" class="focus-ring-dark rounded transition-colors hover:text-cream-50">Início</a>
+      <a href="/" class="focus-ring-dark rounded transition-colors hover:text-cream-50" data-i18n="breadcrumb.inicio">Início</a>
       <span aria-hidden="true">/</span>
-      <span class="text-cream-50/80">Carreiras</span>
+      <span class="text-cream-50/80" data-i18n="breadcrumb.carreiras">Carreiras</span>
     </nav>
 
     <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-14 lg:gap-16 items-center">
@@ -400,8 +401,8 @@
     <div>
       <p class="font-bold text-sm uppercase tracking-wider text-volt-400 mb-5" data-i18n="footer.contacto">Contacto</p>
       <ul class="space-y-3 text-sm text-cream-50/70">
-        <li><a href="tel:+351913212544" class="footer-link">+351 913 212 544 <span class="text-cream-50/40">· telemóvel</span></a></li>
-        <li><a href="tel:+351253284398" class="footer-link">+351 253 284 398 <span class="text-cream-50/40">· fixo</span></a></li>
+        <li><a href="tel:+351913212544" class="footer-link">+351 913 212 544 <span class="text-cream-50/40" data-i18n="rodape.telemovel">· telemóvel</span></a></li>
+        <li><a href="tel:+351253284398" class="footer-link">+351 253 284 398 <span class="text-cream-50/40" data-i18n="rodape.fixo">· fixo</span></a></li>
         <li><a href="mailto:suporte@helpbattery.pt" class="footer-link break-all">suporte@helpbattery.pt</a></li>
         <li><a href="https://api.whatsapp.com/send/?phone=%2B351913212544&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="footer-link">WhatsApp</a></li>
       </ul>
@@ -419,7 +420,7 @@
     </div>
   </div>
   <div class="relative mx-auto max-w-7xl pt-8 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between items-center text-xs text-cream-50/40">
-    <p>&copy; 2026 Help Battery. Todos os direitos reservados.</p>
+    <p data-i18n="footer.copyright">&copy; 2026 Help Battery. Todos os direitos reservados.</p>
   </div>
 </footer>
 
@@ -435,11 +436,12 @@
   <a href="#candidatura" class="focus-ring flex-1 inline-flex items-center justify-center gap-2 bg-volt-400 text-ink-950 font-semibold text-sm py-3 rounded-full" data-i18n="carreiras.sticky.cta">
     Candidatar-me
   </a>
-  <a href="tel:+351913212544" class="focus-ring-dark flex-1 inline-flex items-center justify-center gap-2 border border-white/20 text-cream-50 font-semibold text-sm py-3 rounded-full">
+  <a href="tel:+351913212544" class="focus-ring-dark flex-1 inline-flex items-center justify-center gap-2 border border-white/20 text-cream-50 font-semibold text-sm py-3 rounded-full" data-i18n="sticky.ligar">
     Ligar
   </a>
 </div>
 
+<script src="/assets/i18n.js"></script>
 <script src="/assets/app.js"></script>
 </body>
 </html>
