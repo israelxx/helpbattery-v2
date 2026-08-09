@@ -46,7 +46,15 @@ const server = http.createServer((req, res) => {
         return;
       }
       const ext = path.extname(filePath).toLowerCase();
-      res.writeHead(200, { "Content-Type": MIME[ext] || "application/octet-stream" });
+      res.writeHead(200, {
+        "Content-Type": MIME[ext] || "application/octet-stream",
+        // Servidor de desenvolvimento: nunca guardar em cache. Sem isto, o
+        // browser reutiliza /assets/styles.css e /assets/app.js de edições
+        // anteriores e a página fica com HTML novo e estilos/script antigos.
+        "Cache-Control": "no-store, no-cache, must-revalidate",
+        "Pragma": "no-cache",
+        "Expires": "0",
+      });
       res.end(data);
     });
   });

@@ -1,0 +1,526 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Franquia Help Battery — Master Franqueado e Microfranquia de Baterias em Portugal</title>
+<meta name="description" content="Abre a tua unidade Help Battery. Dois modelos: Master Franqueado, com região em exclusivo, e Micro Franqueado, com unidade móvel e investimento reduzido. Formação, manuais e apoio de marketing incluídos." />
+<link rel="icon" type="image/png" href="/new-logo/favicon-64.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,500&display=swap" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="/assets/tailwind-config.js"></script>
+<link rel="stylesheet" href="/assets/styles.css" />
+</head>
+<body class="antialiased">
+
+<!-- Noise filter definition (used globally via .grain class) -->
+<svg width="0" height="0" style="position:absolute">
+  <filter id="noiseFilter">
+    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"></feTurbulence>
+    <feColorMatrix type="saturate" values="0"></feColorMatrix>
+  </filter>
+</svg>
+
+<!-- ============ HEADER ============ -->
+<header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <div class="mx-auto max-w-7xl px-5 sm:px-8">
+    <div id="header-inner" class="flex items-center justify-between h-20 transition-all duration-300">
+      <a href="/" class="focus-ring-dark rounded-md flex items-center gap-2">
+        <!-- Guia de marca: wordmark branco sobre fundo escuro, navy sobre fundo claro -->
+        <img src="/new-logo/logo-lockup-light.webp" alt="Help Battery" width="2082" height="668" class="logo-on-dark h-8 sm:h-9 w-auto" fetchpriority="high" />
+        <img src="/new-logo/logo-lockup-dark.webp" alt="" aria-hidden="true" width="2082" height="668" class="logo-on-light h-8 sm:h-9 w-auto" fetchpriority="high" />
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-7 font-medium text-[15px]" id="desktop-nav">
+        <a href="/#sobre" class="nav-link relative py-1 transition-colors" data-i18n="nav.sobre">Sobre</a>
+        <a href="/#servicos" class="nav-link relative py-1 transition-colors" data-i18n="nav.servicos">Serviços</a>
+        <a href="/#lojas" class="nav-link relative py-1 transition-colors" data-i18n="nav.lojas">Lojas</a>
+        <a href="/franquia/" class="nav-link relative py-1 transition-colors" aria-current="page" data-i18n="nav.franquia">Franquia</a>
+        <a href="/carreiras/" class="nav-link relative py-1 transition-colors" data-i18n="nav.carreiras">Carreiras</a>
+        <a href="/#contacto" class="nav-link relative py-1 transition-colors" data-i18n="nav.contacto">Contacto</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <!-- Seletor de idioma: PT ativo, ES fica ativo assim que as traduções entrarem em I18N.es -->
+        <div class="lang-switch hidden sm:flex" role="group" aria-label="Idioma">
+          <button type="button" class="lang-btn is-active focus-ring" data-lang="pt" aria-pressed="true">PT</button>
+          <button type="button" class="lang-btn focus-ring" data-lang="es" aria-pressed="false" disabled title="Espanhol em breve">ES</button>
+        </div>
+        <a href="tel:+351913212544" class="focus-ring group hidden sm:inline-flex items-center gap-2 bg-volt-400 text-ink-950 font-semibold text-sm px-5 py-2.5 rounded-full spring transition-all duration-300 hover:bg-volt-300 hover:-translate-y-0.5 hover:shadow-glow-volt active:translate-y-0 active:scale-95">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/></svg>
+          913 212 544
+        </a>
+        <button id="menu-toggle" class="lg:hidden focus-ring w-11 h-11 grid place-items-center rounded-full" aria-label="Abrir menu" aria-expanded="false">
+          <svg id="icon-burger" class="w-6 h-6" viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg id="icon-close" class="w-6 h-6 hidden" viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile menu overlay -->
+<div id="mobile-menu" class="lg:hidden fixed inset-0 top-0 z-[45] bg-navy-950 translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
+  <div class="h-full flex flex-col justify-center px-8 gap-6 font-display text-[1.75rem] text-cream-50 overflow-y-auto py-24">
+    <a href="/#sobre" class="mobile-link" data-i18n="nav.sobre">Sobre</a>
+    <a href="/#servicos" class="mobile-link" data-i18n="nav.servicos">Serviços</a>
+    <a href="/#como-funciona" class="mobile-link" data-i18n="nav.comofunciona">Como Funciona</a>
+    <a href="/#lojas" class="mobile-link" data-i18n="nav.lojas">Lojas</a>
+    <a href="/franquia/" class="mobile-link" aria-current="page" data-i18n="nav.franquia">Franquia</a>
+    <a href="/carreiras/" class="mobile-link" data-i18n="nav.carreiras">Carreiras</a>
+    <a href="/#faq" class="mobile-link" data-i18n="nav.faq">Perguntas Frequentes</a>
+    <a href="/#contacto" class="mobile-link" data-i18n="nav.contacto">Contacto</a>
+    <a href="tel:+351913212544" class="mt-2 inline-flex w-fit items-center gap-3 bg-volt-400 text-ink-950 font-body font-semibold text-lg px-6 py-3.5 rounded-full" data-i18n="cta.ligar">
+      Ligar Agora
+    </a>
+  </div>
+</div>
+
+<!-- ============ HERO ============ -->
+<section id="top" class="relative bg-radial-mesh text-cream-50 pt-36 pb-36 sm:pt-44 sm:pb-40 overflow-hidden clip-bolt-down">
+  <div class="grain" style="filter:url(#noiseFilter)"></div>
+  <div class="absolute top-1/3 right-0 w-[38rem] h-[38rem] bg-brand-500/25 blur-[140px] rounded-full translate-x-1/3"></div>
+
+  <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
+    <!-- Migalhas: reforça a hierarquia da nova estrutura de páginas -->
+    <nav class="reveal flex items-center gap-2 text-sm text-cream-50/50 mb-8" aria-label="Migalhas">
+      <a href="/" class="focus-ring-dark rounded transition-colors hover:text-cream-50">Início</a>
+      <span aria-hidden="true">/</span>
+      <span class="text-cream-50/80">Franquia</span>
+    </nav>
+
+    <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-14 lg:gap-16 items-center">
+    <div>
+      <p class="reveal text-volt-400 font-bold text-sm tracking-widest uppercase mb-5" data-i18n="franquia.eyebrow">Seja um franqueado</p>
+      <h1 class="reveal font-display text-[2.5rem] sm:text-5xl lg:text-6xl tracking-[-0.03em] leading-[1.05]" style="transition-delay:80ms" data-i18n="franquia.h1">
+        Abre a tua unidade<br class="hidden sm:block" /> Help Battery
+      </h1>
+      <p class="reveal mt-7 text-cream-50/75 text-lg sm:text-xl leading-[1.6] max-w-2xl" style="transition-delay:160ms" data-i18n="franquia.lead">
+        Entra num negócio com procura constante, com uma marca já reconhecida e um método de operação testado em quatro cidades. Dois modelos de entrada, consoante o teu perfil e a tua capacidade de investimento.
+      </p>
+
+      <div class="reveal mt-10 flex flex-col sm:flex-row gap-4" style="transition-delay:240ms">
+        <a href="#candidatura" class="focus-ring inline-flex items-center justify-center gap-2.5 bg-volt-400 text-ink-950 font-semibold text-base px-8 py-4 rounded-full spring transition-all duration-300 hover:bg-volt-300 hover:-translate-y-1 hover:shadow-glow-volt active:translate-y-0 active:scale-95" data-i18n="franquia.cta.primaria">
+          Quero candidatar-me
+        </a>
+        <a href="#modelos" class="focus-ring-dark inline-flex items-center justify-center gap-2.5 border border-white/20 text-cream-50 font-semibold text-base px-8 py-4 rounded-full spring transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 active:translate-y-0 active:scale-95" data-i18n="franquia.cta.secundaria">
+          Comparar modelos
+        </a>
+      </div>
+    </div>
+
+    <!-- Painel-resumo: mesma linguagem do painel do hero da home -->
+    <div class="reveal-scale relative flex justify-center lg:justify-end" style="transition-delay:200ms">
+      <div class="relative w-full max-w-sm">
+        <div class="absolute -inset-10 bg-brand-500/30 blur-3xl rounded-full"></div>
+
+        <div class="relative float-y bg-gradient-to-br from-navy-800 to-navy-950 border border-white/10 rounded-[2rem] p-8 shadow-floating">
+          <p class="text-[11px] uppercase tracking-wider text-cream-50/50 mb-5" data-i18n="franquia.painel.titulo">Modelos de entrada</p>
+
+          <div class="space-y-3">
+            <div class="card-surface rounded-2xl px-5 py-4">
+              <p class="font-bold text-base text-cream-50" data-i18n="franquia.painel.m1t">Master Franqueado</p>
+              <p class="text-[13px] text-cream-50/60 mt-1 leading-[1.6]" data-i18n="franquia.painel.m1d">Uma região inteira, com exclusividade contratual.</p>
+            </div>
+            <div class="card-surface rounded-2xl px-5 py-4">
+              <p class="font-bold text-base text-cream-50" data-i18n="franquia.painel.m2t">Micro Franqueado</p>
+              <p class="text-[13px] text-cream-50/60 mt-1 leading-[1.6]" data-i18n="franquia.painel.m2d">Unidade móvel, com investimento de entrada reduzido.</p>
+            </div>
+          </div>
+
+          <div class="mt-5 grid grid-cols-2 gap-3">
+            <div class="card-surface rounded-2xl px-4 py-3.5">
+              <p class="text-[11px] uppercase tracking-wider text-cream-50/50" data-i18n="franquia.painel.c1t">Formação</p>
+              <p class="font-bold text-lg text-volt-400" data-i18n="franquia.painel.c1d">Incluída</p>
+            </div>
+            <div class="card-surface rounded-2xl px-4 py-3.5">
+              <p class="text-[11px] uppercase tracking-wider text-cream-50/50" data-i18n="franquia.painel.c2t">Captação</p>
+              <p class="font-bold text-lg text-cream-50" data-i18n="franquia.painel.c2d">Central</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BARRA DE CONFIANÇA ============ -->
+<section class="relative -mt-14 sm:-mt-16 z-10 px-5 sm:px-8">
+  <div class="reveal-scale mx-auto max-w-5xl grid grid-cols-2 lg:grid-cols-4 gap-px bg-cream-100 rounded-[1.75rem] overflow-hidden shadow-elevated">
+    <div class="bg-white px-6 py-8 text-center">
+      <p class="font-display text-3xl sm:text-4xl text-ink-950 tracking-[-0.03em]">+10</p>
+      <p class="mt-2 text-xs sm:text-sm text-steel-600 leading-snug" data-i18n="franquia.stat1">anos de experiência<br/>em assistência a baterias</p>
+    </div>
+    <div class="bg-white px-6 py-8 text-center">
+      <p class="font-display text-3xl sm:text-4xl text-ink-950 tracking-[-0.03em]">4</p>
+      <p class="mt-2 text-xs sm:text-sm text-steel-600 leading-snug" data-i18n="franquia.stat2">unidades em Braga, Porto,<br/>Coimbra e Lisboa</p>
+    </div>
+    <div class="bg-white px-6 py-8 text-center">
+      <p class="font-display text-3xl sm:text-4xl text-ink-950 tracking-[-0.03em]">2</p>
+      <p class="mt-2 text-xs sm:text-sm text-steel-600 leading-snug" data-i18n="franquia.stat3">modelos de entrada,<br/>do móvel ao regional</p>
+    </div>
+    <div class="bg-white px-6 py-8 text-center">
+      <p class="font-display text-3xl sm:text-4xl text-ink-950 tracking-[-0.03em]">5,0<span class="text-volt-500 text-2xl sm:text-3xl align-top">★</span></p>
+      <p class="mt-2 text-xs sm:text-sm text-steel-600 leading-snug" data-i18n="franquia.stat4">de média em 107<br/>avaliações no Google</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PORQUÊ ESTE NEGÓCIO ============ -->
+<section id="porque" class="relative py-24 sm:py-32 px-5 sm:px-8 bg-white">
+  <div class="mx-auto max-w-7xl grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+    <div>
+      <p class="reveal text-brand-700 font-bold text-sm tracking-widest uppercase mb-4" data-i18n="franquia.porque.eyebrow">Porquê baterias</p>
+      <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-[2.75rem] tracking-[-0.03em] leading-[1.12]" style="transition-delay:80ms" data-i18n="franquia.porque.titulo">
+        Uma avaria que não pode esperar pelo dia seguinte
+      </h2>
+      <div class="reveal mt-7 space-y-5 text-steel-600 text-base sm:text-lg leading-[1.75]" style="transition-delay:160ms">
+        <p data-i18n="franquia.porque.p1">
+          Todos os veículos em circulação têm uma bateria, e todas as baterias falham. Falham sem aviso, quase sempre no pior momento, e deixam o condutor num sítio onde não escolheu ficar.
+        </p>
+        <p data-i18n="franquia.porque.p2">
+          É aí que este negócio se distingue de uma oficina: o cliente não consegue levar o carro até ti. Quem chega primeiro ao local resolve — e fatura. É um serviço urgente, de decisão rápida e com pouca margem para comparar preços.
+        </p>
+        <p data-i18n="franquia.porque.p3">
+          A Help Battery já opera assim há mais de dez anos. O que colocamos em cima da mesa não é uma ideia de negócio: é uma operação a funcionar, com fornecedores, formação e um método de atendimento definido.
+        </p>
+      </div>
+    </div>
+
+    <div class="reveal-scale relative">
+      <div class="absolute -inset-6 bg-brand-500/10 blur-3xl rounded-full"></div>
+      <div class="relative rounded-[2rem] bg-navy-950 p-8 sm:p-10 shadow-floating overflow-hidden">
+        <div class="grain" style="filter:url(#noiseFilter)"></div>
+        <p class="relative text-volt-400 font-bold text-xs tracking-widest uppercase mb-7" data-i18n="franquia.porque.lista.titulo">O que já está construído</p>
+        <ul class="relative space-y-5">
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-7 h-7 rounded-full bg-volt-400 text-ink-950 grid place-items-center text-sm font-bold">1</span>
+            <p class="text-cream-50/80 text-[15px] leading-[1.7]" data-i18n="franquia.porque.l1"><strong class="text-cream-50 font-semibold">Marca com procura ativa.</strong> A captação de clientes é feita centralmente — não começas do zero à procura do primeiro cliente.</p>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-7 h-7 rounded-full bg-volt-400 text-ink-950 grid place-items-center text-sm font-bold">2</span>
+            <p class="text-cream-50/80 text-[15px] leading-[1.7]" data-i18n="franquia.porque.l2"><strong class="text-cream-50 font-semibold">Rede de fornecimento montada.</strong> Acesso às marcas de baterias com que já trabalhamos, em condições de rede.</p>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-7 h-7 rounded-full bg-volt-400 text-ink-950 grid place-items-center text-sm font-bold">3</span>
+            <p class="text-cream-50/80 text-[15px] leading-[1.7]" data-i18n="franquia.porque.l3"><strong class="text-cream-50 font-semibold">Método de operação escrito.</strong> Manuais, formação técnica e padrão de atendimento — não tens de inventar o processo.</p>
+          </li>
+          <li class="flex gap-4">
+            <span class="flex-shrink-0 w-7 h-7 rounded-full bg-volt-400 text-ink-950 grid place-items-center text-sm font-bold">4</span>
+            <p class="text-cream-50/80 text-[15px] leading-[1.7]" data-i18n="franquia.porque.l4"><strong class="text-cream-50 font-semibold">Estrutura enxuta.</strong> O serviço vai ao cliente. Não dependes de um espaço comercial caro para começar a faturar.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OS DOIS MODELOS ============ -->
+<section id="modelos" class="relative py-24 sm:py-32 px-5 sm:px-8 bg-navy-950 text-cream-50 overflow-hidden">
+  <div class="grain" style="filter:url(#noiseFilter)"></div>
+  <div class="absolute top-1/4 left-0 w-[36rem] h-[36rem] bg-brand-600/20 blur-[130px] rounded-full -translate-x-1/2"></div>
+
+  <div class="relative mx-auto max-w-7xl">
+    <div class="max-w-2xl mb-16">
+      <p class="reveal text-volt-400 font-bold text-sm tracking-widest uppercase mb-4" data-i18n="franquia.modelos.eyebrow">Modelos de entrada</p>
+      <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1]" style="transition-delay:80ms" data-i18n="franquia.modelos.titulo">
+        Escolhe a tua forma de entrar
+      </h2>
+      <p class="reveal mt-6 text-cream-50/70 text-base sm:text-lg leading-[1.7]" style="transition-delay:160ms" data-i18n="franquia.modelos.lead">
+        A diferença está na escala e no papel que queres ter. Num, desenvolves uma região inteira. No outro, operas no terreno com uma estrutura mínima.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-6">
+      <!-- MASTER -->
+      <article class="reveal franchise-card">
+        <span class="franchise-tag" data-i18n="franquia.master.tag">Master Franchise</span>
+        <h3 class="font-display text-2xl text-cream-50 mt-4 mb-4" data-i18n="franquia.master.titulo">Master Franqueado</h3>
+        <p class="text-cream-50/70 text-[15px] leading-[1.7] mb-7" data-i18n="franquia.master.intro">
+          O direito de desenvolver e representar a Help Battery numa região inteira, com exclusividade territorial, implantando e apoiando micro-franquias na tua área.
+        </p>
+        <dl class="franchise-list">
+          <div><dt data-i18n="franquia.master.d1t">Perfil do investidor</dt><dd data-i18n="franquia.master.d1d">Gestor ou investidor com visão de longo prazo e disponibilidade para liderar a operação regional. Não precisas de vir do setor automóvel — precisas de saber gerir pessoas e operação.</dd></div>
+          <div><dt data-i18n="franquia.master.d2t">Território</dt><dd data-i18n="franquia.master.d2d">Regiões definidas por área geográfica e potencial de mercado, com exclusividade contratual. Nenhuma outra unidade da marca abre dentro da tua área sem passar por ti.</dd></div>
+          <div><dt data-i18n="franquia.master.d3t">Responsabilidades</dt><dd data-i18n="franquia.master.d3d">Implementar a marca na região, recrutar e apoiar micro-franquiados e garantir que o padrão de serviço é o mesmo em toda a área.</dd></div>
+          <div><dt data-i18n="franquia.master.d4t">O que oferecemos</dt><dd data-i18n="franquia.master.d4d">Formação inicial e contínua, manuais de operação, apoio na abertura, ferramentas de gestão e apoio de marketing.</dd></div>
+          <div><dt data-i18n="franquia.master.d5t">Potencial de expansão</dt><dd data-i18n="franquia.master.d5d">Modelo desenhado para escalar de uma unidade-piloto para uma rede regional, com receita que cresce com cada micro-franquia implantada.</dd></div>
+        </dl>
+        <button type="button" class="franchise-cta focus-ring-dark" data-open-form="master" data-i18n="franquia.master.cta">Quero ser Master Franqueado</button>
+      </article>
+
+      <!-- MICRO -->
+      <article class="reveal franchise-card" style="transition-delay:100ms">
+        <span class="franchise-tag" data-i18n="franquia.micro.tag">Microfranquia</span>
+        <h3 class="font-display text-2xl text-cream-50 mt-4 mb-4" data-i18n="franquia.micro.titulo">Micro Franqueado</h3>
+        <p class="text-cream-50/70 text-[15px] leading-[1.7] mb-7" data-i18n="franquia.micro.intro">
+          Uma unidade de atendimento móvel Help Battery: investimento reduzido, operação enxuta e a marca a gerar a procura por ti.
+        </p>
+        <dl class="franchise-list">
+          <div><dt data-i18n="franquia.micro.d1t">Perfil do empreendedor</dt><dd data-i18n="franquia.micro.d1d">Perfil técnico ou comercial, com disponibilidade para operar no terreno e lidar com o cliente final. A formação técnica é dada por nós.</dd></div>
+          <div><dt data-i18n="franquia.micro.d2t">Estrutura necessária</dt><dd data-i18n="franquia.micro.d2d">Viatura, kit de diagnóstico e stock inicial. A lista completa é entregue no processo de seleção.</dd></div>
+          <div><dt data-i18n="franquia.micro.d3t">Como funciona</dt><dd data-i18n="franquia.micro.d3d">Recebes os pedidos pela central, atendes no local, e a Help Battery trata da captação e da faturação. O teu tempo fica no serviço, não na angariação.</dd></div>
+          <div><dt data-i18n="franquia.micro.d4t">Suporte</dt><dd data-i18n="franquia.micro.d4d">Formação técnica, apoio comercial, fornecimento de baterias e ferramentas digitais de gestão.</dd></div>
+          <div><dt data-i18n="franquia.micro.d5t">Investimento</dt><dd data-i18n="franquia.micro.d5d">Valores e condições comerciais são apresentados na reunião de apresentação do modelo, depois de percebermos a tua zona e o teu perfil.</dd></div>
+        </dl>
+        <button type="button" class="franchise-cta focus-ring-dark" data-open-form="micro" data-i18n="franquia.micro.cta">Quero ser Micro Franqueado</button>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ O QUE A MARCA ENTREGA ============ -->
+<section id="suporte" class="relative py-24 sm:py-32 px-5 sm:px-8 bg-cream-50">
+  <div class="mx-auto max-w-7xl">
+    <div class="max-w-2xl mb-14">
+      <p class="reveal text-brand-700 font-bold text-sm tracking-widest uppercase mb-4" data-i18n="franquia.suporte.eyebrow">O nosso lado do acordo</p>
+      <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1]" style="transition-delay:80ms" data-i18n="franquia.suporte.titulo">
+        Não te entregamos só uma marca
+      </h2>
+      <p class="reveal mt-6 text-steel-600 text-base sm:text-lg leading-[1.7]" style="transition-delay:160ms" data-i18n="franquia.suporte.lead">
+        Uma franquia só funciona se a estrutura por trás funcionar. Isto é o que a Help Battery põe do seu lado, em ambos os modelos.
+      </p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div class="reveal mission-card bg-white">
+        <div class="mission-icon"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M12 3l9 5-9 5-9-5 9-5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M21 8v6M7 10.5V16c0 1.7 2.2 3 5 3s5-1.3 5-3v-5.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3 class="font-bold text-lg text-ink-950 mb-2" data-i18n="franquia.suporte.c1t">Formação inicial e contínua</h3>
+        <p class="text-steel-600 text-[15px] leading-[1.7]" data-i18n="franquia.suporte.c1d">Diagnóstico, substituição, atendimento e segurança. Começas a operar com o método já na mão, e a formação não acaba na abertura.</p>
+      </div>
+      <div class="reveal mission-card bg-white" style="transition-delay:60ms">
+        <div class="mission-icon"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M6 3h9l4 4v14H6V3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M15 3v4h4M9 12h7M9 16h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3 class="font-bold text-lg text-ink-950 mb-2" data-i18n="franquia.suporte.c2t">Manuais de operação</h3>
+        <p class="text-steel-600 text-[15px] leading-[1.7]" data-i18n="franquia.suporte.c2d">Como atender, como diagnosticar, como resolver um caso difícil. O padrão que faz o cliente reconhecer a marca em qualquer cidade.</p>
+      </div>
+      <div class="reveal mission-card bg-white" style="transition-delay:120ms">
+        <div class="mission-icon"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M3 7l6-3 6 3 6-3v13l-6 3-6-3-6 3V7z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 4v13M15 7v13" stroke="currentColor" stroke-width="1.8"/></svg></div>
+        <h3 class="font-bold text-lg text-ink-950 mb-2" data-i18n="franquia.suporte.c3t">Apoio na abertura</h3>
+        <p class="text-steel-600 text-[15px] leading-[1.7]" data-i18n="franquia.suporte.c3d">Acompanhamento na montagem da operação, definição da zona e arranque do serviço, para não abrires sozinho.</p>
+      </div>
+      <div class="reveal mission-card bg-white" style="transition-delay:180ms">
+        <div class="mission-icon"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2.5" stroke="currentColor" stroke-width="1.8"/><path d="M7 14l3-3 2.5 2.5L17 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3 class="font-bold text-lg text-ink-950 mb-2" data-i18n="franquia.suporte.c4t">Ferramentas de gestão</h3>
+        <p class="text-steel-600 text-[15px] leading-[1.7]" data-i18n="franquia.suporte.c4d">Plataforma para receber pedidos, acompanhar serviços e ver os teus números sem folhas de cálculo improvisadas.</p>
+      </div>
+      <div class="reveal mission-card bg-white" style="transition-delay:240ms">
+        <div class="mission-icon"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M4 10v4a1 1 0 001 1h3l5 4V5L8 9H5a1 1 0 00-1 1z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M17 9.5a4 4 0 010 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3 class="font-bold text-lg text-ink-950 mb-2" data-i18n="franquia.suporte.c5t">Apoio de marketing</h3>
+        <p class="text-steel-600 text-[15px] leading-[1.7]" data-i18n="franquia.suporte.c5d">Campanhas, materiais e presença digital feitos centralmente. A procura chega-te pela marca, não pelo teu esforço isolado.</p>
+      </div>
+      <div class="reveal mission-card bg-white" style="transition-delay:300ms">
+        <div class="mission-icon"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M3 8h11v9H3V8zM14 11h4l3 3v3h-7v-6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="7" cy="18.5" r="1.8" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="18.5" r="1.8" stroke="currentColor" stroke-width="1.8"/></svg></div>
+        <h3 class="font-bold text-lg text-ink-950 mb-2" data-i18n="franquia.suporte.c6t">Fornecimento de baterias</h3>
+        <p class="text-steel-600 text-[15px] leading-[1.7]" data-i18n="franquia.suporte.c6d">Acesso às marcas com que a rede já trabalha, em condições negociadas para o conjunto das unidades.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROCESSO ============ -->
+<section id="processo" class="relative py-24 sm:py-32 px-5 sm:px-8 bg-brand-700 text-cream-50 overflow-hidden">
+  <div class="grain" style="filter:url(#noiseFilter)"></div>
+
+  <div class="relative mx-auto max-w-7xl">
+    <div class="max-w-2xl mb-16">
+      <p class="reveal text-volt-400 font-bold text-sm tracking-widest uppercase mb-4" data-i18n="franquia.processo.eyebrow">Como avançamos</p>
+      <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1]" style="transition-delay:80ms" data-i18n="franquia.processo.titulo">
+        Do primeiro contacto à abertura
+      </h2>
+      <p class="reveal mt-6 text-cream-50/70 text-base sm:text-lg leading-[1.7]" style="transition-delay:160ms" data-i18n="franquia.processo.lead">
+        Manifestar interesse não te compromete a nada. É apenas o passo que abre a conversa.
+      </p>
+    </div>
+
+    <ol class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <li class="reveal card-surface rounded-[1.5rem] p-7">
+        <p class="font-display text-4xl text-volt-400 tracking-[-0.03em] mb-4">01</p>
+        <h3 class="font-bold text-lg text-cream-50 mb-2" data-i18n="franquia.processo.p1t">Candidatura</h3>
+        <p class="text-cream-50/70 text-[15px] leading-[1.7]" data-i18n="franquia.processo.p1d">Preenches o formulário com a tua região de interesse e o modelo que te faz sentido.</p>
+      </li>
+      <li class="reveal card-surface rounded-[1.5rem] p-7" style="transition-delay:80ms">
+        <p class="font-display text-4xl text-volt-400 tracking-[-0.03em] mb-4">02</p>
+        <h3 class="font-bold text-lg text-cream-50 mb-2" data-i18n="franquia.processo.p2t">Reunião de apresentação</h3>
+        <p class="text-cream-50/70 text-[15px] leading-[1.7]" data-i18n="franquia.processo.p2d">A equipa de expansão apresenta o modelo em detalhe, incluindo investimento e condições comerciais.</p>
+      </li>
+      <li class="reveal card-surface rounded-[1.5rem] p-7" style="transition-delay:160ms">
+        <p class="font-display text-4xl text-volt-400 tracking-[-0.03em] mb-4">03</p>
+        <h3 class="font-bold text-lg text-cream-50 mb-2" data-i18n="franquia.processo.p3t">Análise e proposta</h3>
+        <p class="text-cream-50/70 text-[15px] leading-[1.7]" data-i18n="franquia.processo.p3d">Avaliamos o teu perfil e a disponibilidade da zona. Se houver encaixe, segue proposta formal.</p>
+      </li>
+      <li class="reveal card-surface rounded-[1.5rem] p-7" style="transition-delay:240ms">
+        <p class="font-display text-4xl text-volt-400 tracking-[-0.03em] mb-4">04</p>
+        <h3 class="font-bold text-lg text-cream-50 mb-2" data-i18n="franquia.processo.p4t">Formação e abertura</h3>
+        <p class="text-cream-50/70 text-[15px] leading-[1.7]" data-i18n="franquia.processo.p4d">Formação técnica e comercial, montagem da operação e arranque do serviço na tua zona.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq-franquia" class="relative py-24 sm:py-32 px-5 sm:px-8 bg-cream-50">
+  <div class="mx-auto max-w-3xl">
+    <div class="text-center mb-14">
+      <p class="reveal text-brand-700 font-bold text-sm tracking-widest uppercase mb-4" data-i18n="franquia.faq.eyebrow">Antes de te candidatares</p>
+      <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1]" style="transition-delay:80ms" data-i18n="franquia.faq.titulo">
+        Perguntas frequentes
+      </h2>
+    </div>
+
+    <div class="space-y-4">
+      <details class="reveal faq-item">
+        <summary><span data-i18n="franquia.faq.q1">Preciso de experiência no setor automóvel?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+        <p class="faq-body" data-i18n="franquia.faq.a1">Não. A formação técnica faz parte do pacote em ambos os modelos. No Micro Franqueado conta mais a disponibilidade para estar no terreno e o à-vontade com o cliente; no Master Franqueado, a capacidade de gerir uma operação e uma equipa.</p>
+      </details>
+      <details class="reveal faq-item" style="transition-delay:60ms">
+        <summary><span data-i18n="franquia.faq.q2">Qual é o investimento necessário?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+        <p class="faq-body" data-i18n="franquia.faq.a2">Os valores e as condições comerciais são apresentados na reunião de apresentação do modelo, porque variam com a zona e com o modelo escolhido. O que podemos dizer já é que a microfranquia foi desenhada para ter um investimento de entrada reduzido, por não depender de um espaço comercial.</p>
+      </details>
+      <details class="reveal faq-item" style="transition-delay:120ms">
+        <summary><span data-i18n="franquia.faq.q3">A exclusividade de território é garantida?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+        <p class="faq-body" data-i18n="franquia.faq.a3">No modelo Master Franqueado, sim: a área fica definida em contrato, por critério geográfico e de potencial de mercado. No modelo Micro Franqueado, trabalhas uma zona de atuação atribuída, coordenada pela central para evitar sobreposições.</p>
+      </details>
+      <details class="reveal faq-item" style="transition-delay:180ms">
+        <summary><span data-i18n="franquia.faq.q4">Tenho de angariar os meus próprios clientes?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+        <p class="faq-body" data-i18n="franquia.faq.a4">A captação é feita centralmente pela marca e os pedidos chegam-te pela central. É essa a lógica do modelo: o teu tempo fica no serviço prestado, não na procura de clientes.</p>
+      </details>
+      <details class="reveal faq-item" style="transition-delay:240ms">
+        <summary><span data-i18n="franquia.faq.q5">Posso começar como Micro e evoluir para Master?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+        <p class="faq-body" data-i18n="franquia.faq.a5">É um caminho que faz sentido e que avaliamos caso a caso. Conhecer a operação por dentro é a melhor preparação possível para depois desenvolver uma região. Fala connosco sobre isso na reunião.</p>
+      </details>
+      <details class="reveal faq-item" style="transition-delay:300ms">
+        <summary><span data-i18n="franquia.faq.q6">Em que zonas há disponibilidade?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
+        <p class="faq-body" data-i18n="franquia.faq.a6">Estamos em expansão em Portugal continental. Como a disponibilidade muda à medida que as zonas são atribuídas, indica a tua região no formulário e confirmamos-te o estado dessa área no contacto seguinte.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CANDIDATURA ============ -->
+<section id="candidatura" class="relative py-24 sm:py-32 px-5 sm:px-8 bg-navy-950 text-cream-50 overflow-hidden">
+  <div class="grain" style="filter:url(#noiseFilter)"></div>
+  <div class="absolute bottom-0 right-0 w-[34rem] h-[34rem] bg-volt-400/10 blur-[130px] rounded-full translate-x-1/3 translate-y-1/3"></div>
+
+  <div class="relative mx-auto max-w-3xl">
+    <div class="text-center mb-12">
+      <p class="reveal text-volt-400 font-bold text-sm tracking-widest uppercase mb-4" data-i18n="franquia.form.eyebrow">Manifestar interesse</p>
+      <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1]" style="transition-delay:80ms" data-i18n="franquia.form.titulo">
+        Fala com a equipa de expansão
+      </h2>
+      <p class="reveal mt-6 text-cream-50/70 text-base sm:text-lg leading-[1.7] max-w-xl mx-auto" style="transition-delay:160ms" data-i18n="franquia.form.lead">
+        Deixa os teus dados e a região que te interessa. Entramos em contacto para marcar a reunião de apresentação do modelo — sem compromisso.
+      </p>
+    </div>
+
+    <div id="franchise-form-wrap" class="reveal">
+      <form class="hb-form franchise-form" data-form="franquia" novalidate>
+        <h3 class="font-display text-xl text-cream-50 mb-1" id="franchise-form-title">Candidatura a franquia</h3>
+        <p class="text-cream-50/60 text-sm mb-7" data-i18n="franquia.form.nota">Todos os campos assinalados são necessários para avaliarmos a tua zona.</p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="field"><label for="fr-nome" data-i18n="form.nome">Nome</label><input id="fr-nome" name="nome" type="text" autocomplete="name" required /></div>
+          <div class="field"><label for="fr-email" data-i18n="form.email">E-mail</label><input id="fr-email" name="email" type="email" autocomplete="email" required /></div>
+          <div class="field"><label for="fr-tel" data-i18n="form.telefone">Telefone</label><input id="fr-tel" name="telefone" type="tel" autocomplete="tel" required /></div>
+          <div class="field"><label for="fr-regiao" data-i18n="form.regiao">Região de interesse</label><input id="fr-regiao" name="regiao" type="text" required /></div>
+          <div class="field sm:col-span-2">
+            <label for="franchise-model" data-i18n="form.modelo">Modelo pretendido</label>
+            <select id="franchise-model" name="modelo" required>
+              <option value="" data-i18n="form.modelo.placeholder">Seleciona um modelo</option>
+              <option value="master" data-i18n="form.modelo.master">Master Franqueado — região em exclusivo</option>
+              <option value="micro" data-i18n="form.modelo.micro">Micro Franqueado — unidade móvel</option>
+              <option value="indeciso" data-i18n="form.modelo.indeciso">Ainda não sei — quero perceber os dois</option>
+            </select>
+          </div>
+          <div class="field sm:col-span-2"><label for="fr-msg" data-i18n="form.mensagem">Mensagem</label><textarea id="fr-msg" name="mensagem" rows="4"></textarea></div>
+        </div>
+        <div class="form-footer">
+          <button type="submit" class="form-submit focus-ring" data-i18n="franquia.form.cta">Enviar candidatura</button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </div>
+
+    <p class="reveal mt-8 text-center text-cream-50/60 text-sm leading-[1.7]" data-i18n="franquia.form.alternativa">
+      Preferes falar primeiro?
+      <a href="tel:+351913212544" class="focus-ring-dark font-bold text-volt-400 underline underline-offset-4 rounded">Liga 913 212 544</a>
+      ou escreve para
+      <a href="mailto:suporte@helpbattery.pt" class="focus-ring-dark font-bold text-volt-400 underline underline-offset-4 rounded break-all">suporte@helpbattery.pt</a>.
+    </p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="relative bg-navy-950 text-cream-50 pt-20 pb-10 px-5 sm:px-8 overflow-hidden border-t border-white/10">
+  <div class="grain" style="filter:url(#noiseFilter)"></div>
+  <div class="relative mx-auto max-w-7xl grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 pb-14">
+    <div class="lg:col-span-1">
+      <img src="/new-logo/logo-lockup-light.webp" alt="Help Battery" width="2082" height="668" class="h-8 w-auto mb-5" loading="lazy" decoding="async" />
+      <p class="text-sm text-cream-50/60 leading-[1.7] max-w-xs" data-i18n="footer.desc">Soluções em mobilidade e assistência automóvel. Diagnóstico, substituição e apoio técnico no local, em Braga, Porto, Coimbra e Lisboa.</p>
+    </div>
+    <div>
+      <p class="font-bold text-sm uppercase tracking-wider text-volt-400 mb-5" data-i18n="footer.nav">Navegação</p>
+      <ul class="space-y-3 text-sm text-cream-50/70">
+        <li><a href="/#sobre" class="footer-link" data-i18n="nav.sobre">Sobre</a></li>
+        <li><a href="/#servicos" class="footer-link" data-i18n="nav.servicos">Serviços</a></li>
+        <li><a href="/#como-funciona" class="footer-link" data-i18n="nav.comofunciona">Como Funciona</a></li>
+        <li><a href="/#marcas" class="footer-link" data-i18n="nav.marcas">Marcas</a></li>
+        <li><a href="/#faq" class="footer-link" data-i18n="nav.faq">Perguntas Frequentes</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-bold text-sm uppercase tracking-wider text-volt-400 mb-5" data-i18n="footer.empresa">Empresa</p>
+      <ul class="space-y-3 text-sm text-cream-50/70">
+        <li><a href="/#lojas" class="footer-link" data-i18n="nav.lojas">Lojas</a></li>
+        <li><a href="/franquia/" class="footer-link" data-i18n="footer.franquia">Seja um franqueado</a></li>
+        <li><a href="/carreiras/" class="footer-link" data-i18n="footer.carreiras">Trabalhe connosco</a></li>
+        <li><a href="/#contacto" class="footer-link" data-i18n="nav.contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-bold text-sm uppercase tracking-wider text-volt-400 mb-5" data-i18n="footer.contacto">Contacto</p>
+      <ul class="space-y-3 text-sm text-cream-50/70">
+        <li><a href="tel:+351913212544" class="footer-link">+351 913 212 544 <span class="text-cream-50/40">· telemóvel</span></a></li>
+        <li><a href="tel:+351253284398" class="footer-link">+351 253 284 398 <span class="text-cream-50/40">· fixo</span></a></li>
+        <li><a href="mailto:suporte@helpbattery.pt" class="footer-link break-all">suporte@helpbattery.pt</a></li>
+        <li><a href="https://api.whatsapp.com/send/?phone=%2B351913212544&text&type=phone_number&app_absent=0" target="_blank" rel="noopener" class="footer-link">WhatsApp</a></li>
+      </ul>
+      <p class="mt-5 text-sm text-cream-50/60 leading-[1.7]">Rua Cidade do Porto, n.º 119<br/>Ferreiros, 4705-086 Braga</p>
+
+      <div class="mt-6 flex items-center gap-3">
+        <a href="https://www.instagram.com/help_battery/" target="_blank" rel="noopener" class="focus-ring-dark social-link" aria-label="Instagram da Help Battery">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/>
+            <circle cx="17.2" cy="6.8" r="1.2" fill="currentColor"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="relative mx-auto max-w-7xl pt-8 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between items-center text-xs text-cream-50/40">
+    <p>&copy; 2026 Help Battery. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- ============ FLOATING WHATSAPP BUTTON ============ -->
+<a href="https://api.whatsapp.com/send/?phone=%2B351913212544&text&type=phone_number&app_absent=0" target="_blank" rel="noopener"
+   class="focus-ring fixed bottom-24 sm:bottom-7 right-5 sm:right-7 z-40 w-14 h-14 rounded-full bg-[#25D366] grid place-items-center shadow-floating spring transition-all duration-300 hover:scale-110 active:scale-95"
+   aria-label="Falar por WhatsApp">
+  <svg class="w-7 h-7 text-white" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5C10.1 9 9.6 7.8 9.4 7.3c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-1 1-1 2.4s1 2.8 1.1 3c.1.2 2 3 4.8 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.7.2-1.2.1-1.4-.1-.1-.3-.2-.5-.3z"/><path d="M12 2C6.5 2 2 6.5 2 12c0 1.8.5 3.5 1.3 5L2 22l5.2-1.4c1.4.8 3.1 1.2 4.8 1.2 5.5 0 10-4.5 10-10S17.5 2 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3C4 14.9 3.6 13.5 3.6 12c0-4.6 3.8-8.4 8.4-8.4s8.4 3.8 8.4 8.4-3.8 8.2-8.4 8.2z"/></svg>
+</a>
+
+<!-- ============ MOBILE STICKY CTA BAR ============ -->
+<div class="sticky-cta-bar fixed bottom-0 inset-x-0 z-40 bg-navy-950/95 header-blur border-t border-white/10 px-4 py-3 flex gap-3">
+  <a href="#candidatura" class="focus-ring flex-1 inline-flex items-center justify-center gap-2 bg-volt-400 text-ink-950 font-semibold text-sm py-3 rounded-full" data-i18n="franquia.sticky.cta">
+    Candidatar-me
+  </a>
+  <a href="tel:+351913212544" class="focus-ring-dark flex-1 inline-flex items-center justify-center gap-2 border border-white/20 text-cream-50 font-semibold text-sm py-3 rounded-full">
+    Ligar
+  </a>
+</div>
+
+<script src="/assets/app.js"></script>
+</body>
+</html>
