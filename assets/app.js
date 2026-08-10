@@ -50,7 +50,12 @@
     PT[el.dataset.i18nContent] = el.getAttribute('content');
   });
 
+  // Idioma em uso. As mensagens dos formulários vivem no JS e não no DOM,
+  // por isso precisam de saber em que língua responder.
+  let langAtual = 'pt';
+
   const applyLang = (lang) => {
+    langAtual = lang;
     const dict = lang === 'pt' ? PT : Object.assign({}, PT, I18N[lang] || {});
 
     document.querySelectorAll('[data-i18n]').forEach((el) => {
@@ -82,9 +87,17 @@
     btn.addEventListener('click', () => { if (!btn.disabled) applyLang(lang); });
   });
 
-  // Repõe a escolha da visita anterior.
+  // Repõe a escolha da visita anterior — mas só se esse idioma ainda estiver
+  // oferecido na página. Sem esta validação, quem tivesse escolhido um idioma
+  // entretanto retirado do seletor ficaria preso nele, sem botão para sair.
+  const OFERECIDOS = [...document.querySelectorAll('.lang-btn')].map((b) => b.dataset.lang);
   let idiomaGuardado = null;
   try { idiomaGuardado = localStorage.getItem(GUARDA); } catch (e) { /* navegação privada */ }
+
+  if (idiomaGuardado && !OFERECIDOS.includes(idiomaGuardado)) {
+    try { localStorage.removeItem(GUARDA); } catch (e) { /* navegação privada */ }
+    idiomaGuardado = null;
+  }
   if (idiomaGuardado && idiomaGuardado !== 'pt' && temDicionario(idiomaGuardado)) {
     applyLang(idiomaGuardado);
   }
@@ -100,41 +113,118 @@
       franchiseWrap.classList.add('is-visible');
       document.getElementById('franchise-model').value = model;
       document.getElementById('franchise-form-title').textContent =
-        model === 'master' ? 'Candidatura — Master Franqueado' : 'Candidatura — Micro Franqueado';
+        msg('franquia.form.h3.' + (model === 'master' ? 'master' : 'micro'));
       franchiseWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
       setTimeout(() => document.getElementById('fr-nome').focus(), 500);
     });
   });
 
   // ---------------------------------------------------------------
-  // Formulários — MODO PRÉ-VISUALIZAÇÃO
-  // A validação é real, mas o envio ainda não está ligado a nenhum
-  // endpoint. Para ativar: substituir o bloco marcado abaixo por um
-  // fetch() para o serviço escolhido (Formspree, Web3Forms, API route).
+  // Formulários
+  // Cada formulário aponta para o seu Apps Script. Sem endpoint, fica
+  // em pré-visualização: valida os campos mas não envia.
   // ---------------------------------------------------------------
+  const ENDPOINTS = {
+    carreiras: 'https://script.google.com/macros/s/AKfycbw35eqzWRs068rtJdHAIPOGI_6IvhCMADYhB4mEbej65VLkk63Is2DqL3f_t3xZAucxJg/exec',
+    franquia: 'https://script.google.com/macros/s/AKfycbxd_00jXMDLy4FLSPlxX07hzqfgDAykTtcCxiUWBVmREUi1pNAVeXcEbME2FVQTiULa/exec',
+  };
+
+  const MAX_CV_MB = 5;
+
+  // Mensagens de estado em pt-PT. As outras línguas sobrepõem-nas em
+  // i18n.js, com as mesmas chaves.
+  const MSG_PT = {
+    'form.status.invalido': 'Confere os campos assinalados antes de enviar.',
+    'form.status.enviando': 'A enviar…',
+    'form.status.grande': 'O currículo tem mais de ' + MAX_CV_MB + ' MB. Envia um ficheiro mais pequeno.',
+    'form.status.erro': 'Não foi possível enviar. Tenta de novo ou escreve para <a href="mailto:suporte@helpbattery.pt">suporte@helpbattery.pt</a>.',
+    'form.status.sucesso.carreiras': 'Candidatura recebida. Se houver encaixe, entramos em contacto.',
+    'form.status.sucesso.franquia': 'Candidatura recebida. A equipa de expansão entra em contacto para marcar a reunião.',
+    'franquia.form.h3.master': 'Candidatura — Master Franqueado',
+    'franquia.form.h3.micro': 'Candidatura — Micro Franqueado',
+    'form.status.previsualizacao':
+      'Formulário em pré-visualização — o envio ainda não está ligado. ' +
+      'Para falar connosco já, <a href="tel:+351913212544">liga 913 212 544</a> ou usa o WhatsApp.',
+  };
+  const msg = (chave) =>
+    (I18N[langAtual] && I18N[langAtual][chave]) || MSG_PT[chave] || '';
+
+  /** Lê o anexo como base64, que é o formato que o Apps Script descodifica. */
+  const lerFicheiro = (ficheiro) => new Promise((resolve, reject) => {
+    const leitor = new FileReader();
+    leitor.onerror = () => reject(new Error('Não foi possível ler o ficheiro'));
+    leitor.onload = () => resolve({
+      nome: ficheiro.name,
+      tipo: ficheiro.type,
+      // O resultado é uma data URL; a parte útil vem depois da vírgula.
+      base64: String(leitor.result).split(',')[1] || '',
+    });
+    leitor.readAsDataURL(ficheiro);
+  });
+
   document.querySelectorAll('form.hb-form').forEach((form) => {
-    form.addEventListener('submit', (event) => {
+    const tipo = form.dataset.form;
+    const endpoint = ENDPOINTS[tipo];
+    const status = form.querySelector('.form-status');
+    const botao = form.querySelector('.form-submit');
+
+    form.addEventListener('submit', async (event) => {
       event.preventDefault();
-      const status = form.querySelector('.form-status');
-      let valid = true;
 
+      let valido = true;
       form.querySelectorAll('[required]').forEach((input) => {
-        const field = input.closest('.field');
+        const campo = input.closest('.field');
         const ok = input.checkValidity() && input.value.trim() !== '';
-        field.classList.toggle('has-error', !ok);
-        if (!ok) valid = false;
+        campo.classList.toggle('has-error', !ok);
+        if (!ok) valido = false;
       });
-
-      if (!valid) {
-        status.textContent = 'Confere os campos assinalados antes de enviar.';
+      if (!valido) {
+        status.innerHTML = msg('form.status.invalido');
         form.querySelector('.has-error input, .has-error select, .has-error textarea')?.focus();
         return;
       }
 
-      // >>> LIGAR AQUI O ENVIO REAL <<<
-      status.innerHTML =
-        'Formulário em pré-visualização — o envio ainda não está ligado. ' +
-        'Para falar connosco já, <a href="tel:+351913212544">liga 913 212 544</a> ou usa o WhatsApp.';
+      if (!endpoint) {
+        status.innerHTML = msg('form.status.previsualizacao');
+        return;
+      }
+
+      const campoFicheiro = form.querySelector('input[type="file"]');
+      const ficheiro = campoFicheiro && campoFicheiro.files[0];
+      if (ficheiro && ficheiro.size > MAX_CV_MB * 1024 * 1024) {
+        status.innerHTML = msg('form.status.grande');
+        campoFicheiro.closest('.field')?.classList.add('has-error');
+        return;
+      }
+
+      botao.disabled = true;
+      status.innerHTML = msg('form.status.enviando');
+
+      try {
+        const dados = Object.fromEntries(new FormData(form).entries());
+        delete dados.curriculo; // o anexo segue à parte, já em base64
+        dados.idioma = langAtual;
+        dados.origem = window.location.href;
+        if (ficheiro) dados.curriculo = await lerFicheiro(ficheiro);
+
+        // text/plain de propósito: mantém o pedido "simples" e evita o
+        // preflight OPTIONS, ao qual o Apps Script não responde.
+        const resposta = await fetch(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+          body: JSON.stringify(dados),
+        });
+        const corpo = await resposta.json();
+        if (!corpo.ok) throw new Error(corpo.erro || 'resposta sem ok');
+
+        form.reset();
+        status.innerHTML = msg('form.status.sucesso.' + tipo);
+      } catch (err) {
+        console.error('[formulário ' + tipo + ']', err);
+        status.innerHTML = msg('form.status.erro');
+      } finally {
+        botao.disabled = false;
+      }
     });
 
     form.querySelectorAll('input, select, textarea').forEach((input) => {

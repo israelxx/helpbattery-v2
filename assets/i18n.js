@@ -6,8 +6,13 @@
    apenas as sobreposições.
 
    br — português do Brasil. Só as chaves que mudam face ao
-        pt-PT; as restantes caem por omissão no HTML.
-   es — espanhol de Espanha (es-ES). Dicionário completo.
+        pt-PT; as restantes caem por omissão no HTML. ATIVO.
+   es — espanhol de Espanha (es-ES). Dicionário completo, mas
+        INATIVO: o botão ES foi retirado do seletor a pedido do
+        cliente. As traduções ficam aqui para não se perder o
+        trabalho — para reativar, basta repor o botão
+        <button data-lang="es"> no seletor das três páginas.
+        Nota: o briefing (secção 10) pedia PT + ES.
 
    Ao editar: mantém as tags HTML tal como estão nas chaves que
    as contêm (<br>, <strong>, <a href>). Só o texto se traduz.
@@ -48,8 +53,6 @@ window.HB_I18N = {
     'caminhos.carreiras.texto': 'Procuramos técnicos de assistência, atendimento ao cliente, comercial e logística para as unidades de Braga, Porto, Coimbra e Lisboa. O treinamento técnico é dado por nós. Deixe a sua candidatura mesmo que não haja vaga aberta na sua região.',
 
     'contacto.telemovel': 'Celular',
-    'contacto.form.lead': 'Precisa de ajuda com a bateria do seu veículo? Deixe os seus dados e a nossa equipe responde.',
-    'form.assunto.placeholder': 'Selecione um assunto',
     'footer.desc': 'Soluções em mobilidade e assistência automotiva. Diagnóstico, troca e apoio técnico no local, em Braga, Porto, Coimbra e Lisboa.',
 
     'franquia.h1': 'Abra a sua unidade<br class="hidden sm:block"> Help Battery',
@@ -197,6 +200,17 @@ window.HB_I18N = {
     'sticky.ligar': 'Ligar',
     'franquia.form.h3': 'Candidatura à franquia',
 
+    'form.status.invalido': 'Confira os campos marcados antes de enviar.',
+    'form.status.enviando': 'Enviando…',
+    'form.status.grande': 'O currículo tem mais de 5 MB. Envie um arquivo menor.',
+    'form.status.erro': 'Não foi possível enviar. Tente de novo ou escreva para <a href="mailto:suporte@helpbattery.pt">suporte@helpbattery.pt</a>.',
+    'form.status.sucesso.carreiras': 'Candidatura recebida. Se houver encaixe, entramos em contato.',
+    'form.status.previsualizacao': 'Formulário em pré-visualização — o envio ainda não está ligado. Para falar conosco agora, <a href="tel:+351913212544">ligue 913 212 544</a> ou use o WhatsApp.',
+
+    'form.status.sucesso.franquia': 'Candidatura recebida. A equipe de expansão entra em contato para marcar a reunião.',
+    'franquia.form.h3.master': 'Candidatura — Master Franqueado',
+    'franquia.form.h3.micro': 'Candidatura — Micro Franqueado',
+
     'meta.home.title': 'Help Battery — Assistência Automotiva e Soluções de Mobilidade | Braga, Porto, Coimbra e Lisboa',
     'meta.home.desc': 'Diagnóstico, troca e assistência técnica de baterias no local, para carros e motos. Mais de 10 anos de experiência, com unidades em Braga, Porto, Coimbra e Lisboa.',
     'meta.franquia.title': 'Franquia Help Battery — Master Franqueado e Microfranquia de Baterias em Portugal',
@@ -279,19 +293,10 @@ window.HB_I18N = {
     'contacto.unidades': 'Otros centros',
     'contacto.unidades.valor': 'Oporto · Coímbra · Lisboa',
     'contacto.instagram': 'Instagram',
-    'contacto.form.titulo': 'Habla con Help Battery',
-    'contacto.form.lead': '¿Necesitas ayuda con la batería de tu vehículo? Déjanos tus datos y nuestro equipo te responde.',
-    'contacto.form.cta': 'Enviar mensaje',
 
     'form.nome': 'Nombre',
     'form.email': 'Correo electrónico',
     'form.telefone': 'Teléfono',
-    'form.assunto': 'Asunto',
-    'form.assunto.placeholder': 'Selecciona un asunto',
-    'form.assunto.bateria': 'Batería para mi vehículo',
-    'form.assunto.assistencia': 'Asistencia in situ',
-    'form.assunto.frota': 'Empresas y flotas',
-    'form.assunto.outro': 'Otro',
     'form.mensagem': 'Mensaje',
     'form.regiao': 'Región de interés',
     'form.modelo': 'Modelo deseado',

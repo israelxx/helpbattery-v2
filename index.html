@@ -43,11 +43,11 @@
       </nav>
 
       <div class="flex items-center gap-3">
-        <!-- Seletor de idioma: PT ativo, ES fica ativo assim que as traduções entrarem em I18N.es -->
+        <!-- Seletor de idioma: pt-PT e pt-BR. O espanhol foi retirado do
+             seletor a pedido do cliente; as traduções continuam em i18n.js. -->
         <div class="lang-switch hidden sm:flex" role="group" aria-label="Idioma">
           <button type="button" class="lang-btn is-active focus-ring" data-lang="pt" aria-pressed="true" title="Português de Portugal">PT</button>
           <button type="button" class="lang-btn focus-ring" data-lang="br" aria-pressed="false" title="Português do Brasil">BR</button>
-          <button type="button" class="lang-btn focus-ring" data-lang="es" aria-pressed="false" title="Español">ES</button>
         </div>
         <a href="tel:+351913212544" class="focus-ring group hidden sm:inline-flex items-center gap-2 bg-volt-400 text-ink-950 font-semibold text-sm px-5 py-2.5 rounded-full spring transition-all duration-300 hover:bg-volt-300 hover:-translate-y-0.5 hover:shadow-glow-volt active:translate-y-0 active:scale-95">
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/></svg>
@@ -716,34 +716,6 @@
         referrerpolicy="no-referrer-when-downgrade">
       </iframe>
     </div>
-  </div>
-
-  <!-- Formulário de contacto -->
-  <div class="relative mx-auto max-w-7xl mt-14">
-    <form class="reveal hb-form contact-form" data-form="contacto" novalidate>
-      <h3 class="font-display text-xl sm:text-2xl text-cream-50 mb-1" data-i18n="contacto.form.titulo">Fale com a Help Battery</h3>
-      <p class="text-cream-50/60 text-sm mb-8" data-i18n="contacto.form.lead">Precisas de ajuda com a bateria do teu veículo? Deixa os teus dados e a nossa equipa responde.</p>
-      <div class="grid sm:grid-cols-2 gap-4">
-        <div class="field"><label for="ct-nome" data-i18n="form.nome">Nome</label><input id="ct-nome" name="nome" type="text" autocomplete="name" required /></div>
-        <div class="field"><label for="ct-email" data-i18n="form.email">E-mail</label><input id="ct-email" name="email" type="email" autocomplete="email" required /></div>
-        <div class="field"><label for="ct-tel" data-i18n="form.telefone">Telefone</label><input id="ct-tel" name="telefone" type="tel" autocomplete="tel" required /></div>
-        <div class="field">
-          <label for="ct-assunto" data-i18n="form.assunto">Assunto</label>
-          <select id="ct-assunto" name="assunto" required>
-            <option value="" data-i18n="form.assunto.placeholder">Seleciona um assunto</option>
-            <option data-i18n="form.assunto.bateria">Bateria para o meu veículo</option>
-            <option data-i18n="form.assunto.assistencia">Assistência no local</option>
-            <option data-i18n="form.assunto.frota">Empresas e frotas</option>
-            <option data-i18n="form.assunto.outro">Outro</option>
-          </select>
-        </div>
-        <div class="field sm:col-span-2"><label for="ct-msg" data-i18n="form.mensagem">Mensagem</label><textarea id="ct-msg" name="mensagem" rows="4" required></textarea></div>
-      </div>
-      <div class="form-footer">
-        <button type="submit" class="form-submit focus-ring" data-i18n="contacto.form.cta">Enviar mensagem</button>
-        <p class="form-status" role="status" aria-live="polite"></p>
-      </div>
-    </form>
   </div>
 </section>
 
