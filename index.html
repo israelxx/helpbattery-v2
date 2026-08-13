@@ -5,13 +5,97 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title data-i18n="meta.home.title">Help Battery — Assistência Automóvel e Soluções de Mobilidade | Braga, Porto, Coimbra e Lisboa</title>
 <meta name="description" data-i18n-content="meta.home.desc" content="Diagnóstico, substituição e assistência técnica de baterias no local, para automóvel e motociclo. Mais de 10 anos de experiência, com unidades em Braga, Porto, Coimbra e Lisboa." />
+<link rel="canonical" href="https://helpbattery.pt/" />
 <link rel="icon" type="image/png" href="/new-logo/favicon-64.png" />
+<link rel="apple-touch-icon" href="/new-logo/favicon-64.png" />
+
+<!-- Open Graph / Facebook, WhatsApp, Instagram -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://helpbattery.pt/" />
+<meta property="og:site_name" content="Help Battery" />
+<meta property="og:locale" content="pt_PT" />
+<meta property="og:title" content="Help Battery — Assistência Automóvel e Soluções de Mobilidade" />
+<meta property="og:description" content="Diagnóstico, substituição e assistência técnica de baterias no local, para automóvel e motociclo. Mais de 10 anos de experiência, com unidades em Braga, Porto, Coimbra e Lisboa." />
+<meta property="og:image" content="https://helpbattery.pt/assets/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Help Battery — Assistência Automóvel e Soluções de Mobilidade" />
+<meta name="twitter:description" content="Diagnóstico, substituição e assistência técnica de baterias no local, para automóvel e motociclo." />
+<meta name="twitter:image" content="https://helpbattery.pt/assets/og-image.jpg" />
+
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,500&display=swap" rel="stylesheet" />
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="/assets/tailwind-config.js"></script>
 <link rel="stylesheet" href="/assets/styles.css" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutomotiveBusiness",
+  "name": "Help Battery",
+  "url": "https://helpbattery.pt/",
+  "logo": "https://helpbattery.pt/new-logo/logo-lockup-light.webp",
+  "image": "https://helpbattery.pt/assets/og-image.jpg",
+  "telephone": "+351913212544",
+  "email": "suporte@helpbattery.pt",
+  "sameAs": ["https://www.instagram.com/help_battery/"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua Cidade do Porto, n.º 119, Ferreiros",
+    "postalCode": "4705-086",
+    "addressLocality": "Braga",
+    "addressCountry": "PT"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "107"
+  },
+  "department": [
+    {
+      "@type": "AutomotiveBusiness",
+      "name": "Help Battery Porto",
+      "telephone": "+351913212544",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Estr. da Circunvalação, n.º 6184",
+        "postalCode": "4425-656",
+        "addressLocality": "Pedrouços",
+        "addressCountry": "PT"
+      }
+    },
+    {
+      "@type": "AutomotiveBusiness",
+      "name": "Help Battery Coimbra",
+      "telephone": "+351913212544",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Av. Elísio de Moura, n.º 377",
+        "postalCode": "3030-183",
+        "addressLocality": "Coimbra",
+        "addressCountry": "PT"
+      }
+    },
+    {
+      "@type": "AutomotiveBusiness",
+      "name": "Help Battery Lisboa",
+      "telephone": "+351913212544",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Luiz Pacheco",
+        "postalCode": "1950-244",
+        "addressLocality": "Marvila, Lisboa",
+        "addressCountry": "PT"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body class="antialiased">
 
@@ -64,7 +148,7 @@
 
 <!-- Mobile menu overlay -->
 <div id="mobile-menu" class="lg:hidden fixed inset-0 top-0 z-[45] bg-navy-950 translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
-  <div class="h-full flex flex-col justify-center px-8 gap-6 font-display text-[1.75rem] text-cream-50 overflow-y-auto py-24">
+  <div class="h-full flex flex-col justify-start px-8 gap-6 font-display text-[1.75rem] text-cream-50 overflow-y-auto pt-28 pb-12">
     <a href="/#sobre" class="mobile-link" data-i18n="nav.sobre">Sobre</a>
     <a href="/#servicos" class="mobile-link" data-i18n="nav.servicos">Serviços</a>
     <a href="/#como-funciona" class="mobile-link" data-i18n="nav.comofunciona">Como Funciona</a>
@@ -199,72 +283,6 @@
     <p class="reveal mt-5 font-semibold text-lg sm:text-xl text-ink-950 max-w-2xl mx-auto" style="transition-delay:220ms" data-i18n="problema.p2">
       Na Help Battery resolvemos rápido: testamos, aconselhamos a bateria certa e tratamos da instalação — sem teres de te preocupar com mais nada.
     </p>
-  </div>
-</section>
-
-<!-- ============ SOBRE NÓS ============ -->
-<section id="sobre" class="relative py-24 sm:py-32 px-5 sm:px-8 bg-white">
-  <div class="mx-auto max-w-7xl">
-    <div class="max-w-3xl mx-auto text-center mb-16">
-      <p class="reveal text-brand-700 font-bold text-sm tracking-widest uppercase mb-4" data-i18n="sobre.eyebrow">Sobre nós</p>
-      <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-[2.75rem] tracking-[-0.03em] leading-[1.15]" style="transition-delay:80ms" data-i18n="sobre.titulo">
-        Experiência que gera confiança.<br class="hidden sm:block" /> Tecnologia que te mantém em movimento.
-      </h2>
-      <p class="reveal mt-7 text-steel-600 text-base sm:text-lg leading-[1.7]" style="transition-delay:160ms" data-i18n="sobre.lead">
-        A Help Battery é o resultado de mais de 10 anos de experiência em assistência técnica a baterias automóveis. Hoje somos quatro unidades em Portugal, com equipas próprias e diagnóstico feito no local — não apenas uma empresa que substitui baterias, mas um serviço de mobilidade que te devolve o carro à estrada.
-      </p>
-    </div>
-
-    <!-- Números -->
-    <div class="reveal-scale mx-auto max-w-4xl grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16">
-      <div class="stat-card">
-        <span class="font-display text-4xl sm:text-5xl text-brand-700 block">+10</span>
-        <p class="mt-2 text-sm font-semibold text-ink-950" data-i18n="sobre.stat1">anos de experiência</p>
-      </div>
-      <div class="stat-card">
-        <span class="font-display text-4xl sm:text-5xl text-brand-700 block">4</span>
-        <p class="mt-2 text-sm font-semibold text-ink-950" data-i18n="sobre.stat2">unidades em Portugal</p>
-      </div>
-      <div class="stat-card">
-        <span class="font-display text-4xl sm:text-5xl text-brand-700 block">5,0</span>
-        <p class="mt-2 text-sm font-semibold text-ink-950" data-i18n="sobre.stat3">em 107 avaliações Google</p>
-      </div>
-    </div>
-
-    <!-- Missão / Visão -->
-    <div class="grid md:grid-cols-2 gap-5 max-w-5xl mx-auto">
-      <div class="reveal mission-card">
-        <div class="mission-icon">
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg>
-        </div>
-        <h3 class="font-bold text-lg mb-3" data-i18n="sobre.missao.titulo">Missão</h3>
-        <p class="text-steel-600 text-[15px] leading-[1.7]" data-i18n="sobre.missao.texto">Oferecer soluções de mobilidade com rapidez, conhecimento e tecnologia.</p>
-      </div>
-      <div class="reveal mission-card" style="transition-delay:80ms">
-        <div class="mission-icon">
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg>
-        </div>
-        <h3 class="font-bold text-lg mb-3" data-i18n="sobre.visao.titulo">Visão</h3>
-        <p class="text-steel-600 text-[15px] leading-[1.7]" data-i18n="sobre.visao.texto">Transformar a assistência automóvel numa experiência mais rápida, inteligente e fiável, tornando-nos referência em Portugal e na Europa.</p>
-      </div>
-    </div>
-
-    <!-- Valores -->
-    <div class="reveal max-w-5xl mx-auto mt-12 text-center">
-      <p class="text-xs font-bold uppercase tracking-widest text-steel-500 mb-5" data-i18n="sobre.valores.titulo">Os nossos valores</p>
-      <ul class="flex flex-wrap justify-center gap-2.5">
-        <li class="value-chip" data-i18n="sobre.valor1">Confiança</li>
-        <li class="value-chip" data-i18n="sobre.valor2">Excelência</li>
-        <li class="value-chip" data-i18n="sobre.valor3">Tecnologia</li>
-        <li class="value-chip" data-i18n="sobre.valor4">Agilidade</li>
-        <li class="value-chip" data-i18n="sobre.valor5">Transparência</li>
-        <li class="value-chip" data-i18n="sobre.valor6">Conhecimento</li>
-        <li class="value-chip" data-i18n="sobre.valor7">Inovação</li>
-        <li class="value-chip" data-i18n="sobre.valor8">Cliente</li>
-        <li class="value-chip" data-i18n="sobre.valor9">Empreendedorismo</li>
-        <li class="value-chip" data-i18n="sobre.valor10">Evolução</li>
-      </ul>
-    </div>
   </div>
 </section>
 
@@ -408,6 +426,72 @@
         <h3 class="font-bold text-xl mb-3" data-i18n="como.p4.titulo">Voltas à estrada</h3>
         <p class="text-cream-50/75 text-sm leading-[1.7]" data-i18n="como.p4.texto">Sais com garantia, fatura e o veículo pronto a arrancar — sem teres de deixar o carro em lado nenhum.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOBRE NÓS ============ -->
+<section id="sobre" class="relative py-24 sm:py-32 px-5 sm:px-8 bg-white">
+  <div class="mx-auto max-w-7xl">
+    <div class="max-w-3xl mx-auto text-center mb-16">
+      <p class="reveal text-brand-700 font-bold text-sm tracking-widest uppercase mb-4" data-i18n="sobre.eyebrow">Sobre nós</p>
+      <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-[2.75rem] tracking-[-0.03em] leading-[1.15]" style="transition-delay:80ms" data-i18n="sobre.titulo">
+        Experiência que gera confiança.<br class="hidden sm:block" /> Tecnologia que te mantém em movimento.
+      </h2>
+      <p class="reveal mt-7 text-steel-600 text-base sm:text-lg leading-[1.7]" style="transition-delay:160ms" data-i18n="sobre.lead">
+        A Help Battery é o resultado de mais de 10 anos de experiência em assistência técnica a baterias automóveis. Hoje somos quatro unidades em Portugal, com equipas próprias e diagnóstico feito no local — não apenas uma empresa que substitui baterias, mas um serviço de mobilidade que te devolve o carro à estrada.
+      </p>
+    </div>
+
+    <!-- Números -->
+    <div class="reveal-scale mx-auto max-w-4xl grid grid-cols-1 sm:grid-cols-3 gap-4 mb-16">
+      <div class="stat-card">
+        <span class="font-display text-4xl sm:text-5xl text-brand-700 block">+10</span>
+        <p class="mt-2 text-sm font-semibold text-ink-950" data-i18n="sobre.stat1">anos de experiência</p>
+      </div>
+      <div class="stat-card">
+        <span class="font-display text-4xl sm:text-5xl text-brand-700 block">4</span>
+        <p class="mt-2 text-sm font-semibold text-ink-950" data-i18n="sobre.stat2">unidades em Portugal</p>
+      </div>
+      <div class="stat-card">
+        <span class="font-display text-4xl sm:text-5xl text-brand-700 block">5,0</span>
+        <p class="mt-2 text-sm font-semibold text-ink-950" data-i18n="sobre.stat3">em 107 avaliações Google</p>
+      </div>
+    </div>
+
+    <!-- Missão / Visão -->
+    <div class="grid md:grid-cols-2 gap-5 max-w-5xl mx-auto">
+      <div class="reveal mission-card">
+        <div class="mission-icon">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg>
+        </div>
+        <h3 class="font-bold text-lg mb-3" data-i18n="sobre.missao.titulo">Missão</h3>
+        <p class="text-steel-600 text-[15px] leading-[1.7]" data-i18n="sobre.missao.texto">Oferecer soluções de mobilidade com rapidez, conhecimento e tecnologia.</p>
+      </div>
+      <div class="reveal mission-card" style="transition-delay:80ms">
+        <div class="mission-icon">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.8"/></svg>
+        </div>
+        <h3 class="font-bold text-lg mb-3" data-i18n="sobre.visao.titulo">Visão</h3>
+        <p class="text-steel-600 text-[15px] leading-[1.7]" data-i18n="sobre.visao.texto">Transformar a assistência automóvel numa experiência mais rápida, inteligente e fiável, tornando-nos referência em Portugal e na Europa.</p>
+      </div>
+    </div>
+
+    <!-- Valores -->
+    <div class="reveal max-w-5xl mx-auto mt-12 text-center">
+      <p class="text-xs font-bold uppercase tracking-widest text-steel-500 mb-5" data-i18n="sobre.valores.titulo">Os nossos valores</p>
+      <ul class="flex flex-wrap justify-center gap-2.5">
+        <li class="value-chip" data-i18n="sobre.valor1">Confiança</li>
+        <li class="value-chip" data-i18n="sobre.valor2">Excelência</li>
+        <li class="value-chip" data-i18n="sobre.valor3">Tecnologia</li>
+        <li class="value-chip" data-i18n="sobre.valor4">Agilidade</li>
+        <li class="value-chip" data-i18n="sobre.valor5">Transparência</li>
+        <li class="value-chip" data-i18n="sobre.valor6">Conhecimento</li>
+        <li class="value-chip" data-i18n="sobre.valor7">Inovação</li>
+        <li class="value-chip" data-i18n="sobre.valor8">Cliente</li>
+        <li class="value-chip" data-i18n="sobre.valor9">Empreendedorismo</li>
+        <li class="value-chip" data-i18n="sobre.valor10">Evolução</li>
+      </ul>
     </div>
   </div>
 </section>

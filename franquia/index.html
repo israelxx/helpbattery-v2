@@ -5,7 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title data-i18n="meta.franquia.title">Franquia Help Battery — Master Franqueado e Microfranquia de Baterias em Portugal</title>
 <meta name="description" data-i18n-content="meta.franquia.desc" content="Abre a tua unidade Help Battery. Dois modelos: Master Franqueado, com região em exclusivo, e Micro Franqueado, com unidade móvel e investimento reduzido. Formação, manuais e apoio de marketing incluídos." />
+<link rel="canonical" href="https://helpbattery.pt/franquia/" />
 <link rel="icon" type="image/png" href="/new-logo/favicon-64.png" />
+<link rel="apple-touch-icon" href="/new-logo/favicon-64.png" />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://helpbattery.pt/franquia/" />
+<meta property="og:site_name" content="Help Battery" />
+<meta property="og:locale" content="pt_PT" />
+<meta property="og:title" content="Franquia Help Battery — Master Franqueado e Microfranquia de Baterias" />
+<meta property="og:description" content="Abre a tua unidade Help Battery. Dois modelos: Master Franqueado, com região em exclusivo, e Micro Franqueado, com unidade móvel e investimento reduzido." />
+<meta property="og:image" content="https://helpbattery.pt/assets/og-image.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Franquia Help Battery — Master Franqueado e Microfranquia" />
+<meta name="twitter:description" content="Abre a tua unidade Help Battery. Formação, manuais e apoio de marketing incluídos." />
+<meta name="twitter:image" content="https://helpbattery.pt/assets/og-image.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,500&display=swap" rel="stylesheet" />
@@ -64,7 +81,7 @@
 
 <!-- Mobile menu overlay -->
 <div id="mobile-menu" class="lg:hidden fixed inset-0 top-0 z-[45] bg-navy-950 translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]">
-  <div class="h-full flex flex-col justify-center px-8 gap-6 font-display text-[1.75rem] text-cream-50 overflow-y-auto py-24">
+  <div class="h-full flex flex-col justify-start px-8 gap-6 font-display text-[1.75rem] text-cream-50 overflow-y-auto pt-28 pb-12">
     <a href="/#sobre" class="mobile-link" data-i18n="nav.sobre">Sobre</a>
     <a href="/#servicos" class="mobile-link" data-i18n="nav.servicos">Serviços</a>
     <a href="/#como-funciona" class="mobile-link" data-i18n="nav.comofunciona">Como Funciona</a>
@@ -112,13 +129,19 @@
       </div>
     </div>
 
-    <!-- Painel-resumo: mesma linguagem do painel do hero da home -->
+    <!-- Painel-resumo: foto real por trás, painel de dados flutuante por cima -->
     <div class="reveal-scale relative flex justify-center lg:justify-end" style="transition-delay:200ms">
       <div class="relative w-full max-w-sm">
         <div class="absolute -inset-10 bg-brand-500/30 blur-3xl rounded-full"></div>
 
-        <div class="relative float-y bg-gradient-to-br from-navy-800 to-navy-950 border border-white/10 rounded-[2rem] p-8 shadow-floating">
-          <p class="text-[11px] uppercase tracking-wider text-cream-50/50 mb-5" data-i18n="franquia.painel.titulo">Modelos de entrada</p>
+        <div class="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-floating">
+          <img src="/assets/franquia-hero.webp" alt="Técnico Help Battery a substituir a bateria de um automóvel" width="1400" height="788" class="w-full h-64 sm:h-72 object-cover" style="object-position:60% 35%" fetchpriority="high" decoding="async" />
+          <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/15 to-transparent"></div>
+          <div class="absolute inset-0 bg-brand-700/15 mix-blend-multiply"></div>
+        </div>
+
+        <div class="float-y relative -mt-16 mx-3 bg-gradient-to-br from-navy-800 to-navy-950 border border-white/10 rounded-[1.75rem] p-6 sm:p-7 shadow-floating">
+          <p class="text-[11px] uppercase tracking-wider text-cream-50/50 mb-4" data-i18n="franquia.painel.titulo">Modelos de entrada</p>
 
           <div class="space-y-3">
             <div class="card-surface rounded-2xl px-5 py-4">
@@ -193,6 +216,9 @@
 
     <div class="reveal-scale relative">
       <div class="absolute -inset-6 bg-brand-500/10 blur-3xl rounded-full"></div>
+      <div class="absolute -top-16 sm:-top-20 -right-4 sm:-right-6 z-10 w-24 sm:w-28 rotate-3 rounded-2xl border-4 border-cream-50 shadow-floating overflow-hidden hidden sm:block">
+        <img src="/assets/battery-detail.webp" alt="Substituição de bateria automóvel" width="600" height="400" class="w-full h-full object-cover aspect-square" style="object-position:70% 45%" loading="lazy" decoding="async" />
+      </div>
       <div class="relative rounded-[2rem] bg-navy-950 p-8 sm:p-10 shadow-floating overflow-hidden">
         <div class="grain" style="filter:url(#noiseFilter)"></div>
         <p class="relative text-volt-400 font-bold text-xs tracking-widest uppercase mb-7" data-i18n="franquia.porque.lista.titulo">O que já está construído</p>
