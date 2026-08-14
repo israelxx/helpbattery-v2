@@ -140,10 +140,10 @@
     'form.status.erro': 'Não foi possível enviar. Tenta de novo ou escreve para <a href="mailto:suporte@helpbattery.pt">suporte@helpbattery.pt</a>.',
     'form.status.sucesso.carreiras': 'Candidatura recebida. Se houver encaixe, entramos em contacto.',
     'form.status.sucesso.franquia': 'Candidatura recebida. A equipa de expansão entra em contacto para marcar a reunião.',
-    'franquia.form.h3.master': 'Candidatura — Master Franqueado',
-    'franquia.form.h3.micro': 'Candidatura — Micro Franqueado',
+    'franquia.form.h3.master': 'Candidatura: Master Franqueado',
+    'franquia.form.h3.micro': 'Candidatura: Micro Franqueado',
     'form.status.previsualizacao':
-      'Formulário em pré-visualização — o envio ainda não está ligado. ' +
+      'Formulário em pré-visualização, o envio ainda não está ligado. ' +
       'Para falar connosco já, <a href="tel:+351913212544">liga 913 212 544</a> ou usa o WhatsApp.',
   };
   const msg = (chave) =>
@@ -288,7 +288,7 @@
     anel.className = 'brand-carousel-ring';
     anel.tabIndex = 0;
     anel.setAttribute('role', 'group');
-    anel.setAttribute('aria-label', 'Marcas compatíveis — arraste ou use as setas para rodar');
+    anel.setAttribute('aria-label', 'Marcas compatíveis, arraste ou use as setas para rodar');
 
     const faces = logos.map((logo) => {
       const face = document.createElement('div');
