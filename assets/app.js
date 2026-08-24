@@ -144,7 +144,7 @@
     'franquia.form.h3.micro': 'Candidatura: Micro Franqueado',
     'form.status.previsualizacao':
       'Formulário em pré-visualização, o envio ainda não está ligado. ' +
-      'Para falar connosco já, <a href="tel:+351913212544">liga 913 212 544</a> ou usa o WhatsApp.',
+      'Para falar connosco já, <a href="tel:+351253284398">liga 253 284 398</a> ou usa o WhatsApp.',
   };
   const msg = (chave) =>
     (I18N[langAtual] && I18N[langAtual][chave]) || MSG_PT[chave] || '';

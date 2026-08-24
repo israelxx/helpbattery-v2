@@ -218,7 +218,9 @@
   .footer-link:hover { color: #FFCC00; padding-left: 4px; }
 
   /* ---------- Seletor de idioma ---------- */
-  .lang-switch { align-items: center; gap: 2px; padding: 3px; border-radius: 9999px; border: 1px solid rgba(29,48,84,0.15); }
+  /* display:flex aqui (e não via classe Tailwind) porque o seletor é visível
+     em todas as larguras: no telemóvel divide o header com o burger. */
+  .lang-switch { display: flex; align-items: center; gap: 2px; padding: 3px; border-radius: 9999px; border: 1px solid rgba(29,48,84,0.15); }
   #site-header:not(.scrolled) .lang-switch { border-color: rgba(245,246,248,0.22); }
   .lang-btn {
     font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em;
@@ -231,6 +233,11 @@
   .lang-btn.is-active { background: #1D3054; color: #FFCC00; }
   #site-header:not(.scrolled) .lang-btn.is-active { background: #FFCC00; color: #1D3054; }
   .lang-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  /* Três idiomas mais o burger não cabem a 360px com o padding do desktop. */
+  @media (max-width: 400px) {
+    .lang-switch { gap: 0; padding: 2px; }
+    .lang-btn { font-size: 0.6875rem; letter-spacing: 0.04em; padding: 0.28rem 0.45rem; }
+  }
 
   /* ---------- Sobre nós ---------- */
   .stat-card {
