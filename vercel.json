@@ -1,6 +1,10 @@
 {
   "redirects": [
     {"source": "/contacto{/}?", "destination": "/#contacto", "statusCode": 301},
+    {"source": "/contato{/}?", "destination": "/#contacto", "statusCode": 301},
+    {"source": "/contactos{/}?", "destination": "/#contacto", "statusCode": 301},
+    {"source": "/sobre{/}?", "destination": "/#sobre", "statusCode": 301},
+    {"source": "/lojas{/}?", "destination": "/#lojas", "statusCode": 301},
     {"source": "/servicos{/}?", "destination": "/#servicos", "statusCode": 301},
     {"source": "/a-empresa{/}?", "destination": "/#sobre", "statusCode": 301},
     {"source": "/blog/(.*)", "destination": "/", "statusCode": 301},
