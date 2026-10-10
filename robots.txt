@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://helpbattery.pt/sitemap.xml
+Sitemap: https://www.helpbattery.pt/sitemap.xml

@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {"source": "/contacto{/}?", "destination": "/#contacto", "statusCode": 301},
+    {"source": "/servicos{/}?", "destination": "/#servicos", "statusCode": 301},
+    {"source": "/a-empresa{/}?", "destination": "/#sobre", "statusCode": 301},
+    {"source": "/blog/(.*)", "destination": "/", "statusCode": 301},
+    {"source": "/blog{/}?", "destination": "/", "statusCode": 301},
+    {"source": "/category/(.*)", "destination": "/", "statusCode": 301},
+    {"source": "/author/(.*)", "destination": "/", "statusCode": 301},
+    {"source": "/:year(\\d{4})/(.*)", "destination": "/", "statusCode": 301},
+    {"source": "/guia-completo-de-manutencao-preditiva{/}?", "destination": "/", "statusCode": 301},
+    {"source": "/tendencias-de-iot-em-2024{/}?", "destination": "/", "statusCode": 301},
+    {"source": "/caso-de-sucesso-implementacao-de-iot-na-industria{/}?", "destination": "/", "statusCode": 301}
+  ]
+}
