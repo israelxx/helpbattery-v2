@@ -1,6 +1,6 @@
 {
   "redirects": [
-    {"source": "/:path*", "has": [{"type": "host", "value": "helpbattery-v2.vercel.app"}], "destination": "https://www.helpbattery.pt/:path*", "permanent": true},
+    {"source": "/(.*)", "has": [{"type": "host", "value": "helpbattery-v2.vercel.app"}], "destination": "https://www.helpbattery.pt/$1", "permanent": true},
     {"source": "/contacto{/}?", "destination": "/#contacto", "statusCode": 301},
     {"source": "/contato{/}?", "destination": "/#contacto", "statusCode": 301},
     {"source": "/contactos{/}?", "destination": "/#contacto", "statusCode": 301},
