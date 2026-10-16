@@ -120,6 +120,35 @@
   });
 
   // ---------------------------------------------------------------
+  // Conversões do Google Ads
+  // Clique em telefone, WhatsApp ou e-mail, e candidatura de franquia
+  // enviada. O gtag envia por beacon, por isso o pedido sobrevive mesmo
+  // que o link troque de página.
+  // ---------------------------------------------------------------
+  const ADS_ID = 'AW-16753329011';
+  const CONVERSOES = {
+    whatsapp: 'W_VwCKmK0u4ZEPOGzrQ-',
+    telefone: '4abrCIXdw-4ZEPOGzrQ-',
+    email: '-MMVCK7G0u4ZEPOGzrQ-',
+    formulario: '3dafCJukhcwaEPOGzrQ-',
+  };
+  const converter = (tipo) => {
+    if (typeof window.gtag !== 'function') return;
+    window.gtag('event', 'conversion', { send_to: ADS_ID + '/' + CONVERSOES[tipo] });
+  };
+
+  // Delegado no documento para apanhar também os links que o JS injeta
+  // (por exemplo, o e-mail na mensagem de erro dos formulários).
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest && event.target.closest('a[href]');
+    if (!link) return;
+    const href = link.getAttribute('href');
+    if (href.startsWith('tel:')) converter('telefone');
+    else if (href.startsWith('mailto:')) converter('email');
+    else if (/(api\.whatsapp\.com|wa\.me)\//.test(href)) converter('whatsapp');
+  });
+
+  // ---------------------------------------------------------------
   // Formulários
   // Cada formulário aponta para o seu Apps Script. Sem endpoint, fica
   // em pré-visualização: valida os campos mas não envia.
@@ -219,6 +248,8 @@
 
         form.reset();
         status.innerHTML = msg('form.status.sucesso.' + tipo);
+        // Carreiras fica de fora: candidatos a emprego não são clientes.
+        if (tipo === 'franquia') converter('formulario');
       } catch (err) {
         console.error('[formulário ' + tipo + ']', err);
         status.innerHTML = msg('form.status.erro');
