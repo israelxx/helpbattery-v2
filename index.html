@@ -96,16 +96,43 @@
   ]
 }
 </script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2GEW7E6K4"></script>
+<!-- Google tag (gtag.js) com Consent Mode v2 -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
+  // RGPD: tudo recusado até o visitante escolher no banner (consent.js).
+  // Recusado, o Google só recebe sinais anónimos, sem cookies.
+  gtag('consent', 'default', {
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    analytics_storage: 'denied'
+  });
+  gtag('set', 'ads_data_redaction', true);
+
+  // A escolha guardada é reposta já aqui, antes do config, para que a
+  // primeira medição de cada página a respeite. Vale 180 dias.
+  window.hbConsent = null;
+  try {
+    var guardado = JSON.parse(localStorage.getItem('hb-consent'));
+    if (guardado && guardado.v === 1 && Date.now() - guardado.ts < 180 * 864e5) {
+      window.hbConsent = guardado;
+      var ads = guardado.ads ? 'granted' : 'denied';
+      gtag('consent', 'update', {
+        ad_storage: ads,
+        ad_user_data: ads,
+        ad_personalization: ads,
+        analytics_storage: guardado.analytics ? 'granted' : 'denied'
+      });
+    }
+  } catch (e) { /* navegação privada: fica tudo recusado */ }
+
+  gtag('js', new Date());
   gtag('config', 'G-Y2GEW7E6K4');
   gtag('config', 'AW-16753329011');
 </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2GEW7E6K4"></script>
 </head>
 <body class="antialiased">
 
@@ -839,7 +866,7 @@
 </section>
 
 <!-- ============ FOOTER ============ -->
-<footer class="relative bg-navy-950 text-cream-50 pt-20 pb-10 px-5 sm:px-8 overflow-hidden">
+<footer class="relative bg-navy-950 text-cream-50 pt-20 pb-28 sm:pb-10 px-5 sm:px-8 overflow-hidden">
   <div class="grain" style="filter:url(#noiseFilter)"></div>
   <div class="relative mx-auto max-w-7xl grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 pb-14">
     <div class="lg:col-span-1">
@@ -887,6 +914,7 @@
   </div>
   <div class="relative mx-auto max-w-7xl pt-8 border-t border-white/10 flex flex-col sm:flex-row gap-3 justify-between items-center text-xs text-cream-50/40">
     <p data-i18n="footer.copyright">&copy; 2026 Help Battery. Todos os direitos reservados.</p>
+    <button type="button" class="footer-link focus-ring-dark rounded sm:mr-20" data-consent-open data-i18n="cookies.link">Preferências de cookies</button>
   </div>
 </footer>
 
@@ -908,6 +936,7 @@
   </a>
 </div>
 
+<script src="/assets/consent.js"></script>
 <script src="/assets/i18n.js"></script>
 <script src="/assets/app.js"></script>
 </body>

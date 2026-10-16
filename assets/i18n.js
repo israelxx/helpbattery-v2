@@ -221,6 +221,12 @@ window.HB_I18N = {
     'meta.franquia.desc': 'Abra a sua unidade Help Battery. Dois modelos: Master Franqueado, com região exclusiva, e Micro Franqueado, com unidade móvel e investimento reduzido. Treinamento, manuais e apoio de marketing incluídos.',
     'meta.carreiras.title': 'Carreiras Help Battery: Trabalhe Conosco em Braga, Porto, Coimbra e Lisboa',
     'meta.carreiras.desc': 'Candidaturas espontâneas e oportunidades na Help Battery: técnico de assistência, atendimento ao cliente, comercial, logística e administrativo. Envie o seu currículo em dois minutos.',
+
+    'cookies.texto': 'Usamos cookies do Google para contar as visitas e entender quais anúncios nos trazem clientes. Eles só ficam ativos se você aceitar. Você pode mudar de ideia quando quiser em “Preferências de cookies”, no rodapé.',
+    'cookies.essenciais.desc': 'Guardam o idioma que você escolheu e esta preferência.',
+    'cookies.estatistica.desc': 'Google Analytics. Mostra quantas pessoas visitam o site e quais páginas leem.',
+    'cookies.publicidade.desc': 'Google Ads. Mostra quais anúncios levam a contatos e torna os anúncios mais úteis para você.',
+    'cookies.guardar': 'Salvar escolhas',
   },
 
   /* ---------------------------------------------------------
@@ -599,5 +605,20 @@ window.HB_I18N = {
     'meta.franquia.desc': 'Abre tu centro Help Battery. Dos modelos: Master Franquiciado, con región en exclusiva, y Micro Franquiciado, con unidad móvil e inversión reducida. Formación, manuales y apoyo de marketing incluidos.',
     'meta.carreiras.title': 'Empleo en Help Battery: Trabaja con Nosotros en Braga, Oporto, Coímbra y Lisboa',
     'meta.carreiras.desc': 'Candidaturas espontáneas y oportunidades en Help Battery: técnico de asistencia, atención al cliente, comercial, logística y administración. Envía tu currículum en dos minutos.',
+
+    'cookies.titulo': 'Cookies en esta web',
+    'cookies.texto': 'Usamos cookies de Google para contar las visitas y saber qué anuncios nos traen clientes. Solo se activan si aceptas. Puedes cambiar de opinión cuando quieras en «Preferencias de cookies», al pie de la página.',
+    'cookies.essenciais': 'Esenciales',
+    'cookies.essenciais.desc': 'Guardan el idioma que elegiste y esta preferencia.',
+    'cookies.sempre': 'Siempre activas',
+    'cookies.estatistica': 'Estadística',
+    'cookies.estatistica.desc': 'Google Analytics. Nos muestra cuántas personas visitan la web y qué páginas leen.',
+    'cookies.publicidade': 'Publicidad',
+    'cookies.publicidade.desc': 'Google Ads. Nos muestra qué anuncios llevan a contactos y hace que los anuncios te resulten más útiles.',
+    'cookies.recusar': 'Rechazar',
+    'cookies.aceitar': 'Aceptar',
+    'cookies.personalizar': 'Personalizar',
+    'cookies.guardar': 'Guardar preferencias',
+    'cookies.link': 'Preferencias de cookies',
   },
 };
