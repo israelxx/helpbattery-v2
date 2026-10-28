@@ -26,7 +26,7 @@
   // tempo, e quem é o responsável: a informação que a lei manda dar antes
   // do consentimento.
   banner.innerHTML = `
-    <span class="hb-consent-marca" aria-hidden="true"><img src="/new-logo/logo-icon.webp" alt="" width="641" height="641" decoding="async" /></span>
+    <span class="hb-consent-marca" aria-hidden="true"><img src="/assets/consent-icone.webp" alt="" width="128" height="128" decoding="async" /></span>
     <div class="hb-consent-copy">
       <h2 id="hb-consent-titulo" class="hb-consent-titulo" data-i18n="cookies.titulo">Escolhe como usamos cookies</h2>
       <p id="hb-consent-texto" class="hb-consent-texto" data-i18n="cookies.texto">A Help Battery usa cookies do Google para contar visitas e perceber que anúncios nos trazem clientes. Só ficam ativos se aceitares, e podes mudar de ideias quando quiseres em «Preferências de cookies», no rodapé.</p>
@@ -95,20 +95,25 @@
     caixaAnalytics.checked = !!(atual && atual.analytics);
     caixaAds.checked = !!(atual && atual.ads);
     mostrarPainel(comPainel);
+    banner.classList.remove('is-fechando');
     banner.hidden = false;
-    // Um frame depois, para a transição partir do estado escondido.
+    // Entra já opaco e só desliza: o texto do banner é o maior elemento no
+    // telemóvel (o LCP), e um esmaecimento atrasava a medição do Google.
+    // Um frame depois, para o deslize partir da posição de baixo.
     requestAnimationFrame(() => requestAnimationFrame(() => banner.classList.add('is-visible')));
   };
 
   const fechar = () => {
     banner.classList.remove('is-visible');
-    const esconder = () => { banner.hidden = true; };
+    banner.classList.add('is-fechando');
+    const esconder = () => { banner.hidden = true; banner.classList.remove('is-fechando'); };
     // Só a transição de opacidade do próprio banner conta: a linha de carga
-    // (::before) e os botões também disparam transitionend.
+    // (::before) e os botões também disparam transitionend. Se o banner foi
+    // reaberto entretanto (rodapé), já não está a fechar e fica visível.
     const aoTerminar = (e) => {
       if (e.target !== banner || e.pseudoElement || e.propertyName !== 'opacity') return;
       banner.removeEventListener('transitionend', aoTerminar);
-      esconder();
+      if (banner.classList.contains('is-fechando')) esconder();
     };
     if (semMovimento.matches) esconder();
     else banner.addEventListener('transitionend', aoTerminar);

@@ -66,6 +66,18 @@
   .reveal-scale { opacity: 0; transform: scale(0.94); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
   .reveal-scale.is-visible { opacity: 1; transform: scale(1); }
 
+  /* O topo (#top) entra com uma animação CSS ao carregar, sem esperar pelo
+     app.js. O título do topo é o maior elemento no telemóvel (o LCP do
+     Google): invisível à espera do JS, era contado ~2 s mais tarde. O
+     escalonamento vem do animation-delay inline de cada elemento. */
+  #top .reveal { animation: hb-revela 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  #top .reveal-scale { animation: hb-revela-escala 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  @keyframes hb-revela { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
+  @keyframes hb-revela-escala { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    #top .reveal, #top .reveal-scale { animation: none; opacity: 1; transform: none; }
+  }
+
   @keyframes pulse-ring {
     0% { transform: scale(0.9); opacity: 0.6; }
     80%, 100% { transform: scale(1.6); opacity: 0; }
@@ -736,10 +748,13 @@
       0 -12px 32px -8px rgba(14, 23, 40, 0.35),
       0 -32px 72px -24px rgba(14, 23, 40, 0.5);
     max-height: calc(100dvh - 1rem); overflow-y: auto; overscroll-behavior: contain;
-    opacity: 0; transform: translateY(1.5rem);
+    /* Entra opaco e só desliza (o texto é o LCP no telemóvel); o
+       esmaecimento fica para a saída, com .is-fechando. */
+    transform: translateY(1.5rem);
     transition: opacity 0.3s ease, transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
-  .hb-consent.is-visible { opacity: 1; transform: none; }
+  .hb-consent.is-visible { transform: none; }
+  .hb-consent.is-fechando { opacity: 0; transform: translateY(1.5rem); }
   .hb-consent[hidden] { display: none; }
   .hb-consent.is-detalhe { grid-template-areas: "marca titulo" "texto texto" "painel painel" "acoes acoes"; }
 
