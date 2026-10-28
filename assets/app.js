@@ -438,6 +438,19 @@
   });
   document.documentElement.classList.add('reveal-ativo');
 
+  // Com um formulário (ou a confirmação dele) no ecrã, o <html> ganha
+  // .com-formulario e o CSS tira do caminho a barra fixa e o WhatsApp do
+  // telemóvel, que tapavam os botões e os campos.
+  const zonasDeFormulario = document.querySelectorAll('form.hb-form, [data-sucesso]');
+  if (zonasDeFormulario.length) {
+    const emVista = new Set();
+    const vigiaFormulario = new IntersectionObserver((entradas) => {
+      entradas.forEach((e) => (e.isIntersecting ? emVista.add(e.target) : emVista.delete(e.target)));
+      document.documentElement.classList.toggle('com-formulario', emVista.size > 0);
+    });
+    zonasDeFormulario.forEach((zona) => vigiaFormulario.observe(zona));
+  }
+
   // ---------------------------------------------------------------
   // Compatibilidade com os links antigos
   // Antes da divisão em páginas, "franquia" e "carreiras" eram âncoras
@@ -511,6 +524,18 @@
     grelha.classList.add('is-visible');
     document.body.classList.add('carousel-ativo');
 
+    // O lazy loading continua, mas para o carrossel inteiro: o Safari só
+    // descarrega uma imagem lazy quando a considera no ecrã, e os cartões
+    // virados para trás do cilindro nunca contam, por isso apareciam em
+    // branco ao rodar para a frente. Quando o carrossel se aproxima do
+    // ecrã, os logótipos passam a eager e descarregam todos juntos.
+    const aproximacao = new IntersectionObserver((entradas) => {
+      if (!entradas.some((e) => e.isIntersecting)) return;
+      faces.forEach((face) => { face.querySelector('img').loading = 'eager'; });
+      aproximacao.disconnect();
+    }, { rootMargin: '800px 0px' });
+    aproximacao.observe(carrossel);
+
     // --- geometria do cilindro ---------------------------------------------
     let raio = 0;
     const medir = () => {
@@ -518,13 +543,14 @@
       const larguraFace = larguraCilindro / total;
       raio = larguraCilindro / (2 * Math.PI);
       anel.style.width = larguraCilindro + 'px';
-      faces.forEach((face, i) => {
+      faces.forEach((face) => {
         face.style.width = larguraFace + 'px';
         face.style.marginLeft = -(larguraFace / 2) + 'px';
         face.style.marginTop = -(larguraFace / 2) + 'px';
-        face.style.transform =
-          'rotateY(' + (i * (360 / total)) + 'deg) translateZ(' + raio + 'px)';
       });
+      // O raio mudou: as faces são reposicionadas já (desenhar() existe
+      // quando medir() corre, na arrancada e nos resize).
+      desenhar();
     };
 
     // --- movimento ----------------------------------------------------------
@@ -538,8 +564,26 @@
     const ATRITO = 0.94;        // decaimento da inércia
     const SENSIBILIDADE = 0.18; // px de arrasto -> graus
 
+    // Cada face é posicionada aqui, a cada frame, em vez de rodar o anel
+    // inteiro: o Safari não ordenava bem a profundidade do cilindro 3D
+    // (verso por cima da frente, logótipos espelhados, e com o anel de lado
+    // o carrossel desaparecia). A face mais próxima pinta por cima (z-index)
+    // e as viradas para trás ficam escondidas. Igual em qualquer browser.
+    const deFrente = faces.map(() => true);
     const desenhar = () => {
-      anel.style.transform = 'rotate3d(0, 1, 0, ' + rotacao + 'deg)';
+      faces.forEach((face, i) => {
+        const angulo = (i * 360) / total + rotacao;
+        const proximidade = Math.cos((angulo * Math.PI) / 180);   // 1 = de frente, -1 = de costas
+        face.style.transform = 'rotateY(' + angulo + 'deg) translateZ(' + raio + 'px)';
+        face.style.zIndex = String(1000 + Math.round(proximidade * 1000));
+        // > 0.01 e não > 0: de lado (±90°) o cosseno dá 6e-17 por
+        // arredondamento, e o Safari pintava essa face, espelhada.
+        const frente = proximidade > 0.01;
+        if (frente !== deFrente[i]) {
+          deFrente[i] = frente;
+          face.style.visibility = frente ? '' : 'hidden';
+        }
+      });
     };
 
     const passo = () => {

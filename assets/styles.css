@@ -141,6 +141,17 @@
     .sticky-cta-bar { display: none !important; }
   }
 
+  /* Com um formulário no ecrã (telemóvel), a barra fixa e o WhatsApp saem
+     de cena: tapavam o botão Continuar e as opções de baixo (o toque caía
+     na barra e levava ao topo do formulário), e no iPhone sobem com o
+     teclado e tapam o campo. Um toque acidental no WhatsApp também fazia
+     perder o que já estava preenchido. A classe vem do app.js. */
+  .sticky-cta-bar { transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease; }
+  .com-formulario .sticky-cta-bar { transform: translateY(110%); opacity: 0; pointer-events: none; }
+  @media (max-width: 639px) {
+    .com-formulario .whats-flutuante { transform: translateY(1rem) scale(0.9); opacity: 0; pointer-events: none; }
+  }
+
 /* ---------- Componentes ---------- */
   .nav-link { color: rgba(29,48,84,0.75); }
   .nav-link::after { content: ''; position: absolute; left: 0; bottom: -2px; width: 0; height: 2px; background: #1D3054; transition: width 0.35s cubic-bezier(0.16,1,0.3,1); }
@@ -669,17 +680,20 @@
 
   .brand-carousel-stage {
     display: flex; align-items: center; justify-content: center;
-    height: 100%; perspective: 1100px;
+    height: 100%;
   }
 
-  @media (min-width: 641px) { .brand-carousel-stage { perspective: 1600px; } }
-
+  /* O anel não roda nem é um contexto 3D (preserve-3d): o Safari ordenava
+     mal a profundidade desse cilindro, desenhava o verso por cima da frente
+     e, com o anel de lado, apagava-o todo. Cada face é posicionada pelo JS
+     com esta perspetiva, e a ordem de pintura vem do z-index. O anel está
+     centrado no palco, por isso a origem da perspetiva é a mesma de antes. */
   .brand-carousel-ring {
     position: relative; height: 100%;
-    transform-style: preserve-3d;
+    perspective: 1100px;
     cursor: grab; touch-action: pan-y;
-    will-change: transform;
   }
+  @media (min-width: 641px) { .brand-carousel-ring { perspective: 1600px; } }
   .brand-carousel-ring:active { cursor: grabbing; }
   .brand-carousel-ring:focus-visible { outline: none; }
   .brand-carousel:has(.brand-carousel-ring:focus-visible) {
@@ -691,8 +705,16 @@
     position: absolute; top: 50%; left: 50%;
     display: grid; place-items: center;
     padding: 0.4rem;
+    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
     /* margin-top/left são definidos pelo JS: dependem da largura da face */
+  }
+  /* O Safari compõe o cartão (sombra, cantos) e o logótipo em camadas à
+     parte, que não herdam o backface-visibility da face: o verso do
+     cilindro aparecia por cima da frente, com o logótipo espelhado. */
+  .brand-face-card, .brand-face-card img {
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 
   .brand-face-card {

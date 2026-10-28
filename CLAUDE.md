@@ -29,6 +29,7 @@
 - Arquivo único `index.html`, todos os estilos inline, a menos que o usuário indique o contrário
 - Tailwind CSS compilado (3.4.17), não via CDN: config em `tailwind.config.cjs`, saída em `assets/tailwind.css` (linkado depois do `styles.css`). Sempre que acrescentar classes Tailwind ao HTML ou ao JS, rode `npm run css` e faça commit do `assets/tailwind.css` gerado. O CDN gerava o CSS no navegador a cada visita e atrasava a página no celular.
 - Fontes alojadas no site (`assets/fonts/`, `@font-face` em `assets/tailwind-input.css`), não via Google Fonts.
+- Depois de mudar qualquer `assets/*.css` ou `assets/*.js`, rode `npm run versao` (o `npm run css` já o faz) e faça commit dos HTML: põe `?v=<assinatura>` nas referências. O Cloudflare obriga o navegador a guardar CSS/JS por 4 h; sem a versão nova no URL, quem já visitou o site fica com o HTML novo e o CSS/JS antigos.
 - Imagens placeholder: `https://placehold.co/LARGURAxALTURA`
 - Responsivo com abordagem mobile-first
 
