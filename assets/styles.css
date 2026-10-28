@@ -12,7 +12,8 @@
   /* Archivo Black tem um único peso (400) — nunca aplicar font-weight utilitário
      sobre ele, sob pena de o browser sintetizar um bold falso. */
   h1, h2, .font-display { font-family: 'Archivo Black', sans-serif; font-weight: 400; }
-  /* O preflight do Tailwind (CDN) é injetado depois deste bloco e repõe
+  /* O preflight do Tailwind (assets/tailwind.css, carregado depois deste
+     ficheiro, na posição em que o CDN injetava o CSS dele) repõe
      `font-weight: inherit` nos títulos — por isso cada h3 leva a classe
      `font-bold` ou `font-display` explícita no markup. */
   h3 { font-family: 'Montserrat', sans-serif; }

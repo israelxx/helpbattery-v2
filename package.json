@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "scripts": {
+    "css": "npx --yes tailwindcss@3.4.17 -c tailwind.config.cjs -i assets/tailwind-input.css -o assets/tailwind.css --minify"
+  },
   "dependencies": {
     "puppeteer": "^25.3.0"
   }

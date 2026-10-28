@@ -23,12 +23,14 @@
 <meta name="twitter:title" content="Franquia Help Battery: Master Franqueado e Microfranquia" />
 <meta name="twitter:description" content="Abre a tua unidade Help Battery, a rede que tem Carlos Wizard como sócio. Formação, manuais e apoio de marketing incluídos." />
 <meta name="twitter:image" content="https://www.helpbattery.pt/assets/og-image.jpg" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,500&display=swap" rel="stylesheet" />
-<script src="https://cdn.tailwindcss.com"></script>
-<script src="/assets/tailwind-config.js"></script>
+<!-- Fontes e Tailwind servidos pelo próprio site (ver tailwind.config.cjs).
+     As duas fontes do primeiro ecrã vão em preload, para não esperarem
+     pelo CSS. O tailwind.css vem depois do styles.css, na mesma posição
+     da cascata em que o CDN injetava o CSS dele. -->
+<link rel="preload" href="/assets/fonts/archivo-black-latin.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="stylesheet" href="/assets/styles.css" />
+<link rel="stylesheet" href="/assets/tailwind.css" />
 <!-- Google tag (gtag.js) com Consent Mode v2 -->
 <script>
   window.dataLayer = window.dataLayer || [];

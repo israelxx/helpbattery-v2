@@ -27,7 +27,8 @@
 
 ## Padrões de Saída
 - Arquivo único `index.html`, todos os estilos inline, a menos que o usuário indique o contrário
-- Tailwind CSS via CDN: `<script src="https://cdn.tailwindcss.com"></script>`
+- Tailwind CSS compilado (3.4.17), não via CDN: config em `tailwind.config.cjs`, saída em `assets/tailwind.css` (linkado depois do `styles.css`). Sempre que acrescentar classes Tailwind ao HTML ou ao JS, rode `npm run css` e faça commit do `assets/tailwind.css` gerado. O CDN gerava o CSS no navegador a cada visita e atrasava a página no celular.
+- Fontes alojadas no site (`assets/fonts/`, `@font-face` em `assets/tailwind-input.css`), não via Google Fonts.
 - Imagens placeholder: `https://placehold.co/LARGURAxALTURA`
 - Responsivo com abordagem mobile-first
 

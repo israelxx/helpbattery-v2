@@ -1,4 +1,7 @@
 {
+  "headers": [
+    {"source": "/assets/fonts/(.*)", "headers": [{"key": "Cache-Control", "value": "public, max-age=31536000, immutable"}]}
+  ],
   "redirects": [
     {"source": "/(.*)", "has": [{"type": "host", "value": "helpbattery-v2.vercel.app"}], "destination": "https://www.helpbattery.pt/$1", "permanent": true},
     {"source": "/contacto{/}?", "destination": "/#contacto", "statusCode": 301},
