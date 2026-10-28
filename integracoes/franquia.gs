@@ -91,7 +91,7 @@ function doPost(e) {
     // Tudo o que não é timestamp nem modelo é texto livre vindo do site.
     const valores = { timestamp: new Date(), modelo: modelo };
     COLUNAS.forEach(function (c) {
-      if (!(c in valores)) valores[c] = texto(dados[c]);
+      if (!(c in valores)) valores[c] = paraCelula(texto(dados[c]), c === 'telefone');
     });
 
     const aba = SpreadsheetApp.openById(ID_PLANILHA).getSheetByName(NOME_ABA);
@@ -114,6 +114,17 @@ function doPost(e) {
 
 function texto(v) {
   return v == null ? '' : String(v).trim();
+}
+
+/**
+ * appendRow lê cada valor como se fosse escrito na célula: "+351 912…" vira
+ * fórmula (#ERROR!) e "00351…" perde os zeros. O apóstrofo à frente obriga
+ * a texto e não aparece na célula. O site já o envia; isto protege também
+ * pedidos feitos diretamente a este URL (e trava fórmulas injetadas).
+ */
+function paraCelula(v, sempre) {
+  if (v === '' || v.charAt(0) === "'") return v;
+  return (sempre || /^[=+\-@]/.test(v)) ? "'" + v : v;
 }
 
 /**

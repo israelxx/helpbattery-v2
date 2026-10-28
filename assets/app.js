@@ -227,6 +227,21 @@
       .join('\n');
   };
 
+  /**
+   * Os Apps Script gravam com appendRow, que lê cada valor como se alguém o
+   * escrevesse na célula: "+351 912…" vira fórmula (#ERROR!) e "00351…"
+   * perde os zeros. Um apóstrofo à frente obriga o Sheets a guardar texto e
+   * não aparece na célula. No telefone vai sempre; nos outros campos só
+   * quando começam por = + - @, o que também trava fórmulas injetadas.
+   */
+  const paraPlanilha = (dados) => {
+    Object.keys(dados).forEach((chave) => {
+      const valor = dados[chave];
+      if (typeof valor !== 'string' || valor === '' || valor.startsWith("'")) return;
+      if (chave === 'telefone' || /^[=+\-@]/.test(valor)) dados[chave] = "'" + valor;
+    });
+  };
+
   document.querySelectorAll('form.hb-form').forEach((form) => {
     const tipo = form.dataset.form;
     const endpoint = ENDPOINTS[tipo];
@@ -358,6 +373,7 @@
           dados[chave] = dados[chave] ? dados[chave] + '; ' + valor : valor;
         }
         if (tipo === 'franquia') prepararFranquia(dados);
+        paraPlanilha(dados);
         dados.idioma = langAtual;
         dados.origem = window.location.href;
         if (ficheiro) dados.curriculo = await lerFicheiro(ficheiro);
