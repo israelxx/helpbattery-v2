@@ -418,6 +418,11 @@
   });
 
   // Scroll reveal
+  // O CSS só esconde estes elementos depois de .reveal-ativo entrar no
+  // <html>. Até aqui estavam visíveis: numa rede de telemóvel lenta, as
+  // secções ficavam em branco à espera deste script, que é o último da
+  // página. O que já está no ecrã (ou acima) fica visível de vez; só o que
+  // está abaixo passa a esperar pelo scroll para entrar.
   const revealEls = document.querySelectorAll('.reveal, .reveal-scale');
   const io = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
@@ -427,7 +432,11 @@
       }
     });
   }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-  revealEls.forEach((el) => io.observe(el));
+  revealEls.forEach((el) => {
+    if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('is-visible');
+    else io.observe(el);
+  });
+  document.documentElement.classList.add('reveal-ativo');
 
   // ---------------------------------------------------------------
   // Compatibilidade com os links antigos

@@ -61,11 +61,19 @@
   .clip-bolt-down { clip-path: polygon(0 0, 100% 0, 100% 92%, 58% 100%, 0 88%); }
   .clip-bolt-up { clip-path: polygon(0 12%, 42% 0, 100% 8%, 100% 100%, 0 100%); }
 
-  /* Reveal on scroll */
-  .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
-  .reveal.is-visible { opacity: 1; transform: translateY(0); }
-  .reveal-scale { opacity: 0; transform: scale(0.94); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
-  .reveal-scale.is-visible { opacity: 1; transform: scale(1); }
+  /* Reveal on scroll. Só esconde à espera do scroll depois de o app.js
+     ligar .reveal-ativo no <html>: antes disso (rede lenta) ou sem JS, o
+     conteúdo está visível. O app.js marca logo como visível o que já está
+     no ecrã, por isso nada pisca. */
+  /* A transição só existe no estado visível: esconder (fora do ecrã, quando
+     o app.js liga a animação) é instantâneo; entrar é animado.
+     O transform nulo do estado visível é de propósito: era o que estes
+     elementos sempre tiveram, e muda a forma como o browser compõe os
+     fundos em degradê. Sem ele, os cartões ficavam diferentes no píxel. */
+  .reveal { transform: translateY(0); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal-ativo .reveal:not(.is-visible) { opacity: 0; transform: translateY(28px); transition: none; }
+  .reveal-scale { transform: scale(1); transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+  .reveal-ativo .reveal-scale:not(.is-visible) { opacity: 0; transform: scale(0.94); transition: none; }
 
   /* O topo (#top) entra com uma animação CSS ao carregar, sem esperar pelo
      app.js. O título do topo é o maior elemento no telemóvel (o LCP do
@@ -73,8 +81,8 @@
      escalonamento vem do animation-delay inline de cada elemento. */
   #top .reveal { animation: hb-revela 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
   #top .reveal-scale { animation: hb-revela-escala 0.7s cubic-bezier(0.16, 1, 0.3, 1) both; }
-  @keyframes hb-revela { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: none; } }
-  @keyframes hb-revela-escala { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: none; } }
+  @keyframes hb-revela { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes hb-revela-escala { from { opacity: 0; transform: scale(0.94); } to { opacity: 1; transform: scale(1); } }
   @media (prefers-reduced-motion: reduce) {
     #top .reveal, #top .reveal-scale { animation: none; opacity: 1; transform: none; }
   }
