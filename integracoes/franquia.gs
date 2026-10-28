@@ -20,6 +20,14 @@
  * IMPORTANTE: sempre que editares este código, tens de fazer
  * "Implementar > Gerir implementações > editar > Nova versão".
  * Sem isso, o URL continua a servir a versão antiga.
+ *
+ * VERSÃO 2 — pré-registo de investidor (formulário em quatro passos)
+ * As respostas novas (país, disponibilidade, experiência, ...) ganham
+ * colunas próprias, acrescentadas DEPOIS das antigas: as linhas que já
+ * estão na planilha não se desalinham. O cabeçalho dessas colunas é
+ * escrito sozinho no primeiro envio. A coluna "mensagem" passa a guardar
+ * um resumo legível de todas as respostas (é o que a v1 gravava).
+ * Ao atualizar, mantém o ID_PLANILHA que já lá estava.
  */
 
 // ---------------------------------------------------------------
@@ -32,10 +40,15 @@ const ID_PLANILHA = 'COLA_AQUI_O_ID_DA_PLANILHA';
 /** Nome da aba. Tem de ser igual ao nome do separador na planilha. */
 const NOME_ABA = 'candidaturas';
 
-/** Ordem das colunas. Tem de ser igual à linha 1 da planilha. */
+/**
+ * Ordem das colunas. As nove primeiras são as da v1; as restantes vêm do
+ * pré-registo de investidor e o cabeçalho delas é criado automaticamente.
+ */
 const COLUNAS = [
   'timestamp', 'nome', 'email', 'telefone', 'regiao',
   'modelo', 'mensagem', 'idioma', 'origem',
+  'pais', 'rede_social', 'disponibilidade', 'participacao',
+  'experiencia', 'prazo', 'canal', 'receber', 'horario',
 ];
 
 /**
@@ -55,7 +68,7 @@ const MODELOS = ['master', 'micro', 'indeciso'];
  * está mal publicada e não vale a pena testar o formulário.
  */
 function doGet() {
-  return responder({ ok: true, servico: 'franquia', versao: 1 });
+  return responder({ ok: true, servico: 'franquia', versao: 2 });
 }
 
 function doPost(e) {
@@ -75,22 +88,17 @@ function doPost(e) {
       return responder({ ok: false, erro: 'Modelo inválido: ' + modelo });
     }
 
-    const valores = {
-      timestamp: new Date(),
-      nome: texto(dados.nome),
-      email: texto(dados.email),
-      telefone: texto(dados.telefone),
-      regiao: texto(dados.regiao),
-      modelo: modelo,
-      mensagem: texto(dados.mensagem),
-      idioma: texto(dados.idioma),
-      origem: texto(dados.origem),
-    };
+    // Tudo o que não é timestamp nem modelo é texto livre vindo do site.
+    const valores = { timestamp: new Date(), modelo: modelo };
+    COLUNAS.forEach(function (c) {
+      if (!(c in valores)) valores[c] = texto(dados[c]);
+    });
 
     const aba = SpreadsheetApp.openById(ID_PLANILHA).getSheetByName(NOME_ABA);
     if (!aba) {
       return responder({ ok: false, erro: 'Aba "' + NOME_ABA + '" não encontrada' });
     }
+    garantirCabecalho(aba);
     aba.appendRow(COLUNAS.map(function (c) { return valores[c]; }));
 
     return responder({ ok: true });
@@ -106,6 +114,18 @@ function doPost(e) {
 
 function texto(v) {
   return v == null ? '' : String(v).trim();
+}
+
+/**
+ * Escreve na linha 1 os nomes das colunas que ainda lá não estão.
+ * Só preenche à direita da última coluna existente: nunca reescreve um
+ * cabeçalho que alguém tenha mudado à mão na planilha.
+ */
+function garantirCabecalho(aba) {
+  const existentes = aba.getLastColumn();
+  if (existentes >= COLUNAS.length) return;
+  const novas = COLUNAS.slice(existentes);
+  aba.getRange(1, existentes + 1, 1, novas.length).setValues([novas]);
 }
 
 function responder(obj) {

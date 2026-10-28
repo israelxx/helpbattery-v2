@@ -77,6 +77,10 @@
 
     // Sem isto, passar da home para /franquia/ repunha o português.
     try { localStorage.setItem(GUARDA, lang); } catch (e) { /* navegação privada */ }
+
+    // Textos montados pelo JS (ex.: "Passo 2 de 4") não têm data-i18n;
+    // quem os escreve ouve este evento para os refazer no idioma novo.
+    document.dispatchEvent(new CustomEvent('hb:idioma'));
   };
 
   document.querySelectorAll('.lang-btn').forEach((btn) => {
@@ -109,11 +113,15 @@
   document.querySelectorAll('[data-open-form]').forEach((btn) => {
     btn.addEventListener('click', () => {
       const model = btn.dataset.openForm;
+      const form = franchiseWrap.querySelector('form');
       franchiseWrap.classList.remove('hidden');
       franchiseWrap.classList.add('is-visible');
-      document.getElementById('franchise-model').value = model;
+      const opcao = form.querySelector('input[name="modelo"][value="' + model + '"]');
+      if (opcao) opcao.checked = true;
       document.getElementById('franchise-form-title').textContent =
         msg('franquia.form.h3.' + (model === 'master' ? 'master' : 'micro'));
+      // O formulário é por passos: o nome está no primeiro.
+      form.dispatchEvent(new CustomEvent('hb:passo', { detail: 0 }));
       franchiseWrap.scrollIntoView({ behavior: 'smooth', block: 'center' });
       setTimeout(() => document.getElementById('fr-nome').focus(), 500);
     });
@@ -171,6 +179,7 @@
     'form.status.sucesso.franquia': 'Candidatura recebida. A equipa de expansão entra em contacto para marcar a reunião.',
     'franquia.form.h3.master': 'Candidatura: Master Franqueado',
     'franquia.form.h3.micro': 'Candidatura: Micro Franqueado',
+    'form.passo': 'Passo {n} de {t}',
     'form.status.previsualizacao':
       'Formulário em pré-visualização, o envio ainda não está ligado. ' +
       'Para falar connosco já, <a href="tel:+351253284398">liga 253 284 398</a> ou usa o WhatsApp.',
@@ -191,25 +200,135 @@
     leitor.readAsDataURL(ficheiro);
   });
 
+  /**
+   * Pré-registo de investidor (franquia): acerta as respostas antes do envio.
+   * O Apps Script publicado (v1) exige "regiao" e só grava as colunas que já
+   * conhecia. Até a v2 (integracoes/franquia.gs) estar implementada, as
+   * respostas novas seguem também num resumo legível no campo "mensagem",
+   * para nenhuma se perder.
+   */
+  const RESUMO_FRANQUIA = [
+    ['pais', 'País'], ['rede_social', 'Rede social'],
+    ['disponibilidade', 'Disponibilidade'], ['participacao', 'Participação'],
+    ['experiencia', 'Experiência'], ['prazo', 'Início'], ['regiao', 'Região'],
+    ['canal', 'Como conheceu'], ['receber', 'Quer receber'], ['horario', 'Melhor horário'],
+  ];
+  const prepararFranquia = (dados) => {
+    // Um campo escondido pode ter ficado com texto de uma escolha anterior.
+    if (dados.regiao_definida !== 'Sim' || !dados.regiao) dados.regiao = 'Sem região definida';
+    delete dados.regiao_definida;
+    if (dados.canal === 'Outro' && dados.canal_outro) dados.canal = 'Outro: ' + dados.canal_outro;
+    delete dados.canal_outro;
+    dados.horario = [dados.horario, dados.horario_pref].filter(Boolean).join(', ');
+    delete dados.horario_pref;
+    dados.mensagem = RESUMO_FRANQUIA
+      .filter(([chave]) => dados[chave])
+      .map(([chave, rotulo]) => rotulo + ': ' + dados[chave])
+      .join('\n');
+  };
+
   document.querySelectorAll('form.hb-form').forEach((form) => {
     const tipo = form.dataset.form;
     const endpoint = ENDPOINTS[tipo];
     const status = form.querySelector('.form-status');
-    const botao = form.querySelector('.form-submit');
+    const botao = form.querySelector('[type="submit"]');
+    const sucesso = form.parentElement.querySelector('[data-sucesso]');
 
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-
+    /** Assinala os obrigatórios em falta dentro de `escopo`. */
+    const validar = (escopo) => {
       let valido = true;
-      form.querySelectorAll('[required]').forEach((input) => {
+      escopo.querySelectorAll('[required]').forEach((input) => {
         const campo = input.closest('.field');
         const ok = input.checkValidity() && input.value.trim() !== '';
         campo.classList.toggle('has-error', !ok);
         if (!ok) valido = false;
       });
-      if (!valido) {
-        status.innerHTML = msg('form.status.invalido');
-        form.querySelector('.has-error input, .has-error select, .has-error textarea')?.focus();
+      return valido;
+    };
+    const avisarErro = (escopo) => {
+      status.innerHTML = msg('form.status.invalido');
+      escopo.querySelector('.has-error input, .has-error select, .has-error textarea')?.focus();
+    };
+
+    // Campos que só aparecem com uma resposta concreta (data-se="nome=valor").
+    // Escondidos deixam de ser obrigatórios, senão bloqueavam o envio.
+    const condicionais = [...form.querySelectorAll('[data-se]')];
+    const atualizarCondicionais = () => condicionais.forEach((bloco) => {
+      const [nome, valor] = bloco.dataset.se.split('=');
+      const marcado = form.querySelector('input[name="' + nome + '"]:checked');
+      const visivel = !!marcado && marcado.value === valor;
+      bloco.hidden = !visivel;
+      if (!visivel) bloco.classList.remove('has-error');
+      bloco.querySelectorAll('[data-obrigatorio]').forEach((input) => { input.required = visivel; });
+    });
+    form.addEventListener('change', atualizarCondicionais);
+    atualizarCondicionais();
+
+    // Formulário por passos: cada <fieldset class="form-step"> é um ecrã.
+    // Sem JS ficam todos visíveis, por isso o markup só mostra o botão de
+    // envio; Voltar e Continuar acendem-se aqui.
+    const passos = [...form.querySelectorAll('.form-step')];
+    const emPassos = passos.length > 1;
+    let passo = 0;
+    let mostrarPasso = () => {};
+    if (emPassos) {
+      const voltar = form.querySelector('[data-voltar]');
+      const seguinte = form.querySelector('[data-seguinte]');
+      const rotulo = form.querySelector('[data-passo-label]');
+      const marcas = [...form.querySelector('[data-progresso]').children];
+      const escreverRotulo = () => {
+        rotulo.textContent = msg('form.passo').replace('{n}', passo + 1).replace('{t}', passos.length);
+      };
+
+      mostrarPasso = (i, focar) => {
+        passo = i;
+        passos.forEach((p, n) => p.classList.toggle('is-active', n === i));
+        marcas.forEach((m, n) => m.classList.toggle('is-done', n <= i));
+        voltar.hidden = i === 0;
+        seguinte.hidden = i === passos.length - 1;
+        botao.hidden = i !== passos.length - 1;
+        escreverRotulo();
+        status.innerHTML = '';
+        if (focar) {
+          // No telemóvel o botão Continuar fica abaixo da dobra: sem isto,
+          // o passo seguinte começava fora do ecrã.
+          if (form.getBoundingClientRect().top < 0) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          passos[i].querySelector('.form-step-titulo')?.focus({ preventScroll: true });
+        }
+      };
+
+      form.classList.add('is-stepped');
+      rotulo.hidden = false;
+      form.querySelector('[data-progresso]').hidden = false;
+      mostrarPasso(0, false);
+
+      seguinte.addEventListener('click', () => {
+        if (validar(passos[passo])) mostrarPasso(passo + 1, true);
+        else avisarErro(passos[passo]);
+      });
+      voltar.addEventListener('click', () => mostrarPasso(passo - 1, true));
+      form.addEventListener('hb:passo', (event) => mostrarPasso(event.detail, false));
+      document.addEventListener('hb:idioma', escreverRotulo);
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      // Enter num campo de texto submete o formulário: antes do fim, avança.
+      if (emPassos && passo < passos.length - 1) {
+        form.querySelector('[data-seguinte]').click();
+        return;
+      }
+
+      if (emPassos) {
+        const falha = passos.findIndex((p) => !validar(p));
+        if (falha !== -1) {
+          mostrarPasso(falha, false);
+          avisarErro(passos[falha]);
+          return;
+        }
+      } else if (!validar(form)) {
+        avisarErro(form);
         return;
       }
 
@@ -230,8 +349,15 @@
       status.innerHTML = msg('form.status.enviando');
 
       try {
-        const dados = Object.fromEntries(new FormData(form).entries());
-        delete dados.curriculo; // o anexo segue à parte, já em base64
+        // Em vez de Object.fromEntries: caixas com o mesmo nome (o que quer
+        // receber) chegam todas, juntas numa linha. O anexo (File) fica de
+        // fora porque segue à parte, já em base64.
+        const dados = {};
+        for (const [chave, valor] of new FormData(form)) {
+          if (typeof valor !== 'string') continue;
+          dados[chave] = dados[chave] ? dados[chave] + '; ' + valor : valor;
+        }
+        if (tipo === 'franquia') prepararFranquia(dados);
         dados.idioma = langAtual;
         dados.origem = window.location.href;
         if (ficheiro) dados.curriculo = await lerFicheiro(ficheiro);
@@ -247,7 +373,17 @@
         if (!corpo.ok) throw new Error(corpo.erro || 'resposta sem ok');
 
         form.reset();
-        status.innerHTML = msg('form.status.sucesso.' + tipo);
+        atualizarCondicionais();
+        if (sucesso) {
+          // Um formulário de quatro passos não volta ao início com uma linha
+          // de estado: a confirmação ocupa o lugar dele.
+          mostrarPasso(0, false);
+          form.hidden = true;
+          sucesso.hidden = false;
+          sucesso.focus();
+        } else {
+          status.innerHTML = msg('form.status.sucesso.' + tipo);
+        }
         // Carreiras fica de fora: candidatos a emprego não são clientes.
         if (tipo === 'franquia') converter('formulario');
       } catch (err) {
@@ -259,7 +395,9 @@
     });
 
     form.querySelectorAll('input, select, textarea').forEach((input) => {
-      input.addEventListener('input', () => input.closest('.field')?.classList.remove('has-error'));
+      const limpar = () => input.closest('.field')?.classList.remove('has-error');
+      input.addEventListener('input', limpar);
+      input.addEventListener('change', limpar); // opções de escolha
     });
   });
 

@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title data-i18n="meta.franquia.title">Franquia Help Battery: Master Franqueado e Microfranquia de Baterias em Portugal</title>
-<meta name="description" data-i18n-content="meta.franquia.desc" content="Abre a tua unidade Help Battery. Dois modelos: Master Franqueado, com região em exclusivo, e Micro Franqueado, com unidade móvel e investimento reduzido. Formação, manuais e apoio de marketing incluídos." />
+<meta name="description" data-i18n-content="meta.franquia.desc" content="Abre a tua unidade Help Battery, a rede que tem Carlos Wizard como sócio. Master Franqueado ou Micro Franqueado, com formação, manuais e apoio de marketing incluídos." />
 <link rel="canonical" href="https://www.helpbattery.pt/franquia/" />
 <link rel="icon" type="image/png" href="/new-logo/favicon-64.png" />
 <link rel="apple-touch-icon" href="/new-logo/favicon-64.png" />
@@ -14,14 +14,14 @@
 <meta property="og:site_name" content="Help Battery" />
 <meta property="og:locale" content="pt_PT" />
 <meta property="og:title" content="Franquia Help Battery: Master Franqueado e Microfranquia de Baterias" />
-<meta property="og:description" content="Abre a tua unidade Help Battery. Dois modelos: Master Franqueado, com região em exclusivo, e Micro Franqueado, com unidade móvel e investimento reduzido." />
+<meta property="og:description" content="Abre a tua unidade Help Battery, a rede que tem Carlos Wizard como sócio. Dois modelos de entrada: Master Franqueado e Micro Franqueado." />
 <meta property="og:image" content="https://www.helpbattery.pt/assets/og-image.jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Franquia Help Battery: Master Franqueado e Microfranquia" />
-<meta name="twitter:description" content="Abre a tua unidade Help Battery. Formação, manuais e apoio de marketing incluídos." />
+<meta name="twitter:description" content="Abre a tua unidade Help Battery, a rede que tem Carlos Wizard como sócio. Formação, manuais e apoio de marketing incluídos." />
 <meta name="twitter:image" content="https://www.helpbattery.pt/assets/og-image.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -148,7 +148,7 @@
     </nav>
 
     <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-14 lg:gap-16 items-center">
-    <div>
+    <div class="flex flex-col">
       <p class="reveal text-volt-400 font-bold text-sm tracking-widest uppercase mb-5" data-i18n="franquia.eyebrow">Seja um franqueado</p>
       <h1 class="reveal font-display text-[2.5rem] sm:text-5xl lg:text-6xl tracking-[-0.03em] leading-[1.05]" style="transition-delay:80ms" data-i18n="franquia.h1">
         Abre a tua unidade<br class="hidden sm:block" /> Help Battery
@@ -163,6 +163,21 @@
         </a>
         <a href="#modelos" class="focus-ring-dark inline-flex items-center justify-center gap-2.5 border border-white/20 text-cream-50 font-semibold text-base px-8 py-4 rounded-full spring transition-all duration-300 hover:bg-white/10 hover:-translate-y-1 active:translate-y-0 active:scale-95" data-i18n="franquia.cta.secundaria">
           Comparar modelos
+        </a>
+      </div>
+
+      <!-- Selo do sócio: quem chega para investir vê o nome e a cara
+           do Carlos Wizard antes de fazer scroll. Leva à secção #socio.
+           No telemóvel o texto do hero passa da dobra, por isso o selo
+           sobe para cima do título; no desktop fica por baixo dos botões. -->
+      <div class="reveal order-first lg:order-none mb-8 lg:mb-0 lg:mt-10" style="transition-delay:320ms">
+        <a href="#socio" class="socio-selo focus-ring-dark">
+          <img src="/assets/carlos-wizard-avatar.webp" alt="" width="192" height="192" class="socio-selo-foto" decoding="async" />
+          <span class="leading-snug">
+            <span class="block font-bold text-cream-50 text-[15px]" data-i18n="franquia.selo.titulo">Com Carlos Wizard como sócio</span>
+            <span class="block text-cream-50/60 text-[13px]" data-i18n="franquia.selo.texto">O Mago das Franquias entrou na sociedade</span>
+          </span>
+          <svg class="w-4 h-4 text-volt-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </a>
       </div>
     </div>
@@ -227,6 +242,69 @@
     <div class="bg-white px-6 py-8 text-center">
       <p class="font-display text-3xl sm:text-4xl text-ink-950 tracking-[-0.03em]">5,0<span class="text-volt-500 text-2xl sm:text-3xl align-top">★</span></p>
       <p class="mt-2 text-xs sm:text-sm text-steel-600 leading-snug" data-i18n="franquia.stat4">de média em 107<br/>avaliações no Google</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ O SÓCIO: CARLOS WIZARD ============ -->
+<!-- Logo a seguir aos números: quem vem investir vê o sócio antes do
+     modelo de negócio. O retrato (foto de estúdio, recortada) é diferente
+     do da home, para quem chega por lá não ver a mesma imagem duas vezes.
+     O canto superior esquerdo em arco e as linhas diagonais vêm do PDF
+     de apresentação. -->
+<section id="socio" class="relative py-24 sm:py-32 px-5 sm:px-8 bg-cream-50 overflow-hidden">
+  <div class="absolute top-0 left-0 w-[32rem] h-[32rem] bg-brand-500/10 blur-[120px] rounded-full -translate-x-1/3 -translate-y-1/4"></div>
+
+  <div class="relative mx-auto max-w-7xl grid lg:grid-cols-[0.9fr_1.1fr] gap-14 lg:gap-20 items-center">
+    <figure class="reveal-scale socio-retrato">
+      <div class="socio-painel shadow-floating">
+        <div class="grain" style="filter:url(#noiseFilter)"></div>
+        <svg class="socio-linhas" viewBox="0 0 400 500" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M-40 440 L330 -40" />
+          <path d="M70 560 L460 110" />
+          <path d="M-20 300 L120 300" />
+        </svg>
+        <img src="/assets/carlos-wizard-franquia.webp" alt="Carlos Wizard, sócio da Help Battery" width="641" height="801" class="socio-foto" loading="lazy" decoding="async" />
+      </div>
+      <figcaption class="socio-placa shadow-floating">
+        <span class="font-display text-xl sm:text-2xl text-cream-50 tracking-[-0.02em]">Carlos Wizard</span>
+        <span class="text-[13px] font-semibold text-volt-400" data-i18n="socio.placa">Sócio da Help Battery</span>
+      </figcaption>
+    </figure>
+
+    <div>
+      <p class="reveal text-brand-700 font-bold text-sm tracking-widest uppercase mb-4" data-i18n="socio.eyebrow">O nosso sócio</p>
+      <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-[2.75rem] tracking-[-0.03em] leading-[1.12]" style="transition-delay:80ms" data-i18n="socio.titulo">
+        Carlos Wizard é sócio da Help Battery
+      </h2>
+      <p class="reveal mt-6 text-steel-600 text-base sm:text-lg leading-[1.75]" style="transition-delay:160ms" data-i18n="socio.lead">
+        Conhecido no Brasil como o Mago das Franquias, é um empresário com negócios em vários setores e reconhecimento dentro e fora do país. Agora é sócio da Help Battery e parte da expansão da nossa rede de franquias.
+      </p>
+
+      <!-- Citação tirada do PDF de apresentação, nas palavras dele (pt-BR) -->
+      <figure class="reveal socio-citacao mt-12" style="transition-delay:200ms">
+        <blockquote>
+          <p class="socio-citacao-abre" data-i18n="socio.citacao.abre">Eu não entro em negócios por acaso.</p>
+          <p class="mt-3 text-steel-600 text-base sm:text-[17px] leading-[1.75]" data-i18n="socio.citacao">Analiso mercado e pessoas. Escalabilidade. Margem. Tecnologia. Gestão. E principalmente o futuro. Quando encontrei este projeto, percebi que ele reúne tudo aquilo que procuro em um investimento de longo prazo.</p>
+        </blockquote>
+        <figcaption class="socio-citacao-autor" data-i18n="socio.autor">Carlos Wizard, sobre a decisão de ser sócio</figcaption>
+      </figure>
+
+      <p class="reveal mt-10 font-bold text-[15px] text-ink-950" data-i18n="socio.criterios">O que ele procura num negócio, e encontrou neste modelo:</p>
+      <ul class="reveal mt-4 flex flex-wrap gap-2.5">
+        <li class="value-chip bg-white" data-i18n="socio.c1">Gestão simples</li>
+        <li class="value-chip bg-white" data-i18n="socio.c2">Baixo custo operacional</li>
+        <li class="value-chip bg-white" data-i18n="socio.c3">Alta escalabilidade</li>
+        <li class="value-chip bg-white" data-i18n="socio.c4">Receita recorrente</li>
+        <li class="value-chip bg-white" data-i18n="socio.c5">Loja autónoma, acompanhada pelo telemóvel</li>
+        <li class="value-chip bg-white" data-i18n="socio.c6">Operação internacional em moeda estável</li>
+      </ul>
+
+      <div class="reveal mt-10">
+        <a href="#candidatura" class="focus-ring inline-flex items-center justify-center gap-2.5 bg-ink-950 text-cream-50 font-semibold text-base px-8 py-4 rounded-full spring transition-transform duration-300 hover:bg-navy-600 hover:-translate-y-1 active:translate-y-0 active:scale-95" data-i18n="socio.cta">
+          Quero conhecer a oportunidade
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -313,6 +391,7 @@
           <div><dt data-i18n="franquia.master.d3t">Responsabilidades</dt><dd data-i18n="franquia.master.d3d">Implementar a marca na região, recrutar e apoiar micro-franquiados e garantir que o padrão de serviço é o mesmo em toda a área.</dd></div>
           <div><dt data-i18n="franquia.master.d4t">O que oferecemos</dt><dd data-i18n="franquia.master.d4d">Formação inicial e contínua, manuais de operação, apoio na abertura, ferramentas de gestão e apoio de marketing.</dd></div>
           <div><dt data-i18n="franquia.master.d5t">Potencial de expansão</dt><dd data-i18n="franquia.master.d5d">Modelo desenhado para escalar de uma unidade-piloto para uma rede regional, com receita que cresce com cada micro-franquia implantada.</dd></div>
+          <div><dt data-i18n="franquia.master.d6t">Investimento</dt><dd data-i18n="franquia.master.d6d">70.000 €, no modelo Master Hub: loja autónoma com operação completa. As condições comerciais e a projeção financeira são apresentadas na reunião.</dd></div>
         </dl>
         <button type="button" class="franchise-cta focus-ring-dark" data-open-form="master" data-i18n="franquia.master.cta">Quero ser Master Franqueado</button>
       </article>
@@ -329,7 +408,7 @@
           <div><dt data-i18n="franquia.micro.d2t">Estrutura necessária</dt><dd data-i18n="franquia.micro.d2d">Viatura, kit de diagnóstico e stock inicial. A lista completa é entregue no processo de seleção.</dd></div>
           <div><dt data-i18n="franquia.micro.d3t">Como funciona</dt><dd data-i18n="franquia.micro.d3d">Recebes os pedidos pela central, atendes no local, e a Help Battery trata da captação e da faturação. O teu tempo fica no serviço, não na angariação.</dd></div>
           <div><dt data-i18n="franquia.micro.d4t">Suporte</dt><dd data-i18n="franquia.micro.d4d">Formação técnica, apoio comercial, fornecimento de baterias e ferramentas digitais de gestão.</dd></div>
-          <div><dt data-i18n="franquia.micro.d5t">Investimento</dt><dd data-i18n="franquia.micro.d5d">Valores e condições comerciais são apresentados na reunião de apresentação do modelo, depois de percebermos a tua zona e o teu perfil.</dd></div>
+          <div><dt data-i18n="franquia.micro.d5t">Investimento</dt><dd data-i18n="franquia.micro.d5d">10.000 €, no modelo Microassistente: operação móvel no terreno. As condições comerciais e a projeção financeira são apresentadas na reunião, depois de percebermos a tua zona e o teu perfil.</dd></div>
         </dl>
         <button type="button" class="franchise-cta focus-ring-dark" data-open-form="micro" data-i18n="franquia.micro.cta">Quero ser Micro Franqueado</button>
       </article>
@@ -442,7 +521,7 @@
       </details>
       <details class="reveal faq-item" style="transition-delay:60ms">
         <summary><span data-i18n="franquia.faq.q2">Qual é o investimento necessário?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
-        <p class="faq-body" data-i18n="franquia.faq.a2">Os valores e as condições comerciais são apresentados na reunião de apresentação do modelo, porque variam com a zona e com o modelo escolhido. O que podemos dizer já é que a microfranquia foi desenhada para ter um investimento de entrada reduzido, por não depender de um espaço comercial.</p>
+        <p class="faq-body" data-i18n="franquia.faq.a2">O Master Franqueado (Master Hub, loja autónoma com operação completa) tem um investimento de 70.000 €. O Micro Franqueado (Microassistente, operação móvel) tem um investimento de 10.000 €. As condições comerciais e a projeção financeira de cada modelo são apresentadas na reunião, porque dependem da zona e da estrutura da operação.</p>
       </details>
       <details class="reveal faq-item" style="transition-delay:120ms">
         <summary><span data-i18n="franquia.faq.q3">A exclusividade de território é garantida?</span><span class="faq-icon" aria-hidden="true">+</span></summary>
@@ -471,40 +550,204 @@
 
   <div class="relative mx-auto max-w-3xl">
     <div class="text-center mb-12">
-      <p class="reveal text-volt-400 font-bold text-sm tracking-widest uppercase mb-4" data-i18n="franquia.form.eyebrow">Manifestar interesse</p>
+      <p class="reveal text-volt-400 font-bold text-sm tracking-widest uppercase mb-4" data-i18n="franquia.form.eyebrow">Pré-registo de investidor</p>
       <h2 class="reveal font-display text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] leading-[1.1]" style="transition-delay:80ms" data-i18n="franquia.form.titulo">
         Fala com a equipa de expansão
       </h2>
       <p class="reveal mt-6 text-cream-50/70 text-base sm:text-lg leading-[1.7] max-w-xl mx-auto" style="transition-delay:160ms" data-i18n="franquia.form.lead">
-        Deixa os teus dados e a região que te interessa. Entramos em contacto para marcar a reunião de apresentação do modelo, sem compromisso.
+        Neste primeiro momento queremos só conhecer o teu perfil, perceber que modelo te despertou interesse e identificar a melhor oportunidade para ti. Sem compromisso.
       </p>
     </div>
 
+    <!-- Pré-registo em quatro passos, a partir do guia "Pré-cadastro de
+         interesse em investir na Help Battery" (pasta carlos-wizard/).
+         Os nomes nome, email, telefone, regiao e modelo (e os valores
+         master/micro/indeciso) não mudam: o Apps Script publicado valida-os.
+         Os valores das opções ficam sempre em pt-PT, para a planilha ter
+         respostas iguais seja qual for o idioma de quem preenche.
+         Sem JS os passos ficam todos visíveis, numa página só. -->
     <div id="franchise-form-wrap" class="reveal">
       <form class="hb-form franchise-form" data-form="franquia" novalidate>
-        <h3 class="font-display text-xl text-cream-50 mb-1" id="franchise-form-title" data-i18n="franquia.form.h3">Candidatura a franquia</h3>
-        <p class="text-cream-50/60 text-sm mb-7" data-i18n="franquia.form.nota">Todos os campos assinalados são necessários para avaliarmos a tua zona.</p>
-        <div class="grid sm:grid-cols-2 gap-4">
-          <div class="field"><label for="fr-nome" data-i18n="form.nome">Nome</label><input id="fr-nome" name="nome" type="text" autocomplete="name" required /></div>
-          <div class="field"><label for="fr-email" data-i18n="form.email">E-mail</label><input id="fr-email" name="email" type="email" autocomplete="email" required /></div>
-          <div class="field"><label for="fr-tel" data-i18n="form.telefone">Telefone</label><input id="fr-tel" name="telefone" type="tel" autocomplete="tel" required /></div>
-          <div class="field"><label for="fr-regiao" data-i18n="form.regiao">Região de interesse</label><input id="fr-regiao" name="regiao" type="text" required /></div>
-          <div class="field sm:col-span-2">
-            <label for="franchise-model" data-i18n="form.modelo">Modelo pretendido</label>
-            <select id="franchise-model" name="modelo" required>
-              <option value="" data-i18n="form.modelo.placeholder">Seleciona um modelo</option>
-              <option value="master" data-i18n="form.modelo.master">Master Franqueado: região em exclusivo</option>
-              <option value="micro" data-i18n="form.modelo.micro">Micro Franqueado: unidade móvel</option>
-              <option value="indeciso" data-i18n="form.modelo.indeciso">Ainda não sei, quero perceber os dois</option>
-            </select>
-          </div>
-          <div class="field sm:col-span-2"><label for="fr-msg" data-i18n="form.mensagem">Mensagem</label><textarea id="fr-msg" name="mensagem" rows="4"></textarea></div>
+        <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1 mb-1">
+          <h3 class="font-display text-xl text-cream-50" id="franchise-form-title" data-i18n="franquia.form.h3">Candidatura a franquia</h3>
+          <p class="text-cream-50/50 text-xs font-bold tracking-wider uppercase" data-passo-label hidden></p>
         </div>
+        <p class="text-cream-50/60 text-sm mb-6" data-i18n="franquia.form.nota">Leva menos de 2 minutos. Os campos opcionais estão assinalados.</p>
+        <div class="form-progress" data-progresso hidden aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+        <!-- PASSO 1: dados do interessado -->
+        <fieldset class="form-step">
+          <legend class="form-step-titulo" tabindex="-1" data-i18n="franquia.form.p1">Os teus dados</legend>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="field sm:col-span-2"><label for="fr-nome" data-i18n="form.nome.completo">Nome completo</label><input id="fr-nome" name="nome" type="text" autocomplete="name" required /></div>
+            <div class="field"><label for="fr-tel" data-i18n="form.whatsapp">WhatsApp</label><input id="fr-tel" name="telefone" type="tel" autocomplete="tel" required /></div>
+            <div class="field"><label for="fr-email" data-i18n="form.email">E-mail</label><input id="fr-email" name="email" type="email" autocomplete="email" required /></div>
+            <div class="field"><label for="fr-pais" data-i18n="form.pais">País de residência</label><input id="fr-pais" name="pais" type="text" autocomplete="country-name" required /></div>
+            <div class="field"><label for="fr-rede" data-i18n="form.redesocial">Rede social <span class="field-hint">(opcional)</span></label><input id="fr-rede" name="rede_social" type="text" /></div>
+          </div>
+        </fieldset>
+
+        <!-- PASSO 2: modelo, disponibilidade e participação -->
+        <fieldset class="form-step">
+          <legend class="form-step-titulo" tabindex="-1" data-i18n="franquia.form.p2">O modelo e o investimento</legend>
+          <div class="form-step-corpo">
+            <fieldset class="field">
+              <legend data-i18n="form.modelo.q">Que modelo te despertou interesse?</legend>
+              <div class="model-options">
+                <label class="model-option">
+                  <input type="radio" name="modelo" value="master" required />
+                  <span class="model-option-box">
+                    <span class="model-option-nome" data-i18n="form.modelo.master.nome">Master Franqueado</span>
+                    <span class="model-option-desc" data-i18n="form.modelo.master.desc">Master Hub: loja autónoma, com operação completa</span>
+                    <span class="model-option-rotulo" data-i18n="form.modelo.investimento">Investimento</span>
+                    <span class="model-option-valor">70.000 €</span>
+                  </span>
+                </label>
+                <label class="model-option">
+                  <input type="radio" name="modelo" value="micro" required />
+                  <span class="model-option-box">
+                    <span class="model-option-nome" data-i18n="form.modelo.micro.nome">Micro Franqueado</span>
+                    <span class="model-option-desc" data-i18n="form.modelo.micro.desc">Microassistente: operação móvel no terreno</span>
+                    <span class="model-option-rotulo" data-i18n="form.modelo.investimento">Investimento</span>
+                    <span class="model-option-valor">10.000 €</span>
+                  </span>
+                </label>
+                <label class="model-option">
+                  <input type="radio" name="modelo" value="indeciso" required />
+                  <span class="model-option-box">
+                    <span class="model-option-nome" data-i18n="form.modelo.ambos.nome">Os dois modelos</span>
+                    <span class="model-option-desc" data-i18n="form.modelo.ambos.desc">Tenho interesse no Master Hub e no Microassistente</span>
+                  </span>
+                </label>
+              </div>
+            </fieldset>
+
+            <fieldset class="field">
+              <legend data-i18n="form.disponibilidade">Quanto tens disponível para investir?</legend>
+              <div class="choice-group">
+                <label class="choice"><input type="radio" name="disponibilidade" value="10.000 €" required /><span>10.000 €</span></label>
+                <label class="choice"><input type="radio" name="disponibilidade" value="70.000 €" required /><span>70.000 €</span></label>
+                <label class="choice"><input type="radio" name="disponibilidade" value="Mais de 70.000 €" required /><span data-i18n="form.disp.3">Mais de 70.000 €</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="field">
+              <legend data-i18n="form.participacao">Como pretendes participar no negócio?</legend>
+              <div class="choice-group is-list">
+                <label class="choice"><input type="radio" name="participacao" value="Vou operar diretamente" required /><span data-i18n="form.part.1">Vou operar diretamente</span></label>
+                <label class="choice"><input type="radio" name="participacao" value="Vou investir e contratar uma equipa para operar" required /><span data-i18n="form.part.2">Vou investir e contratar uma equipa para operar</span></label>
+                <label class="choice"><input type="radio" name="participacao" value="Master Hub / desenvolvedor territorial" required /><span data-i18n="form.part.3">Quero atuar como Master Hub, a desenvolver um território</span></label>
+                <label class="choice"><input type="radio" name="participacao" value="Ainda estou a avaliar" required /><span data-i18n="form.part.4">Ainda estou a avaliar</span></label>
+              </div>
+            </fieldset>
+          </div>
+        </fieldset>
+
+        <!-- PASSO 3: experiência, prazo e região -->
+        <fieldset class="form-step">
+          <legend class="form-step-titulo" tabindex="-1" data-i18n="franquia.form.p3">O teu perfil</legend>
+          <div class="form-step-corpo">
+            <fieldset class="field">
+              <legend data-i18n="form.experiencia">Qual é a tua experiência profissional?</legend>
+              <div class="choice-group is-list">
+                <label class="choice"><input type="radio" name="experiencia" value="Empresário / empreendedor" required /><span data-i18n="form.exp.1">Empresário ou empreendedor</span></label>
+                <label class="choice"><input type="radio" name="experiencia" value="Gestor / executivo" required /><span data-i18n="form.exp.2">Gestor ou executivo</span></label>
+                <label class="choice"><input type="radio" name="experiencia" value="Já fui franqueado" required /><span data-i18n="form.exp.3">Já fui franqueado</span></label>
+                <label class="choice"><input type="radio" name="experiencia" value="Profissional independente" required /><span data-i18n="form.exp.4">Profissional independente</span></label>
+                <label class="choice"><input type="radio" name="experiencia" value="Sem experiência empresarial" required /><span data-i18n="form.exp.5">Ainda não tenho experiência empresarial</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="field">
+              <legend data-i18n="form.prazo">Quando pretendes começar?</legend>
+              <div class="choice-group">
+                <label class="choice"><input type="radio" name="prazo" value="Imediatamente" required /><span data-i18n="form.prazo.1">Imediatamente</span></label>
+                <label class="choice"><input type="radio" name="prazo" value="Nos próximos 30 dias" required /><span data-i18n="form.prazo.2">Nos próximos 30 dias</span></label>
+                <label class="choice"><input type="radio" name="prazo" value="Entre 30 e 90 dias" required /><span data-i18n="form.prazo.3">Entre 30 e 90 dias</span></label>
+                <label class="choice"><input type="radio" name="prazo" value="Ainda a pesquisar" required /><span data-i18n="form.prazo.4">Ainda estou a pesquisar</span></label>
+              </div>
+            </fieldset>
+
+            <fieldset class="field">
+              <legend data-i18n="form.regiao.q">Já tens uma região em mente para operar?</legend>
+              <div class="choice-group">
+                <label class="choice"><input type="radio" name="regiao_definida" value="Sim" required /><span data-i18n="form.regiao.sim">Sim</span></label>
+                <label class="choice"><input type="radio" name="regiao_definida" value="Não" required /><span data-i18n="form.regiao.nao">Ainda não</span></label>
+              </div>
+            </fieldset>
+            <div class="field" data-se="regiao_definida=Sim" hidden>
+              <label for="fr-regiao" data-i18n="form.regiao.qual">Qual cidade ou região?</label>
+              <input id="fr-regiao" name="regiao" type="text" autocomplete="address-level2" data-obrigatorio />
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- PASSO 4: origem, interesse e horário -->
+        <fieldset class="form-step">
+          <legend class="form-step-titulo" tabindex="-1" data-i18n="franquia.form.p4">Próximos passos</legend>
+          <div class="form-step-corpo">
+            <fieldset class="field">
+              <legend data-i18n="form.canal">Como conheceste esta oportunidade?</legend>
+              <div class="choice-group">
+                <label class="choice"><input type="radio" name="canal" value="Instagram" required /><span>Instagram</span></label>
+                <label class="choice"><input type="radio" name="canal" value="Facebook" required /><span>Facebook</span></label>
+                <label class="choice"><input type="radio" name="canal" value="LinkedIn" required /><span>LinkedIn</span></label>
+                <label class="choice"><input type="radio" name="canal" value="WhatsApp" required /><span>WhatsApp</span></label>
+                <label class="choice"><input type="radio" name="canal" value="Indicação" required /><span data-i18n="form.canal.indicacao">Indicação</span></label>
+                <label class="choice"><input type="radio" name="canal" value="Evento" required /><span data-i18n="form.canal.evento">Evento</span></label>
+                <label class="choice"><input type="radio" name="canal" value="Site" required /><span data-i18n="form.canal.site">Site</span></label>
+                <label class="choice"><input type="radio" name="canal" value="Google / Internet" required /><span>Google / Internet</span></label>
+                <label class="choice"><input type="radio" name="canal" value="Outro" required /><span data-i18n="form.canal.outro">Outro</span></label>
+              </div>
+            </fieldset>
+            <div class="field" data-se="canal=Outro" hidden>
+              <label for="fr-canal-outro" data-i18n="form.canal.qual">Onde? <span class="field-hint">(opcional)</span></label>
+              <input id="fr-canal-outro" name="canal_outro" type="text" />
+            </div>
+
+            <fieldset class="field">
+              <legend data-i18n="form.receber">O que gostarias de receber agora? <span class="field-hint">(opcional)</span></legend>
+              <div class="choice-group is-list">
+                <label class="choice"><input type="checkbox" name="receber" value="Apresentação comercial" /><span data-i18n="form.receber.1">Apresentação comercial</span></label>
+                <label class="choice"><input type="checkbox" name="receber" value="Detalhe do investimento e do modelo" /><span data-i18n="form.receber.2">Detalhe do investimento e do modelo de negócio</span></label>
+                <label class="choice"><input type="checkbox" name="receber" value="Projeção financeira" /><span data-i18n="form.receber.3">Projeção financeira</span></label>
+                <label class="choice"><input type="checkbox" name="receber" value="Disponibilidade de território" /><span data-i18n="form.receber.4">Disponibilidade de território</span></label>
+                <label class="choice"><input type="checkbox" name="receber" value="Reunião com a equipa comercial" /><span data-i18n="form.receber.5">Marcar reunião com a equipa comercial</span></label>
+              </div>
+            </fieldset>
+
+            <div class="grid sm:grid-cols-[auto_1fr] gap-4 sm:items-end">
+              <fieldset class="field">
+                <legend data-i18n="form.horario">Melhor altura para te contactarmos <span class="field-hint">(opcional)</span></legend>
+                <div class="choice-group">
+                  <label class="choice"><input type="radio" name="horario" value="Manhã" /><span data-i18n="form.horario.1">Manhã</span></label>
+                  <label class="choice"><input type="radio" name="horario" value="Tarde" /><span data-i18n="form.horario.2">Tarde</span></label>
+                  <label class="choice"><input type="radio" name="horario" value="Noite" /><span data-i18n="form.horario.3">Noite</span></label>
+                </div>
+              </fieldset>
+              <div class="field"><label for="fr-hora" data-i18n="form.horario.pref">Hora preferida <span class="field-hint">(opcional)</span></label><input id="fr-hora" name="horario_pref" type="text" /></div>
+            </div>
+
+            <p class="form-legal" data-i18n="franquia.form.legal">O preenchimento deste formulário não representa aprovação, reserva ou concessão de franquia, nem constitui contrato ou obrigação de contratação. Usamos estes dados apenas para responder à tua candidatura.</p>
+          </div>
+        </fieldset>
+
         <div class="form-footer">
+          <button type="button" class="form-back focus-ring-dark" data-voltar hidden data-i18n="form.voltar">Voltar</button>
+          <button type="button" class="form-submit focus-ring" data-seguinte hidden data-i18n="form.continuar">Continuar</button>
           <button type="submit" class="form-submit focus-ring" data-i18n="franquia.form.cta">Enviar candidatura</button>
           <p class="form-status" role="status" aria-live="polite"></p>
         </div>
       </form>
+
+      <!-- Confirmação: substitui o formulário depois do envio -->
+      <div class="hb-form franchise-form form-sucesso" data-sucesso tabindex="-1" hidden>
+        <span class="form-sucesso-icone" aria-hidden="true"><svg class="w-7 h-7" viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.5 4.5L19 7.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h3 class="font-display text-2xl text-cream-50 mt-6" data-i18n="franquia.sucesso.titulo">Candidatura recebida</h3>
+        <p class="mt-4 text-cream-50/70 leading-[1.7] max-w-lg mx-auto" data-i18n="franquia.sucesso.texto">Obrigado pelo teu interesse. A equipa de expansão vai entrar em contacto para te apresentar o modelo mais adequado ao teu perfil, esclarecer as tuas dúvidas e explicar os próximos passos.</p>
+        <p class="mt-8 font-display text-lg text-volt-400" data-i18n="franquia.sucesso.fecho">Agora, o futuro é teu.</p>
+        <p class="mt-2 text-cream-50/60 text-sm leading-[1.7] max-w-md mx-auto" data-i18n="franquia.sucesso.fecho2">Faz parte da expansão internacional de uma rede que tem Carlos Wizard como sócio.</p>
+      </div>
     </div>
 
     <p class="reveal mt-8 text-center text-cream-50/60 text-sm leading-[1.7]" data-i18n="franquia.form.alternativa">
