@@ -32,7 +32,7 @@
      da cascata em que o CDN injetava o CSS dele. -->
 <link rel="preload" href="/assets/fonts/archivo-black-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="stylesheet" href="/assets/styles.css?v=f796cbae81" />
+<link rel="stylesheet" href="/assets/styles.css?v=4846843013" />
 <link rel="stylesheet" href="/assets/tailwind.css?v=c443090249" />
 
 <script type="application/ld+json">
@@ -138,14 +138,6 @@
 </head>
 <body class="antialiased">
 
-<!-- Noise filter definition (used globally via .grain class) -->
-<svg width="0" height="0" style="position:absolute">
-  <filter id="noiseFilter">
-    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"></feTurbulence>
-    <feColorMatrix type="saturate" values="0"></feColorMatrix>
-  </filter>
-</svg>
-
 <!-- ============ HEADER ============ -->
 <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
   <div class="mx-auto max-w-7xl px-5 sm:px-8">
@@ -205,7 +197,7 @@
 
 <!-- ============ HERO ============ -->
 <section id="top" class="relative bg-radial-mesh text-cream-50 pt-36 pb-28 sm:pt-44 sm:pb-36 overflow-hidden clip-bolt-down">
-  <div class="grain" style="filter:url(#noiseFilter)"></div>
+  <div class="grain"></div>
 
   <!-- decorative voltage lines -->
   <svg class="absolute inset-0 w-full h-full opacity-[0.15]" preserveAspectRatio="none" viewBox="0 0 100 100">
@@ -328,7 +320,7 @@
 
 <!-- ============ SERVIÇOS ============ -->
 <section id="servicos" class="relative py-24 sm:py-32 px-5 sm:px-8 bg-navy-950 text-cream-50 overflow-hidden">
-  <div class="grain" style="filter:url(#noiseFilter)"></div>
+  <div class="grain"></div>
   <div class="absolute top-0 right-0 w-[40rem] h-[40rem] bg-brand-600/20 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/3"></div>
 
   <div class="relative mx-auto max-w-7xl">
@@ -434,7 +426,7 @@
 
 <!-- ============ COMO FUNCIONA ============ -->
 <section id="como-funciona" class="relative py-24 sm:py-32 px-5 sm:px-8 bg-brand-700 text-cream-50 overflow-hidden">
-  <div class="grain" style="filter:url(#noiseFilter)"></div>
+  <div class="grain"></div>
   <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-volt-400/10 blur-[100px] rounded-full"></div>
 
   <div class="relative mx-auto max-w-6xl">
@@ -558,13 +550,13 @@
      de investimento ficam só na página de franquia. Fundo navy porque as
      vizinhas (Sobre e Depoimentos) são claras. -->
 <section id="socio" class="socio-escuro relative py-24 sm:py-32 px-5 sm:px-8 bg-navy-950 text-cream-50 overflow-hidden">
-  <div class="grain" style="filter:url(#noiseFilter)"></div>
+  <div class="grain"></div>
   <div class="absolute top-1/4 left-0 w-[34rem] h-[34rem] bg-brand-600/25 blur-[130px] rounded-full -translate-x-1/2"></div>
 
   <div class="relative mx-auto max-w-7xl grid lg:grid-cols-[0.9fr_1.1fr] gap-14 lg:gap-20 items-center">
     <figure class="reveal-scale socio-retrato">
       <div class="socio-painel shadow-floating">
-        <div class="grain" style="filter:url(#noiseFilter)"></div>
+        <div class="grain"></div>
         <svg class="socio-linhas" viewBox="0 0 400 500" preserveAspectRatio="none" aria-hidden="true">
           <path d="M-40 440 L330 -40" />
           <path d="M70 560 L460 110" />
@@ -821,7 +813,7 @@
     <div class="grid lg:grid-cols-2 gap-6">
       <!-- FRANQUIA -->
       <a href="/franquia/" class="reveal focus-ring-dark path-card path-card-dark bg-navy-950">
-        <div class="grain" style="filter:url(#noiseFilter)"></div>
+        <div class="grain"></div>
         <span class="path-tag" data-i18n="caminhos.franquia.tag">Expansão</span>
         <h3 class="font-display text-2xl sm:text-[1.75rem] text-cream-50 mt-5 mb-4 tracking-[-0.02em]" data-i18n="caminhos.franquia.titulo">
           Abre a tua Help Battery
@@ -834,7 +826,7 @@
 
       <!-- CARREIRAS -->
       <a href="/carreiras/" class="reveal focus-ring-dark path-card path-card-dark bg-brand-700" style="transition-delay:100ms">
-        <div class="grain" style="filter:url(#noiseFilter)"></div>
+        <div class="grain"></div>
         <span class="path-tag" data-i18n="caminhos.carreiras.tag">Equipa</span>
         <h3 class="font-display text-2xl sm:text-[1.75rem] text-cream-50 mt-5 mb-4 tracking-[-0.02em]" data-i18n="caminhos.carreiras.titulo">
           Trabalha connosco
@@ -850,7 +842,7 @@
 
 <!-- ============ CONTACTO ============ -->
 <section id="contacto" class="relative py-24 sm:py-32 px-5 sm:px-8 bg-navy-950 text-cream-50 overflow-hidden">
-  <div class="grain" style="filter:url(#noiseFilter)"></div>
+  <div class="grain"></div>
 
   <div class="relative mx-auto max-w-7xl grid lg:grid-cols-2 gap-14 items-stretch">
     <div>
@@ -906,7 +898,7 @@
 <!-- ============ CTA FINAL ============ -->
 <section class="relative py-24 sm:py-28 px-5 sm:px-8 bg-cream-50 overflow-hidden">
   <div class="reveal-scale mx-auto max-w-5xl relative rounded-[2rem] bg-gradient-to-br from-brand-700 via-brand-600 to-navy-900 px-8 sm:px-16 py-16 sm:py-20 text-center overflow-hidden shadow-floating">
-    <div class="grain" style="filter:url(#noiseFilter)"></div>
+    <div class="grain"></div>
     <div class="absolute -top-16 -right-16 w-64 h-64 bg-volt-400/15 blur-3xl rounded-full"></div>
     <h2 class="relative font-display text-3xl sm:text-4xl lg:text-5xl tracking-[-0.03em] text-cream-50 leading-[1.1]" data-i18n="cta.titulo">
       Não fiques parado<br class="hidden sm:block" /> por causa de uma bateria.
@@ -922,7 +914,7 @@
 
 <!-- ============ FOOTER ============ -->
 <footer class="relative bg-navy-950 text-cream-50 pt-20 pb-28 sm:pb-10 px-5 sm:px-8 overflow-hidden">
-  <div class="grain" style="filter:url(#noiseFilter)"></div>
+  <div class="grain"></div>
   <div class="relative mx-auto max-w-7xl grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 pb-14">
     <div class="lg:col-span-1">
       <img src="/new-logo/logo-lockup-light.webp" alt="Help Battery" width="2082" height="668" class="h-8 w-auto mb-5" loading="lazy" decoding="async" />
@@ -993,6 +985,6 @@
 
 <script src="/assets/consent.js?v=d3c9507633"></script>
 <script src="/assets/i18n.js?v=e9bf526142"></script>
-<script src="/assets/app.js?v=69d11a9c04"></script>
+<script src="/assets/app.js?v=0605698f51"></script>
 </body>
 </html>

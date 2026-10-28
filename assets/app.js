@@ -423,20 +423,39 @@
   // secções ficavam em branco à espera deste script, que é o último da
   // página. O que já está no ecrã (ou acima) fica visível de vez; só o que
   // está abaixo passa a esperar pelo scroll para entrar.
+  // Entra mal toca no ecrã (threshold 0): com o antigo limiar de 15%, a
+  // faixa de baixo do ecrã ficava vazia. E quando o scroll para, tudo o que
+  // já chegou ao ecrã aparece, mesmo que o observer não tenha dado conta
+  // (scroll rápido, ou o Safari atrasado): nada fica em branco por cima.
   const revealEls = document.querySelectorAll('.reveal, .reveal-scale');
+  const pendentes = new Set();
+  const revelar = (el) => {
+    el.classList.add('is-visible');
+    io.unobserve(el);
+    pendentes.delete(el);
+  };
   const io = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('is-visible');
-        io.unobserve(entry.target);
-      }
+      if (entry.isIntersecting) revelar(entry.target);
     });
-  }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+  }, { threshold: 0 });
   revealEls.forEach((el) => {
     if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add('is-visible');
-    else io.observe(el);
+    else { pendentes.add(el); io.observe(el); }
   });
   document.documentElement.classList.add('reveal-ativo');
+
+  let fimDoScroll = 0;
+  const varrer = () => {
+    pendentes.forEach((el) => {
+      if (el.getBoundingClientRect().top < window.innerHeight) revelar(el);
+    });
+  };
+  window.addEventListener('scroll', () => {
+    if (!pendentes.size) return;
+    clearTimeout(fimDoScroll);
+    fimDoScroll = setTimeout(varrer, 120);
+  }, { passive: true });
 
   // Com um formulário (ou a confirmação dele) no ecrã, o <html> ganha
   // .com-formulario e o CSS tira do caminho a barra fixa e o WhatsApp do

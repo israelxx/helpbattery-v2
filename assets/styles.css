@@ -23,8 +23,13 @@
 
   ::selection { background: #FFCC00; color: #1D3054; }
 
-  /* Noise / grain texture */
-  .grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.05; mix-blend-mode: overlay; }
+  /* Noise / grain texture
+     O ruído é o mesmo filtro SVG de sempre, mas num ladrilho de 200 px
+     (grao.svg) repetido como fundo. Aplicado à secção inteira, o Safari
+     recalculava o filtro em toda a área a cada repintura (cartões a
+     aparecer, carrossel): frames de quase 2 s no Mac com ecrã Retina, e as
+     secções ficavam em branco enquanto isso. Assim é calculado uma vez. */
+  .grain { position: absolute; inset: 0; pointer-events: none; opacity: 0.05; mix-blend-mode: overlay; background: url(grao.svg) repeat; }
 
   /* Spring-style easing for interactive elements */
   .spring { transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1); }

@@ -29,7 +29,7 @@
      da cascata em que o CDN injetava o CSS dele. -->
 <link rel="preload" href="/assets/fonts/archivo-black-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="stylesheet" href="/assets/styles.css?v=f796cbae81" />
+<link rel="stylesheet" href="/assets/styles.css?v=4846843013" />
 <link rel="stylesheet" href="/assets/tailwind.css?v=c443090249" />
 <!-- Google tag (gtag.js) com Consent Mode v2 -->
 <script>
@@ -70,14 +70,6 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2GEW7E6K4"></script>
 </head>
 <body class="antialiased">
-
-<!-- Noise filter definition (used globally via .grain class) -->
-<svg width="0" height="0" style="position:absolute">
-  <filter id="noiseFilter">
-    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"></feTurbulence>
-    <feColorMatrix type="saturate" values="0"></feColorMatrix>
-  </filter>
-</svg>
 
 <!-- ============ HEADER ============ -->
 <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
@@ -138,7 +130,7 @@
 
 <!-- ============ HERO ============ -->
 <section id="top" class="relative bg-radial-mesh text-cream-50 pt-36 pb-36 sm:pt-44 sm:pb-40 overflow-hidden clip-bolt-down">
-  <div class="grain" style="filter:url(#noiseFilter)"></div>
+  <div class="grain"></div>
   <div class="absolute top-1/4 left-1/4 w-[34rem] h-[34rem] bg-volt-400/10 blur-[130px] rounded-full"></div>
 
   <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
@@ -234,7 +226,7 @@
         <img src="/assets/battery-detail.webp" alt="Substituição de bateria automóvel" width="600" height="400" class="w-full h-full object-cover aspect-square" style="object-position:70% 45%" loading="lazy" decoding="async" />
       </div>
       <div class="relative rounded-[2rem] bg-navy-950 p-8 sm:p-10 shadow-floating overflow-hidden">
-        <div class="grain" style="filter:url(#noiseFilter)"></div>
+        <div class="grain"></div>
         <p class="relative text-volt-400 font-bold text-xs tracking-widest uppercase mb-7" data-i18n="carreiras.perfil.lista.titulo">O que valorizamos</p>
         <ul class="relative space-y-5">
           <li class="flex gap-4">
@@ -299,7 +291,7 @@
         <p class="text-steel-600 text-[15px] leading-[1.7]" data-i18n="carreiras.areas.a5d">Faturação, apoio à rede e organização interna. A retaguarda que permite ao terreno andar depressa.</p>
       </div>
       <div class="reveal mission-card bg-navy-950 relative overflow-hidden" style="transition-delay:300ms">
-        <div class="grain" style="filter:url(#noiseFilter)"></div>
+        <div class="grain"></div>
         <div class="relative">
           <div class="mission-icon bg-volt-400 text-ink-950"><svg class="w-5 h-5" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div>
           <h3 class="font-bold text-lg text-cream-50 mb-2" data-i18n="carreiras.areas.a6t">A tua área não está aqui?</h3>
@@ -312,7 +304,7 @@
 
 <!-- ============ PROCESSO ============ -->
 <section id="processo" class="relative py-24 sm:py-32 px-5 sm:px-8 bg-brand-700 text-cream-50 overflow-hidden">
-  <div class="grain" style="filter:url(#noiseFilter)"></div>
+  <div class="grain"></div>
 
   <div class="relative mx-auto max-w-7xl">
     <div class="max-w-2xl mb-16">
@@ -439,7 +431,7 @@
 
 <!-- ============ FOOTER ============ -->
 <footer class="relative bg-navy-950 text-cream-50 pt-20 pb-28 sm:pb-10 px-5 sm:px-8 overflow-hidden">
-  <div class="grain" style="filter:url(#noiseFilter)"></div>
+  <div class="grain"></div>
   <div class="relative mx-auto max-w-7xl grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 pb-14">
     <div class="lg:col-span-1">
       <img src="/new-logo/logo-lockup-light.webp" alt="Help Battery" width="2082" height="668" class="h-8 w-auto mb-5" loading="lazy" decoding="async" />
@@ -509,6 +501,6 @@
 
 <script src="/assets/consent.js?v=d3c9507633"></script>
 <script src="/assets/i18n.js?v=e9bf526142"></script>
-<script src="/assets/app.js?v=69d11a9c04"></script>
+<script src="/assets/app.js?v=0605698f51"></script>
 </body>
 </html>

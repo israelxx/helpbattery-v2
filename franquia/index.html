@@ -29,7 +29,7 @@
      da cascata em que o CDN injetava o CSS dele. -->
 <link rel="preload" href="/assets/fonts/archivo-black-latin.woff2" as="font" type="font/woff2" crossorigin />
 <link rel="preload" href="/assets/fonts/montserrat-latin.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="stylesheet" href="/assets/styles.css?v=f796cbae81" />
+<link rel="stylesheet" href="/assets/styles.css?v=4846843013" />
 <link rel="stylesheet" href="/assets/tailwind.css?v=c443090249" />
 <!-- Google tag (gtag.js) com Consent Mode v2 -->
 <script>
@@ -70,14 +70,6 @@
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2GEW7E6K4"></script>
 </head>
 <body class="antialiased">
-
-<!-- Noise filter definition (used globally via .grain class) -->
-<svg width="0" height="0" style="position:absolute">
-  <filter id="noiseFilter">
-    <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"></feTurbulence>
-    <feColorMatrix type="saturate" values="0"></feColorMatrix>
-  </filter>
-</svg>
 
 <!-- ============ HEADER ============ -->
 <header id="site-header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
@@ -138,7 +130,7 @@
 
 <!-- ============ HERO ============ -->
 <section id="top" class="relative bg-radial-mesh text-cream-50 pt-36 pb-36 sm:pt-44 sm:pb-40 overflow-hidden clip-bolt-down">
-  <div class="grain" style="filter:url(#noiseFilter)"></div>
+  <div class="grain"></div>
   <div class="absolute top-1/3 right-0 w-[38rem] h-[38rem] bg-brand-500/25 blur-[140px] rounded-full translate-x-1/3"></div>
 
   <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
@@ -260,7 +252,7 @@
   <div class="relative mx-auto max-w-7xl grid lg:grid-cols-[0.9fr_1.1fr] gap-14 lg:gap-20 items-center">
     <figure class="reveal-scale socio-retrato">
       <div class="socio-painel shadow-floating">
-        <div class="grain" style="filter:url(#noiseFilter)"></div>
+        <div class="grain"></div>
         <svg class="socio-linhas" viewBox="0 0 400 500" preserveAspectRatio="none" aria-hidden="true">
           <path d="M-40 440 L330 -40" />
           <path d="M70 560 L460 110" />
@@ -338,7 +330,7 @@
         <img src="/assets/battery-detail.webp" alt="Substituição de bateria automóvel" width="600" height="400" class="w-full h-full object-cover aspect-square" style="object-position:70% 45%" loading="lazy" decoding="async" />
       </div>
       <div class="relative rounded-[2rem] bg-navy-950 p-8 sm:p-10 shadow-floating overflow-hidden">
-        <div class="grain" style="filter:url(#noiseFilter)"></div>
+        <div class="grain"></div>
         <p class="relative text-volt-400 font-bold text-xs tracking-widest uppercase mb-7" data-i18n="franquia.porque.lista.titulo">O que já está construído</p>
         <ul class="relative space-y-5">
           <li class="flex gap-4">
@@ -365,7 +357,7 @@
 
 <!-- ============ OS DOIS MODELOS ============ -->
 <section id="modelos" class="relative py-24 sm:py-32 px-5 sm:px-8 bg-navy-950 text-cream-50 overflow-hidden">
-  <div class="grain" style="filter:url(#noiseFilter)"></div>
+  <div class="grain"></div>
   <div class="absolute top-1/4 left-0 w-[36rem] h-[36rem] bg-brand-600/20 blur-[130px] rounded-full -translate-x-1/2"></div>
 
   <div class="relative mx-auto max-w-7xl">
@@ -468,7 +460,7 @@
 
 <!-- ============ PROCESSO ============ -->
 <section id="processo" class="relative py-24 sm:py-32 px-5 sm:px-8 bg-brand-700 text-cream-50 overflow-hidden">
-  <div class="grain" style="filter:url(#noiseFilter)"></div>
+  <div class="grain"></div>
 
   <div class="relative mx-auto max-w-7xl">
     <div class="max-w-2xl mb-16">
@@ -547,7 +539,7 @@
 
 <!-- ============ CANDIDATURA ============ -->
 <section id="candidatura" class="relative py-24 sm:py-32 px-5 sm:px-8 bg-navy-950 text-cream-50 overflow-hidden">
-  <div class="grain" style="filter:url(#noiseFilter)"></div>
+  <div class="grain"></div>
   <div class="absolute bottom-0 right-0 w-[34rem] h-[34rem] bg-volt-400/10 blur-[130px] rounded-full translate-x-1/3 translate-y-1/3"></div>
 
   <div class="relative mx-auto max-w-3xl">
@@ -763,7 +755,7 @@
 
 <!-- ============ FOOTER ============ -->
 <footer class="relative bg-navy-950 text-cream-50 pt-20 pb-28 sm:pb-10 px-5 sm:px-8 overflow-hidden border-t border-white/10">
-  <div class="grain" style="filter:url(#noiseFilter)"></div>
+  <div class="grain"></div>
   <div class="relative mx-auto max-w-7xl grid sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 pb-14">
     <div class="lg:col-span-1">
       <img src="/new-logo/logo-lockup-light.webp" alt="Help Battery" width="2082" height="668" class="h-8 w-auto mb-5" loading="lazy" decoding="async" />
@@ -833,6 +825,6 @@
 
 <script src="/assets/consent.js?v=d3c9507633"></script>
 <script src="/assets/i18n.js?v=e9bf526142"></script>
-<script src="/assets/app.js?v=69d11a9c04"></script>
+<script src="/assets/app.js?v=0605698f51"></script>
 </body>
 </html>
